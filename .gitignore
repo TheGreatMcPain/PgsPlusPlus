@@ -1,3 +1,6 @@
 # Build directories
-[Cc]make-[Bb]uild-*
-[Bb]uild
+[Cc]make-[Bb]uild-*/
+[Bb]uild/
+
+# Generated Documentations
+[Dd]oc/
