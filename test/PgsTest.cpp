@@ -5,8 +5,8 @@
 #include <gtest/gtest.h>
 
 #include <fstream>
-#include <pgs.hpp>
-#include <Segment.hpp>
+#include <src/pgs.hpp>
+#include <src/Segment.hpp>
 
 class PgsTest : public ::testing::Test
 {
