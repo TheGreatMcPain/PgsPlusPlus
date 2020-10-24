@@ -4,3 +4,6 @@
 
 # Generated Documentations
 [Dd]oc/
+
+# Binary PGS files
+*.sup
