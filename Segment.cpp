@@ -47,6 +47,7 @@ void Segment::import(const char *inData, const uint32_t &size)
             this->data.reset(new PaletteDefinition());
             break;
         case SegmentType::ObjectDefinition:
+            this->data.reset(new ObjectDefinition());
             break;
         case SegmentType::PresentationComposition:
             this->data.reset(new PresentationComposition());
@@ -59,7 +60,18 @@ void Segment::import(const char *inData, const uint32_t &size)
         default:
             throw ImportException("Segment: Unexpected SegmentType encountered");
     }
-    this->data->import(inData + readPos, remainingSize);
+
+    if(this->segmentType != SegmentType::EndOfDisplaySet)
+    {
+        try
+        {
+            this->data->import(inData + readPos, remainingSize);
+        }
+        catch (const ImportException &exception)
+        {
+            throw ImportException("Segment: Attempted to import non-existent data.");
+        }
+    }
 }
 
 void Segment::import(const vector<char> &inData)

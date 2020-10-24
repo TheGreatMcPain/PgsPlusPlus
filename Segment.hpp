@@ -8,6 +8,7 @@
 #include "PresentationComposition.hpp"
 #include "WindowDefinition.hpp"
 #include "PaletteDefinition.hpp"
+#include "ObjectDefinition.hpp"
 
 #include <vector>
 #include <cstdint>

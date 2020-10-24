@@ -134,6 +134,57 @@ TEST_F(PgsTest, importShortPdsSegment)
     delete[] data;
 }
 
+// =========
+// ODS Tests
+// =========
+
+TEST_F(PgsTest, importValidOdsSegment)
+{
+    const uint32_t dataSize = 3368;
+    this->supFileStream.seekg(std::ios::beg + 0x034D);
+
+    char *data = new char[dataSize];
+    this->supFileStream.readsome(data, dataSize);
+
+    Pgs::Segment segment;
+    ASSERT_NO_THROW(segment.import(data, dataSize));
+    delete[] data;
+
+    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::ObjectDefinition);
+}
+
+TEST_F(PgsTest, importShortOdsSegment)
+{
+    const uint32_t dataSize = 5;
+    this->supFileStream.seekg(std::ios::beg + 0x034D);
+
+    char *data = new char[dataSize];
+    this->supFileStream.readsome(data, dataSize);
+
+    Pgs::Segment segment;
+    ASSERT_THROW(segment.import(data, dataSize), Pgs::ImportException);
+    delete[] data;
+}
+
+// ========
+// END Test
+// ========
+
+TEST_F(PgsTest, importValidEndSegment)
+{
+    const uint32_t dataSize = 13u;
+    this->supFileStream.seekg(std::ios::beg + 0x1075);
+
+    char *data = new char[dataSize];
+    this->supFileStream.readsome(data, dataSize);
+
+    Pgs::Segment segment;
+    ASSERT_NO_THROW(segment.import(data, dataSize));
+    delete[] data;
+
+    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::EndOfDisplaySet);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

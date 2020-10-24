@@ -20,7 +20,7 @@ add_library(pgs SHARED
         PresentationComposition.cpp PresentationComposition.hpp
         WindowDefinition.cpp WindowDefinition.hpp
         PaletteDefinition.cpp PaletteDefinition.hpp
-        Segment.cpp Segment.hpp)
+        Segment.cpp Segment.hpp ObjectDefinition.cpp ObjectDefinition.hpp)
 
 target_link_libraries(pgs
         pgs-util
