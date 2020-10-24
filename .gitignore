@@ -3,8 +3,8 @@
 [Bb]uild/
 
 # Generated Documentations
-[Dd]oc/*
-![Dd]oc/html/
+[Dd]ocs/*
+![Dd]ocs/html/
 
 # Binary PGS files
 *.sup
