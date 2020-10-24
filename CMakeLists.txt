@@ -16,9 +16,11 @@ target_compile_options(pgs-util BEFORE PUBLIC
         )
 
 add_library(pgs SHARED
+        SegmentData.cpp SegmentData.hpp
         PresentationComposition.cpp PresentationComposition.hpp
-        Segment.cpp Segment.hpp
-        SegmentData.hpp)
+        WindowDefinition.cpp WindowDefinition.hpp
+        PaletteDefinition.cpp PaletteDefinition.hpp
+        Segment.cpp Segment.hpp)
 
 target_link_libraries(pgs
         pgs-util

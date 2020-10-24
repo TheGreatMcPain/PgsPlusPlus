@@ -28,7 +28,7 @@ namespace Pgs
      */
     class CompositionObject
     {
-    protected:
+    public:
         uint16_t objectID; /**< ID of the associated Object Definition Segment. */
         uint8_t windowID; /**< ID of the associated Window Definition Segment. Up to 2 images can use 1 window. */
         bool croppedFlag; /**< Set to true to force display of the cropped image object; false, otherwise. */
@@ -39,7 +39,6 @@ namespace Pgs
         uint16_t cropWidth; /**< Width of the crop. */
         uint16_t cropHeight; /**< Height of the crop. */
 
-    public:
         /**
          * \brief Minimum number of bytes needed to create a basic CompositionObject instance from
          * provided data.
@@ -57,15 +56,11 @@ namespace Pgs
         /**
          *  \brief Imports the provided data into the CompositionObject instance.
          *  \param data pointer to raw data array
-         *  \param size size of the raw data array 
+         *  \param size size of the raw data array
+         *
+         *  \throws ImportException
          */
         void import(const char *data, const uint16_t &size, uint16_t &readPos);
-
-        /**
-         *  \brief Imports the provided data into the CompositionObject instance.
-         *  \param data a vector containing the raw data
-         */
-        [[maybe_unused]] void import(const vector<char> &data, uint16_t &readPos);
     };
 
     /**
@@ -73,7 +68,7 @@ namespace Pgs
      */
     class PresentationComposition : public SegmentData
     {
-    protected:
+    public:
         uint16_t width;     /**< Pixels in video width. */
         uint16_t height;    /**< Pixels in video height */
         uint8_t frameRate; /**< Subtitle display frame rate. Should almost always be 0x10 (24fps) */
@@ -83,7 +78,7 @@ namespace Pgs
         uint8_t paletteID; /**< ID of palette to use in palette-only update. */
         uint8_t compositionObjectCount; /**< Number of composition objects defined in segment. */
         vector<CompositionObject> compositionObjects; /**< Vector of Composition Objects in this segment. */
-    public:
+
         /**
          * \brief Minimum number of bytes needed to create a basic PresentationComposition instance from
          * provided data.
@@ -98,8 +93,8 @@ namespace Pgs
          */
         PresentationComposition();
 
-        void import(const char *data, const uint16_t &size);
+        void import(const char *data, const uint16_t &size) override;
 
-        [[maybe_unused]] void import(const vector<char> &data);
+        [[maybe_unused]] void import(const vector<char> &data) override;
     };
 }

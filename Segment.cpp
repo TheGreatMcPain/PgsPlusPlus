@@ -44,20 +44,22 @@ void Segment::import(const char *inData, const uint32_t &size)
     switch (this->segmentType)
     {
         case SegmentType::PaletteDefinition:
+            this->data.reset(new PaletteDefinition());
             break;
         case SegmentType::ObjectDefinition:
             break;
         case SegmentType::PresentationComposition:
             this->data.reset(new PresentationComposition());
-            this->data->import(inData + readPos, remainingSize);
             break;
         case SegmentType::WindowDefinition:
+            this->data.reset(new WindowDefinition());
             break;
         case SegmentType::EndOfDisplaySet:
             break;
         default:
             throw ImportException("Segment: Unexpected SegmentType encountered");
     }
+    this->data->import(inData + readPos, remainingSize);
 }
 
 void Segment::import(const vector<char> &inData)

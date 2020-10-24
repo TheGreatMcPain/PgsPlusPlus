@@ -2,7 +2,8 @@ file(COPY res/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/res/)
 
 find_package(GTest REQUIRED)
 
-add_executable(pgs-test pgs_test.cpp)
+
+add_executable(pgs-test PgsTest.cpp)
 
 target_include_directories(pgs-test PUBLIC
         ../
@@ -18,4 +19,4 @@ target_link_libraries(pgs-test PRIVATE
         GTest::Main
         )
 
-add_test(NAME "PGS_Test" COMMAND pgs-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)
+add_test(NAME "PgsTest" COMMAND pgs-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)

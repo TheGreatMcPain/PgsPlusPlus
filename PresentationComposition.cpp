@@ -57,11 +57,6 @@ void CompositionObject::import(const char *data, const uint16_t &size, uint16_t 
     }
 }
 
-void CompositionObject::import(const vector<char> &data, uint16_t &readPos)
-{
-    this->import(data.data(), data.size(), readPos);
-}
-
 // ================================
 // Presentation Composition Methods
 // ================================

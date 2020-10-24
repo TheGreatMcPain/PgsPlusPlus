@@ -17,8 +17,3 @@ uint16_t Pgs::read2Bytes(const uint8_t *data, uint16_t &readPos)
     readPos += 2;
     return le16toh(result);
 }
-
-Pgs::ImportException::ImportException(const char *msg) : std::runtime_error(msg)
-{
-}
-

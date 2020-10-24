@@ -1,7 +1,13 @@
+//
+// Copyright (c) 2020 Brenden Davidson
+//
+
 #pragma once
 
 #include "pgs.hpp"
 #include "PresentationComposition.hpp"
+#include "WindowDefinition.hpp"
+#include "PaletteDefinition.hpp"
 
 #include <vector>
 #include <cstdint>
@@ -34,7 +40,7 @@ namespace Pgs
      */
     class Segment
     {
-    protected:
+    public:
         static constexpr uint16_t MIN_BYTE_SIZE = 13u;
 
         char magicNumber[2]{};             /**< 2-byte value defining the start of a segment. Should always be PGS_MAGIC_NUMBER */
@@ -43,7 +49,7 @@ namespace Pgs
         SegmentType segmentType;         /**< Type of data contained in this segment. */
         uint16_t segmentSize;            /**< Number of bytes containing the segment data. */
         shared_ptr<SegmentData> data;    /**< Shared pointer to the corresponding data container. */
-    public:
+
         Segment();
 
         void import(const char *inData, const uint32_t &size);
