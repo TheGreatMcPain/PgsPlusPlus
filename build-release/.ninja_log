@@ -1,0 +1,12 @@
+# ninja log v5
+1	137	1603596951177258534	src/CMakeFiles/pgs-util.dir/pgs.cpp.o	2a51a29e52463db2
+137	148	1603596951189258565	src/libpgs-util.a	8b4b1d5443112019
+0	199	1603596951237258690	src/CMakeFiles/pgs.dir/SegmentData.cpp.o	5e2c55b72baba971
+1	219	1603596951257258742	src/CMakeFiles/pgs.dir/ObjectDefinition.cpp.o	b28692b749434ed4
+1	230	1603596951269258773	src/CMakeFiles/pgs.dir/PaletteDefinition.cpp.o	aaa48ff67bf378a4
+0	247	1603596951285258815	src/CMakeFiles/pgs.dir/PresentationComposition.cpp.o	7fd9f976d3812f3f
+1	274	1603596951313258887	src/CMakeFiles/pgs.dir/WindowDefinition.cpp.o	b15e2d2dfce4c259
+1	361	1603596951401259117	src/CMakeFiles/pgs.dir/Segment.cpp.o	7aa3432d668805b0
+361	398	1603596951437259211	src/libpgs.so	f811af9252f1b479
+1	954	1603596951993260659	test/CMakeFiles/pgs-test.dir/PgsTest.cpp.o	55f9cc54d478867
+954	1053	1603596952093260920	test/pgs-test	493894ba995e97
