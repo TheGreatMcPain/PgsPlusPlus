@@ -22,7 +22,9 @@
 
 #include <vector>
 #include <stdexcept>
+#include <memory>
 
+using std::shared_ptr;
 using std::vector;
 
 namespace Pgs
@@ -32,15 +34,7 @@ namespace Pgs
      */
     class SegmentData
     {
-    public:
-
-        /**
-         * \brief Constructs a new instance of SegmentData
-         */
-        SegmentData() = default;
-
-        virtual ~SegmentData() noexcept = default;
-
+    protected:
         /**
          * \brief Imports the provided data into this SegmentData object.
          * \param data pointer to raw data array
@@ -49,14 +43,14 @@ namespace Pgs
          * \throws ImportException
          */
         virtual uint16_t import(const char *data, const uint16_t &size) = 0;
+    public:
 
         /**
-         * \brief Imports the provided data into this SegmentData object.
-         * \param data vector containing the data to be imported
-         *
-         * \throws ImportException
+         * \brief Constructs a new instance of SegmentData
          */
-        virtual uint16_t import(const vector<char> &data) = 0;
+        SegmentData() = default;
+
+        virtual ~SegmentData() noexcept = default;
     };
 
     /**

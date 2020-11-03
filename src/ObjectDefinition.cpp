@@ -84,7 +84,43 @@ uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
     return readPos;
 }
 
-uint16_t ObjectDefinition::import(const vector<char> &data)
+shared_ptr<ObjectDefinition> ObjectDefinition::create(const char *data, const uint16_t &size)
 {
-    return this->import(data.data(), data.size());
+    auto ods = std::make_shared<ObjectDefinition>();
+    ods->import(data, size);
+    return ods;
+}
+
+// =======
+// Getters
+// =======
+
+const uint16_t & ObjectDefinition::getId() const noexcept
+{
+    return this->id;
+}
+
+const uint8_t &ObjectDefinition::getVersion() const noexcept
+{
+    return this->version;
+}
+
+const SequenceFlag &ObjectDefinition::getSequenceFlag() const noexcept
+{
+    return this->sequenceFlag;
+}
+
+const uint32_t &ObjectDefinition::getDataLength() const noexcept
+{
+    return this->dataLength;
+}
+
+const uint16_t &ObjectDefinition::getWidth() const noexcept
+{
+    return this->width;
+}
+
+const uint16_t &ObjectDefinition::getHeight() const noexcept
+{
+    return this->height;
 }

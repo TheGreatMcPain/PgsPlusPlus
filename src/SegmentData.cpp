@@ -25,4 +25,3 @@ using namespace Pgs;
 Pgs::ImportException::ImportException(const char *msg) : std::runtime_error(msg)
 {
 }
-

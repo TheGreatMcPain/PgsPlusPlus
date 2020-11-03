@@ -22,9 +22,11 @@
 
 #include "pgs.hpp"
 #include "SegmentData.hpp"
+#include <memory>
 #include <cstdint>
 #include <vector>
 
+using std::shared_ptr;
 using std::vector;
 
 namespace Pgs
@@ -46,6 +48,13 @@ namespace Pgs
     class ObjectDefinition : public SegmentData
     {
     protected:
+        uint16_t id; /**< ID of this object */
+        uint8_t version; /**< Version of this object */
+        SequenceFlag sequenceFlag; /**< Order of this object in its sequence */
+        uint32_t dataLength; /**< Number of bytes contained in the object data vector. */
+        uint16_t width; /**< Width of image after decompression */
+        uint16_t height; /**< Height of image after decompression */
+
         /**
          * \brief Reads 3 bytes of data from the provided data.
          * \details
@@ -58,15 +67,11 @@ namespace Pgs
          * \return 32-bit value containing read data.
          */
         inline static uint32_t read3Bytes(const uint8_t *data, uint16_t &readPos);
+
+        uint16_t import(const char *data, const uint16_t &size) override;
     public:
         static constexpr uint16_t MIN_BYTE_SIZE = 11u;
 
-        uint16_t id; /**< ID of this object */
-        uint8_t version; /**< Version of this object */
-        SequenceFlag sequenceFlag; /**< Order of this object in its sequence */
-        uint32_t dataLength; /**< Number of bytes contained in the object data vector. */
-        uint16_t width; /**< Width of image after decompression */
-        uint16_t height; /**< Height of image after decompression */
         vector<uint8_t> objectData; /**< RLE-compressed object data. */
 
         /**
@@ -74,8 +79,22 @@ namespace Pgs
          */
         ObjectDefinition();
 
-        uint16_t import(const char *data, const uint16_t &size) override;
+        static shared_ptr<ObjectDefinition> create(const char *data, const uint16_t &size);
 
-        uint16_t import(const vector<char> &data) override;
+        // =======
+        // Getters
+        // =======
+
+        [[maybe_unused]] const uint16_t &getId() const noexcept;
+
+        [[maybe_unused]] const uint8_t &getVersion() const noexcept;
+
+        [[maybe_unused]] const SequenceFlag &getSequenceFlag() const noexcept;
+
+        [[maybe_unused]] const uint32_t &getDataLength() const noexcept;
+
+        [[maybe_unused]] const uint16_t &getWidth() const noexcept;
+
+        [[maybe_unused]] const uint16_t &getHeight() const noexcept;
     };
 }

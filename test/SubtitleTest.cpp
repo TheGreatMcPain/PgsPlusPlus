@@ -88,6 +88,22 @@ TEST_F(SubtitleTest, importLargeSubtitle)
     ASSERT_EQ(readPos, dataSize);
 }
 
+TEST_F(SubtitleTest, importEmptySubtitle)
+{
+    const uint32_t dataSize = 60;
+    this->supFileStream.seekg(std::ios::beg + 0x17BF9A);
+
+    char *data = new char[dataSize];
+    this->supFileStream.readsome(data, dataSize);
+
+    shared_ptr<Pgs::Subtitle> subtitle;
+    uint32_t readPos = 0u;
+    ASSERT_NO_THROW(subtitle = Pgs::Subtitle::create(data, dataSize, readPos));
+    delete[] data;
+
+    ASSERT_EQ(readPos, dataSize);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
