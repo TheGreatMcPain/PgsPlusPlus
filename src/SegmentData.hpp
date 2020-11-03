@@ -48,7 +48,7 @@ namespace Pgs
          *
          * \throws ImportException
          */
-        virtual void import(const char *data, const uint16_t &size) = 0;
+        virtual uint16_t import(const char *data, const uint16_t &size) = 0;
 
         /**
          * \brief Imports the provided data into this SegmentData object.
@@ -56,7 +56,7 @@ namespace Pgs
          *
          * \throws ImportException
          */
-        virtual void import(const vector<char> &data) = 0;
+        virtual uint16_t import(const vector<char> &data) = 0;
     };
 
     /**

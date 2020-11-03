@@ -96,12 +96,12 @@ namespace Pgs
          * \param data pointer to raw data array to import
          * \param size number of bytes in provided data array
          */
-        void import(const char *data, const uint16_t &size) override;
+        uint16_t import(const char *data, const uint16_t &size) override;
 
         /**
          * \brief imports the provided data into the class instance
          * \param data vector containing the data to import
          */
-        void import(const vector<char> &data) override;
+        uint16_t import(const vector<char> &data) override;
     };
 }

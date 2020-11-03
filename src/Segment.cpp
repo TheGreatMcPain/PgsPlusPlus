@@ -29,10 +29,25 @@ Segment::Segment()
     this->decodingTimestamp = 0u;
     this->segmentType = SegmentType::EndOfDisplaySet;
     this->segmentSize = 0u;
-    this->data = nullptr;
+    this->data = std::shared_ptr<SegmentData>();
 }
 
-void Segment::import(const char *inData, const uint32_t &size)
+Segment::~Segment() = default;
+
+uint16_t Segment::getSegmentSize(const char *data, const uint16_t &size) noexcept
+{
+    if (size < Segment::MIN_BYTE_SIZE)
+    {
+        return 0;
+    }
+
+    const uint8_t sizeOffset = 11u;
+    uint16_t readPos = 0u; /* This just makes read2Bytes happy */
+    const auto segSize = Pgs::read2Bytes(reinterpret_cast<const uint8_t *>(data + sizeOffset), readPos);
+    return segSize;
+}
+
+uint16_t Segment::import(const char *inData, const uint32_t &size)
 {
     const auto byteData = reinterpret_cast<const uint8_t *>(inData);
 
@@ -71,6 +86,7 @@ void Segment::import(const char *inData, const uint32_t &size)
             this->data.reset(new WindowDefinition());
             break;
         case SegmentType::EndOfDisplaySet:
+            this->data = nullptr;
             break;
         default:
             throw ImportException("Segment: Unexpected SegmentType encountered");
@@ -80,16 +96,18 @@ void Segment::import(const char *inData, const uint32_t &size)
     {
         try
         {
-            this->data->import(inData + readPos, remainingSize);
+            readPos += this->data->import(inData + readPos, remainingSize);
         }
         catch (const ImportException &exception)
         {
             throw ImportException("Segment: Attempted to import non-existent data.");
         }
     }
+
+    return readPos;
 }
 
-void Segment::import(const vector<char> &inData)
+uint16_t Segment::import(const vector<char> &inData)
 {
-    this->import(inData.data(), inData.size());
+    return this->import(inData.data(), inData.size());
 }

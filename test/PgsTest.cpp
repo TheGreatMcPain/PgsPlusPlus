@@ -67,9 +67,11 @@ TEST_F(PgsTest, importValidPcsSegment)
     this->supFileStream.readsome(data, dataSize);
 
     Pgs::Segment segment;
-    ASSERT_NO_THROW(segment.import(data, dataSize));
+    uint32_t readSize = 0u;
+    ASSERT_NO_THROW(readSize = segment.import(data, dataSize));
     delete[] data;
 
+    ASSERT_EQ(readSize, dataSize);
     ASSERT_EQ(segment.segmentType, Pgs::SegmentType::PresentationComposition);
 }
 
@@ -99,9 +101,11 @@ TEST_F(PgsTest, importValidWdsSegment)
     this->supFileStream.readsome(data, dataSize);
 
     Pgs::Segment segment;
-    ASSERT_NO_THROW(segment.import(data, dataSize));
+    uint32_t readSize = 0u;
+    ASSERT_NO_THROW(readSize = segment.import(data, dataSize));
     delete[] data;
 
+    ASSERT_EQ(readSize, dataSize);
     ASSERT_EQ(segment.segmentType, Pgs::SegmentType::WindowDefinition);
 }
 
@@ -131,9 +135,11 @@ TEST_F(PgsTest, importValidPdsSegment)
     this->supFileStream.readsome(data, dataSize);
 
     Pgs::Segment segment;
-    ASSERT_NO_THROW(segment.import(data, dataSize));
+    uint32_t readSize = 0u;
+    ASSERT_NO_THROW(readSize = segment.import(data, dataSize));
     delete[] data;
 
+    ASSERT_EQ(readSize, dataSize);
     ASSERT_EQ(segment.segmentType, Pgs::SegmentType::PaletteDefinition);
 }
 
@@ -163,9 +169,11 @@ TEST_F(PgsTest, importValidOdsSegment)
     this->supFileStream.readsome(data, dataSize);
 
     Pgs::Segment segment;
-    ASSERT_NO_THROW(segment.import(data, dataSize));
+    uint32_t readSize = 0u;
+    ASSERT_NO_THROW(readSize = segment.import(data, dataSize));
     delete[] data;
 
+    ASSERT_EQ(readSize, dataSize);
     ASSERT_EQ(segment.segmentType, Pgs::SegmentType::ObjectDefinition);
 }
 
@@ -195,9 +203,11 @@ TEST_F(PgsTest, importValidEndSegment)
     this->supFileStream.readsome(data, dataSize);
 
     Pgs::Segment segment;
-    ASSERT_NO_THROW(segment.import(data, dataSize));
+    uint32_t readSize = 0u;
+    ASSERT_NO_THROW(readSize = segment.import(data, dataSize));
     delete[] data;
 
+    ASSERT_EQ(readSize, dataSize);
     ASSERT_EQ(segment.segmentType, Pgs::SegmentType::EndOfDisplaySet);
 }
 

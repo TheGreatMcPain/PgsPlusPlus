@@ -69,8 +69,12 @@ namespace Pgs
 
         Segment();
 
-        void import(const char *inData, const uint32_t &size);
+        ~Segment();
 
-        void import(const vector<char> &inData);
+        static uint16_t getSegmentSize(const char *data, const uint16_t &size) noexcept;
+
+        uint16_t import(const char *inData, const uint32_t &size);
+
+        uint16_t import(const vector<char> &inData);
     };
 }

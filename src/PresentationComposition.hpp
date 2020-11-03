@@ -108,8 +108,8 @@ namespace Pgs
          */
         PresentationComposition();
 
-        void import(const char *data, const uint16_t &size) override;
+        uint16_t import(const char *data, const uint16_t &size) override;
 
-        [[maybe_unused]] void import(const vector<char> &data) override;
+        [[maybe_unused]] uint16_t import(const vector<char> &data) override;
     };
 }

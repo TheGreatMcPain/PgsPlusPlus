@@ -43,7 +43,7 @@ ObjectDefinition::ObjectDefinition()
     this->height = 0u;
 }
 
-void ObjectDefinition::import(const char *data, const uint16_t &size)
+uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
 {
     if(!data)
     {
@@ -80,9 +80,11 @@ void ObjectDefinition::import(const char *data, const uint16_t &size)
         this->objectData[i] = byteData[readPos];
         ++readPos;
     }
+
+    return readPos;
 }
 
-void ObjectDefinition::import(const vector<char> &data)
+uint16_t ObjectDefinition::import(const vector<char> &data)
 {
-    this->import(data.data(), data.size());
+    return this->import(data.data(), data.size());
 }

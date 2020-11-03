@@ -20,6 +20,7 @@ file(COPY res/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/res/)
 
 find_package(GTest REQUIRED)
 
+# PGS Test
 
 add_executable(pgs-test PgsTest.cpp)
 
@@ -38,3 +39,23 @@ target_link_libraries(pgs-test PRIVATE
         )
 
 add_test(NAME "PgsTest" COMMAND pgs-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)
+
+# Subtitle Test
+
+add_executable(subtitle-test SubtitleTest.cpp)
+
+target_include_directories(subtitle-test PUBLIC
+        ../
+        )
+
+target_include_directories(subtitle-test PRIVATE SYSTEM
+        ${GTest_INCLUDE_DIRS}
+        )
+
+target_link_libraries(subtitle-test PRIVATE
+        pgs
+        GTest::GTest
+        GTest::Main
+        )
+
+add_test(NAME "SubtitleTest" COMMAND subtitle-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)

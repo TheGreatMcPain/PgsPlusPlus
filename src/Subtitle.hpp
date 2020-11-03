@@ -1,6 +1,23 @@
-//
-// Created by bdavidson on 10/29/20.
-//
+/*
+ *  libpgs: A C++ library for reading Presentation Graphics Stream (PGS) subtitles.
+ *  Copyright (C) 2020  Brenden Davidson
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License as published by the Free Software Foundation; either
+ *  version 2.1 of the License, or (at your option) any later version.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+ *  USA
+*/
+
 
 #pragma once
 
@@ -9,12 +26,21 @@
 #include <cstdint>
 #include <array>
 #include <memory>
+#include <stdexcept>
 
 using std::array;
 using std::shared_ptr;
 
 namespace Pgs
 {
+    class CreateError : virtual public std::runtime_error
+    {
+    public:
+        explicit CreateError(const char *msg);
+
+        ~CreateError() noexcept override = default;
+    };
+
     /**
      * \brief The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instance,
      * and retains pointers to the imported segments so that a user may access less commonly-used data.
@@ -31,17 +57,17 @@ namespace Pgs
         /**
          * \brief Shared pointer to the imported presentation composition segment.
          */
-        shared_ptr<Segment> presentationComposition;
+        shared_ptr<PresentationComposition> presentationComposition;
 
         /**
          * \brief Shared pointer to the imported window definition segment.
          */
-        shared_ptr<Segment> windowDefinition;
+        shared_ptr<WindowDefinition> windowDefinition;
 
         /**
          * \brief Shared pointer to the imported palette definition segment.
          */
-        shared_ptr<Segment> paletteDefinition;
+        shared_ptr<PaletteDefinition> paletteDefinition;
 
         /**
          * \brief Number of object definition segments in this subtitle. Value can be 0-2.
@@ -51,55 +77,35 @@ namespace Pgs
         /**
          * \brief Array containing shared pointers to imported object definition segments.
          */
-        array<shared_ptr<Segment>, 2> objectDefinitions;
+        array<shared_ptr<ObjectDefinition>, 2> objectDefinitions;
 
         /**
-         * \brief The time in milliseconds since the start of the stream when subtitle decoding should be finished.
+         * \brief The time since the start of the stream when subtitle decoding should be finished.
          *
          * \details
          * Most applications will not need this value. It is present in PGS data to help extremely low-power devices
          * prioritize which subtitles to decode and when.
-         * <br/><br/>As with presentationTime, the original 90kHz value can be retrieved from any of the stored Segment
-         * object pointers.
+         * <br/><br/>As with presentationTime, this value has an accuracy of 90kHz.
          */
          uint32_t decodingTime;
 
         /**
-         * \brief The time in milliseconds since the start of the stream when to present the subtitle.
+         * \brief The time since the start of the stream when to present the subtitle.
          *
          * \details
-         * The original timing data is sampled at 90kHz for ultra high-accuracy timing. This is significantly
-         * more accurate than most application need, so the value here is rounded to the nearest millisecond.
-         * If an application does need full accuracy of the timestamp, it can be retrieved through any of the
-         * stored Segment object pointers.
+         * This value has an accuracy of 90kHz.
          */
         uint32_t presentationTime;
 
-
-
         /**
-         * \brief Imports a Segment containing presentation composition data.
-         * \param segment Segment to import
+         * \brief Imports the provided SegmentData as an ObjectDefinition.
+         *
+         * \details
+         * A single Subtitle can have up to 2 ObjectDefinitions, so this may be called multiple times.
+         *
+         * \param segmentData SegmentData to import
          */
-        void importPcs(const Segment &segment);
-
-        /**
-         * \brief Imports a Segment containing window definition data.
-         * \param segment Segment to import
-         */
-        void importWds(const Segment &segment);
-
-        /**
-         * \brief Imports a Segment containing palette definition data.
-         * \param segment Segment to import
-         */
-        void importPds(const Segment &segment);
-
-        /**
-         * \brief Imports a Segment containing object definition data.
-         * \param segment Segment to import
-         */
-        void importOds(const Segment &segment);
+        void importOds(const shared_ptr<SegmentData> &segmentData);
 
         /**
          * \brief Imports an End Segment.
@@ -117,13 +123,97 @@ namespace Pgs
         Subtitle();
 
         /**
+         * \brief Deconstructs this instance of Subtitle.
+         */
+        ~Subtitle();
+
+        /**
+         * \brief Generates a shared pointer to a new Subtitle instance and imports the provided data.
+         * \param data pointer to raw data array
+         * \param size size of the data array
+         * \param readPos reference to position to start reading the data array from
+         * \return shared pointer to new Subtitle instance.
+         *
+         * \throws CreateError
+         */
+        static shared_ptr<Subtitle> create(const char *data, const uint32_t &size, uint32_t &readPos);
+
+        /**
+         * \brief Generates a shared pointer to a new Subtitle instance and imports the provided data.
+         * \param data raw data vector
+         * \param readPos reference to position to start reading the data array from
+         * \return shared pointer to new Subtitle instance.
+         *
+         * \throws CreateError
+         */
+        [[maybe_unused]] static shared_ptr<Subtitle> create(const std::vector<char> &data, uint32_t &readPos);
+
+        /**
          * \brief Imports any provided Segment into the Subtitle instance.
          *
          * \details
-         * The actual import process is delegated to specific 'protected' methods for each Segment type.
+         * The actual import process may be delegated to specific 'protected' methods for some Segment types.
          *
          * \param segment Segment to import
          */
-        void import(const Segment &segment);
+        Pgs::SegmentType import(const Segment &segment);
+
+        // =======
+        // Getters
+        // =======
+
+        /**
+         * \brief Retrieves a shared pointer to the PresentationComposition attached to this instance.
+         * \return shared pointer to the PresentationComposition
+         */
+        [[maybe_unused]] shared_ptr<PresentationComposition> getPcs() const noexcept;
+
+        /**
+         * \brief Retrieves a shared pointer to the WindowDefinition attached to this instance.
+         * \return shared pointer to the WindowDefinition
+         */
+        [[maybe_unused]] shared_ptr<WindowDefinition> getWds() const noexcept;
+
+        /**
+         * \brief Retrieves a shared pointer to the PaletteDefinition attached to this instance.
+         * \return shared pointer to the PaletteDefinition
+         */
+        [[maybe_unused]] shared_ptr<PaletteDefinition> getPds() const noexcept;
+
+        /**
+         * \brief Retrieves a shared pointer to the selected ObjectDefinition attached to this instance.
+         *
+         * \details
+         * There may only be up to 2 ObjectDefinitions associated with an instance. In the event that an index outside of
+         * that range is provided, the method will return a null shared_ptr.
+         *
+         * \param index index of ObjectDefinition to access.
+         * \return shared pointer to selected ObjectDefinition
+         */
+        [[maybe_unused]] shared_ptr<ObjectDefinition> getOds(const uint8_t &index) const noexcept;
+
+        /**
+         * \brief Retrieves the presentationTime exactly as it's stored in this instance.
+         * \return presentationTime with 90kHz accuracy
+         */
+        [[maybe_unused]] const uint32_t &getPresentationTime() const noexcept;
+
+        /**
+         * \brief Retrieves the presentationTime as a millisecond value.
+         * \return presentationTime with millisecond accuracy
+         */
+        [[maybe_unused]] uint32_t getPresentationTimeMs() const noexcept;
+
+        /**
+         * \brief Retrieves the decodingTime exactly as it's stored in this instance.
+         * \return decodingTime with 90kHz accuracy
+         */
+        [[maybe_unused]] const uint32_t &getDecodingTime() const noexcept;
+
+        /**
+         * \brief Retrieves the decodingTime as a millisecond value.
+         * \return decodingTime with millisecond accuracy
+         */
+        [[maybe_unused]] uint32_t getDecodingTimeMs() const noexcept;
     };
 }

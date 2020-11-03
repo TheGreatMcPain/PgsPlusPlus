@@ -90,7 +90,7 @@ PresentationComposition::PresentationComposition() : SegmentData()
     this->compositionObjects = vector<CompositionObject>();
 }
 
-void PresentationComposition::import(const char *data, const uint16_t &size)
+uint16_t PresentationComposition::import(const char *data, const uint16_t &size)
 {
     if (size < PresentationComposition::MIN_DATA_SIZE)
     {
@@ -128,9 +128,11 @@ void PresentationComposition::import(const char *data, const uint16_t &size)
         this->compositionObjects[i].import(data, remainingSize, readPos);
         remainingSize = size - readPos;
     }
+
+    return readPos;
 }
 
-void PresentationComposition::import(const vector<char> &data)
+uint16_t PresentationComposition::import(const vector<char> &data)
 {
-    this->import(data.data(), data.size());
+    return this->import(data.data(), data.size());
 }

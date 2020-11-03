@@ -56,7 +56,7 @@ PaletteDefinition::PaletteDefinition() : SegmentData()
     this->entries = vector<PaletteEntry>();
 }
 
-void PaletteDefinition::import(const char *data, const uint16_t &size)
+uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
 {
     if(!data)
     {
@@ -85,9 +85,11 @@ void PaletteDefinition::import(const char *data, const uint16_t &size)
         this->entries[i].import(data, remainingSize, readPos);
         remainingSize = size - readPos;
     }
+
+    return readPos;
 }
 
-void PaletteDefinition::import(const vector<char> &data)
+uint16_t PaletteDefinition::import(const vector<char> &data)
 {
-    this->import(data.data(), data.size());
+    return this->import(data.data(), data.size());
 }

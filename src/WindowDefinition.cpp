@@ -63,7 +63,7 @@ WindowDefinition::WindowDefinition()
     this->windowObjects = vector<WindowObject>();
 }
 
-void WindowDefinition::import(const char *data, const uint16_t &size)
+uint16_t WindowDefinition::import(const char *data, const uint16_t &size)
 {
     if (!data)
     {
@@ -92,11 +92,19 @@ void WindowDefinition::import(const char *data, const uint16_t &size)
         this->windowObjects[i].import(data, remainingSize, readPos);
         remainingSize = size - readPos;
     }
+
+    /*
+     * Counting the last readPos update here since weird things happen if this gets counted
+     * before the windows are imported.
+     */
+    ++readPos;
+
+    return readPos;
 }
 
-void WindowDefinition::import(const vector<char> &data)
+uint16_t WindowDefinition::import(const vector<char> &data)
 {
-    this->import(data.data(), data.size());
+    return this->import(data.data(), data.size());
 }
 
 
