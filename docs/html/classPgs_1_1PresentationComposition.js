@@ -1,8 +1,7 @@
 var classPgs_1_1PresentationComposition =
 [
     [ "PresentationComposition", "classPgs_1_1PresentationComposition.html#aacee9b475585ebbea31de5aa97a71422", null ],
-    [ "import", "classPgs_1_1PresentationComposition.html#a8246b6cc831dd5c83c1043e288b72db5", null ],
-    [ "import", "classPgs_1_1PresentationComposition.html#aeacfdb70018175c06db7b64b704baa69", null ],
+    [ "import", "classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4", null ],
     [ "compositionNumber", "classPgs_1_1PresentationComposition.html#a1bced02c0ca716002b170b973e781474", null ],
     [ "compositionObjectCount", "classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb", null ],
     [ "compositionObjects", "classPgs_1_1PresentationComposition.html#a8e04071243cec355452347cea5c67f26", null ],

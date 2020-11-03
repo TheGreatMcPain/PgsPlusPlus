@@ -85,9 +85,10 @@ $(document).ready(function(){initNavTree('classPgs_1_1ObjectDefinition.html','')
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPgs_1_1ObjectDefinition-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::ObjectDefinition Class Reference</div>  </div>
@@ -114,20 +115,59 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a77cfe79c6dfc7492b1854c55a9647241">ObjectDefinition</a> ()</td></tr>
 <tr class="memdesc:a77cfe79c6dfc7492b1854c55a9647241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. <br /></td></tr>
 <tr class="separator:a77cfe79c6dfc7492b1854c55a9647241"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a022eeeb3920a9d126f86428f08c5582e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a022eeeb3920a9d126f86428f08c5582e">import</a> (const char *data, const uint16_t &amp;size) override</td></tr>
-<tr class="memdesc:a022eeeb3920a9d126f86428f08c5582e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1ObjectDefinition.html#a022eeeb3920a9d126f86428f08c5582e">More...</a><br /></td></tr>
-<tr class="separator:a022eeeb3920a9d126f86428f08c5582e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5ab4d736633c9409b941fbe1e317ebd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#aa5ab4d736633c9409b941fbe1e317ebd">import</a> (const vector&lt; char &gt; &amp;data) override</td></tr>
-<tr class="memdesc:aa5ab4d736633c9409b941fbe1e317ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1ObjectDefinition.html#aa5ab4d736633c9409b941fbe1e317ebd">More...</a><br /></td></tr>
-<tr class="separator:aa5ab4d736633c9409b941fbe1e317ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab714a1d31ccaae56306d4a0bede27d02"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02">import</a> (const char *data, const uint16_t &amp;size) override</td></tr>
+<tr class="memdesc:ab714a1d31ccaae56306d4a0bede27d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">imports the provided data into the <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance  <a href="classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02">More...</a><br /></td></tr>
+<tr class="separator:ab714a1d31ccaae56306d4a0bede27d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1b7c72cc73f431e207fdb4be9421d7"><td class="memItemLeft" align="right" valign="top">const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a1e1b7c72cc73f431e207fdb4be9421d7">getId</a> () const noexcept</td></tr>
+<tr class="memdesc:a1e1b7c72cc73f431e207fdb4be9421d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the ID of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a1e1b7c72cc73f431e207fdb4be9421d7">More...</a><br /></td></tr>
+<tr class="separator:a1e1b7c72cc73f431e207fdb4be9421d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832d89d397bde1e68c79fef6dcb1d70d"><td class="memItemLeft" align="right" valign="top">const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a832d89d397bde1e68c79fef6dcb1d70d">getVersion</a> () const noexcept</td></tr>
+<tr class="memdesc:a832d89d397bde1e68c79fef6dcb1d70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the version of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a832d89d397bde1e68c79fef6dcb1d70d">More...</a><br /></td></tr>
+<tr class="separator:a832d89d397bde1e68c79fef6dcb1d70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98da524fc7078d30eb2f1d87a70691f9"><td class="memItemLeft" align="right" valign="top">const SequenceFlag &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a98da524fc7078d30eb2f1d87a70691f9">getSequenceFlag</a> () const noexcept</td></tr>
+<tr class="memdesc:a98da524fc7078d30eb2f1d87a70691f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the sequenceFlag of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a98da524fc7078d30eb2f1d87a70691f9">More...</a><br /></td></tr>
+<tr class="separator:a98da524fc7078d30eb2f1d87a70691f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6799537275befce39c37da0be8300767"><td class="memItemLeft" align="right" valign="top">const uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a6799537275befce39c37da0be8300767">getDataLength</a> () const noexcept</td></tr>
+<tr class="memdesc:a6799537275befce39c37da0be8300767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the size of the encoded data contained in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a6799537275befce39c37da0be8300767">More...</a><br /></td></tr>
+<tr class="separator:a6799537275befce39c37da0be8300767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78b224effffbf7c12d8d03884eadbede"><td class="memItemLeft" align="right" valign="top">const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a78b224effffbf7c12d8d03884eadbede">getWidth</a> () const noexcept</td></tr>
+<tr class="memdesc:a78b224effffbf7c12d8d03884eadbede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the width of the decompressed image made from the data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a78b224effffbf7c12d8d03884eadbede">More...</a><br /></td></tr>
+<tr class="separator:a78b224effffbf7c12d8d03884eadbede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f7413e0c6dd2cadbc348025f080b03"><td class="memItemLeft" align="right" valign="top">const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a58f7413e0c6dd2cadbc348025f080b03">getHeight</a> () const noexcept</td></tr>
+<tr class="memdesc:a58f7413e0c6dd2cadbc348025f080b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the height of the decompressed image made from the data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a58f7413e0c6dd2cadbc348025f080b03">More...</a><br /></td></tr>
+<tr class="separator:a58f7413e0c6dd2cadbc348025f080b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad845e93dc24ab1472ab66137e6fd59aa"><td class="memItemLeft" align="right" valign="top">const vector&lt; uint8_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#ad845e93dc24ab1472ab66137e6fd59aa">getEncodedObjectData</a> () const noexcept</td></tr>
+<tr class="memdesc:ad845e93dc24ab1472ab66137e6fd59aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the compressed image data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#ad845e93dc24ab1472ab66137e6fd59aa">More...</a><br /></td></tr>
+<tr class="separator:ad845e93dc24ab1472ab66137e6fd59aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5072e63885f6a662bdc585219d91ec18"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a5072e63885f6a662bdc585219d91ec18">getDecodedObjectData</a> () const noexcept</td></tr>
+<tr class="memdesc:a5072e63885f6a662bdc585219d91ec18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the decompressed image data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance.  <a href="classPgs_1_1ObjectDefinition.html#a5072e63885f6a662bdc585219d91ec18">More...</a><br /></td></tr>
+<tr class="separator:a5072e63885f6a662bdc585219d91ec18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPgs_1_1SegmentData"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPgs_1_1SegmentData')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPgs_1_1SegmentData.html">Pgs::SegmentData</a></td></tr>
 <tr class="memitem:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memItemLeft" align="right" valign="top"><a id="a78f1cc25f1d46f3694732c3498a5ba63"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a78f1cc25f1d46f3694732c3498a5ba63">SegmentData</a> ()=default</td></tr>
 <tr class="memdesc:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new instance of <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a>. <br /></td></tr>
 <tr class="separator:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aff571a97f8406ffe826e4ed6ac755b28"><td class="memItemLeft" align="right" valign="top"><a id="aff571a97f8406ffe826e4ed6ac755b28"></a>
+static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_BYTE_SIZE</b> = 11u</td></tr>
+<tr class="separator:aff571a97f8406ffe826e4ed6ac755b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a52ca97e62a858c0f2a51537e951614a1"><td class="memItemLeft" align="right" valign="top">vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a52ca97e62a858c0f2a51537e951614a1">decodeLine</a> (const uint32_t &amp;startPos, const uint32_t &amp;endPos) const</td></tr>
+<tr class="memdesc:a52ca97e62a858c0f2a51537e951614a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decode an individual line from the object data.  <a href="classPgs_1_1ObjectDefinition.html#a52ca97e62a858c0f2a51537e951614a1">More...</a><br /></td></tr>
+<tr class="separator:a52ca97e62a858c0f2a51537e951614a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a04bac27bdc1f014d067c88f6085dad94"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a04bac27bdc1f014d067c88f6085dad94">read3Bytes</a> (const uint8_t *data, uint16_t &amp;readPos)</td></tr>
+<tr class="memdesc:a04bac27bdc1f014d067c88f6085dad94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads 3 bytes of data from the provided data.  <a href="classPgs_1_1ObjectDefinition.html#a04bac27bdc1f014d067c88f6085dad94">More...</a><br /></td></tr>
+<tr class="separator:a04bac27bdc1f014d067c88f6085dad94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:ab9d72ce6391cb11303757d0d521c07e4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#ab9d72ce6391cb11303757d0d521c07e4">id</a></td></tr>
 <tr class="separator:ab9d72ce6391cb11303757d0d521c07e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c30b2e3c39d3d8ccbf8d7ae938fe7d2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a5c30b2e3c39d3d8ccbf8d7ae938fe7d2">version</a></td></tr>
@@ -142,24 +182,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a4be84a4bf636cb628f5458199432b04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4de235720f260ecacea4792310cd195"><td class="memItemLeft" align="right" valign="top">vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#ae4de235720f260ecacea4792310cd195">objectData</a></td></tr>
 <tr class="separator:ae4de235720f260ecacea4792310cd195"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aff571a97f8406ffe826e4ed6ac755b28"><td class="memItemLeft" align="right" valign="top"><a id="aff571a97f8406ffe826e4ed6ac755b28"></a>
-static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_BYTE_SIZE</b> = 11u</td></tr>
-<tr class="separator:aff571a97f8406ffe826e4ed6ac755b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
-Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:a04bac27bdc1f014d067c88f6085dad94"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1ObjectDefinition.html#a04bac27bdc1f014d067c88f6085dad94">read3Bytes</a> (const uint8_t *data, uint16_t &amp;readPos)</td></tr>
-<tr class="memdesc:a04bac27bdc1f014d067c88f6085dad94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads 3 bytes of data from the provided data.  <a href="classPgs_1_1ObjectDefinition.html#a04bac27bdc1f014d067c88f6085dad94">More...</a><br /></td></tr>
-<tr class="separator:a04bac27bdc1f014d067c88f6085dad94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Subclass of <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> containing information needed for constructing a subtitle image. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a022eeeb3920a9d126f86428f08c5582e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a022eeeb3920a9d126f86428f08c5582e">&#9670;&nbsp;</a></span>import() <span class="overload">[1/2]</span></h2>
+<a id="a52ca97e62a858c0f2a51537e951614a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ca97e62a858c0f2a51537e951614a1">&#9670;&nbsp;</a></span>decodeLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +196,277 @@ Static Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ObjectDefinition::import </td>
+          <td class="memname">vector&lt; uint8_t &gt; ObjectDefinition::decodeLine </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>startPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>endPos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Decode an individual line from the object data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPos</td><td>position to start reading from </td></tr>
+    <tr><td class="paramname">endPos</td><td>position to stop reading at </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>decompressed line </dd></dl>
+
+</div>
+</div>
+<a id="a6799537275befce39c37da0be8300767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6799537275befce39c37da0be8300767">&#9670;&nbsp;</a></span>getDataLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t &amp; ObjectDefinition::getDataLength </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the size of the encoded data contained in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>data length </dd></dl>
+
+</div>
+</div>
+<a id="a5072e63885f6a662bdc585219d91ec18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5072e63885f6a662bdc585219d91ec18">&#9670;&nbsp;</a></span>getDecodedObjectData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; uint8_t &gt; &gt; ObjectDefinition::getDecodedObjectData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the decompressed image data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>decompressed image data </dd></dl>
+
+</div>
+</div>
+<a id="ad845e93dc24ab1472ab66137e6fd59aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad845e93dc24ab1472ab66137e6fd59aa">&#9670;&nbsp;</a></span>getEncodedObjectData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vector&lt; uint8_t &gt; &amp; ObjectDefinition::getEncodedObjectData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the compressed image data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>compressed image data </dd></dl>
+
+</div>
+</div>
+<a id="a58f7413e0c6dd2cadbc348025f080b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f7413e0c6dd2cadbc348025f080b03">&#9670;&nbsp;</a></span>getHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t &amp; ObjectDefinition::getHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the height of the decompressed image made from the data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>decompressed image height </dd></dl>
+
+</div>
+</div>
+<a id="a1e1b7c72cc73f431e207fdb4be9421d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e1b7c72cc73f431e207fdb4be9421d7">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t &amp; ObjectDefinition::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the ID of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>object ID </dd></dl>
+
+</div>
+</div>
+<a id="a98da524fc7078d30eb2f1d87a70691f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98da524fc7078d30eb2f1d87a70691f9">&#9670;&nbsp;</a></span>getSequenceFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const SequenceFlag &amp; ObjectDefinition::getSequenceFlag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the sequenceFlag of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>sequence flag </dd></dl>
+
+</div>
+</div>
+<a id="a832d89d397bde1e68c79fef6dcb1d70d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a832d89d397bde1e68c79fef6dcb1d70d">&#9670;&nbsp;</a></span>getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t &amp; ObjectDefinition::getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the version of this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>object version </dd></dl>
+
+</div>
+</div>
+<a id="a78b224effffbf7c12d8d03884eadbede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78b224effffbf7c12d8d03884eadbede">&#9670;&nbsp;</a></span>getWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t &amp; ObjectDefinition::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the width of the decompressed image made from the data in this <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>decompressed image width </dd></dl>
+
+</div>
+</div>
+<a id="ab714a1d31ccaae56306d4a0bede27d02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab714a1d31ccaae56306d4a0bede27d02">&#9670;&nbsp;</a></span>import()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ObjectDefinition::import </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -192,64 +490,17 @@ Static Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object. </p>
+<p>imports the provided data into the <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a> instance </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>pointer to raw data array </td></tr>
-    <tr><td class="paramname">size</td><td>number of bytes in data array</td></tr>
+    <tr><td class="paramname">size</td><td>size of raw data array </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classPgs_1_1ImportException.html" title="Custom exception class used to signal a failure in the import process of a SignalData-derived class.">ImportException</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of bytes read from the data array </dd></dl>
 
-<p>Implements <a class="el" href="classPgs_1_1SegmentData.html#a452f7609cbaa0e69450d6ac753466509">Pgs::SegmentData</a>.</p>
-
-</div>
-</div>
-<a id="aa5ab4d736633c9409b941fbe1e317ebd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5ab4d736633c9409b941fbe1e317ebd">&#9670;&nbsp;</a></span>import() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ObjectDefinition::import </td>
-          <td>(</td>
-          <td class="paramtype">const vector&lt; char &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>vector containing the data to be imported</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classPgs_1_1ImportException.html" title="Custom exception class used to signal a failure in the import process of a SignalData-derived class.">ImportException</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classPgs_1_1SegmentData.html#ab20e5d865ec1621e019d6d2fcf2a88f4">Pgs::SegmentData</a>.</p>
+<p>Implements <a class="el" href="classPgs_1_1SegmentData.html#a37ea6b052d4087e75c0be74ad6010653">Pgs::SegmentData</a>.</p>
 
 </div>
 </div>
@@ -306,11 +557,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t Pgs::ObjectDefinition::dataLength</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Number of bytes contained in the object data vector. </p>
 
@@ -321,11 +580,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::ObjectDefinition::height</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Height of image after decompression </p>
 
@@ -336,11 +603,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::ObjectDefinition::id</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>ID of this object </p>
 
@@ -351,11 +626,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">vector&lt;uint8_t&gt; Pgs::ObjectDefinition::objectData</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>RLE-compressed object data. </p>
 
@@ -366,11 +649,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">SequenceFlag Pgs::ObjectDefinition::sequenceFlag</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Order of this object in its sequence </p>
 
@@ -381,11 +672,19 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::ObjectDefinition::version</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Version of this object </p>
 
@@ -396,19 +695,27 @@ Static Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::ObjectDefinition::width</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Width of image after decompression </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="ObjectDefinition_8hpp_source.html">ObjectDefinition.hpp</a></li>
-<li>ObjectDefinition.cpp</li>
+<li>src/<a class="el" href="ObjectDefinition_8hpp_source.html">ObjectDefinition.hpp</a></li>
+<li>src/ObjectDefinition.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['palettedefinition_65',['PaletteDefinition',['../classPgs_1_1PaletteDefinition.html#a7505918ca124f76124640b3c7804f4e9',1,'Pgs::PaletteDefinition']]],
-  ['paletteentry_66',['PaletteEntry',['../classPgs_1_1PaletteEntry.html#ac1cd955a39201ff32b8805965d76f22a',1,'Pgs::PaletteEntry']]],
-  ['presentationcomposition_67',['PresentationComposition',['../classPgs_1_1PresentationComposition.html#aacee9b475585ebbea31de5aa97a71422',1,'Pgs::PresentationComposition']]]
+  ['import_109',['import',['../classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02',1,'Pgs::ObjectDefinition::import()'],['../classPgs_1_1PaletteDefinition.html#a7edab6ab9faaed5f33cb92ae1a45e1c3',1,'Pgs::PaletteDefinition::import()'],['../classPgs_1_1CompositionObject.html#a13f12f7e4c2d41a0adb7f6b5264ecee5',1,'Pgs::CompositionObject::import()'],['../classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4',1,'Pgs::PresentationComposition::import()'],['../classPgs_1_1SegmentData.html#a37ea6b052d4087e75c0be74ad6010653',1,'Pgs::SegmentData::import()'],['../classPgs_1_1Subtitle.html#a052f920bd97c46bc1b2f6b786e9dd593',1,'Pgs::Subtitle::import()'],['../classPgs_1_1WindowObject.html#aa22dae5a7109dad0d19f5ca45e9ab711',1,'Pgs::WindowObject::import()'],['../classPgs_1_1WindowDefinition.html#a140c0d3a3ed9620355dc805398ab5a87',1,'Pgs::WindowDefinition::import()']]],
+  ['importend_110',['importEnd',['../classPgs_1_1Subtitle.html#af16f52a589e55ff2113e5779eb222a68',1,'Pgs::Subtitle']]],
+  ['importods_111',['importOds',['../classPgs_1_1Subtitle.html#a60fe8ce19c0f7ef97c409ab844720858',1,'Pgs::Subtitle']]]
 ];

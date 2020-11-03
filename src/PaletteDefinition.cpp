@@ -89,7 +89,3 @@ uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
     return readPos;
 }
 
-uint16_t PaletteDefinition::import(const vector<char> &data)
-{
-    return this->import(data.data(), data.size());
-}

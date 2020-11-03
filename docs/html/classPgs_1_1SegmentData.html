@@ -114,18 +114,15 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a78f1cc25f1d46f3694732c3498a5ba63">SegmentData</a> ()=default</td></tr>
 <tr class="memdesc:a78f1cc25f1d46f3694732c3498a5ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new instance of <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a>. <br /></td></tr>
 <tr class="separator:a78f1cc25f1d46f3694732c3498a5ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a452f7609cbaa0e69450d6ac753466509"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a452f7609cbaa0e69450d6ac753466509">import</a> (const char *data, const uint16_t &amp;size)=0</td></tr>
-<tr class="memdesc:a452f7609cbaa0e69450d6ac753466509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1SegmentData.html#a452f7609cbaa0e69450d6ac753466509">More...</a><br /></td></tr>
-<tr class="separator:a452f7609cbaa0e69450d6ac753466509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab20e5d865ec1621e019d6d2fcf2a88f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#ab20e5d865ec1621e019d6d2fcf2a88f4">import</a> (const vector&lt; char &gt; &amp;data)=0</td></tr>
-<tr class="memdesc:ab20e5d865ec1621e019d6d2fcf2a88f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1SegmentData.html#ab20e5d865ec1621e019d6d2fcf2a88f4">More...</a><br /></td></tr>
-<tr class="separator:ab20e5d865ec1621e019d6d2fcf2a88f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ea6b052d4087e75c0be74ad6010653"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a37ea6b052d4087e75c0be74ad6010653">import</a> (const char *data, const uint16_t &amp;size)=0</td></tr>
+<tr class="memdesc:a37ea6b052d4087e75c0be74ad6010653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1SegmentData.html#a37ea6b052d4087e75c0be74ad6010653">More...</a><br /></td></tr>
+<tr class="separator:a37ea6b052d4087e75c0be74ad6010653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for classes used for storing segment data. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a452f7609cbaa0e69450d6ac753466509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a452f7609cbaa0e69450d6ac753466509">&#9670;&nbsp;</a></span>import() <span class="overload">[1/2]</span></h2>
+<a id="a37ea6b052d4087e75c0be74ad6010653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37ea6b052d4087e75c0be74ad6010653">&#9670;&nbsp;</a></span>import()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +131,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Pgs::SegmentData::import </td>
+          <td class="memname">virtual uint16_t Pgs::SegmentData::import </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -173,54 +170,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classPgs_1_1WindowDefinition.html#ad56b3c7c8fe6f2a201049bfa2392cb55">Pgs::WindowDefinition</a>, <a class="el" href="classPgs_1_1PresentationComposition.html#a8246b6cc831dd5c83c1043e288b72db5">Pgs::PresentationComposition</a>, <a class="el" href="classPgs_1_1PaletteDefinition.html#a09853a9f387bb626646ad5cc8bb5be0e">Pgs::PaletteDefinition</a>, and <a class="el" href="classPgs_1_1ObjectDefinition.html#a022eeeb3920a9d126f86428f08c5582e">Pgs::ObjectDefinition</a>.</p>
-
-</div>
-</div>
-<a id="ab20e5d865ec1621e019d6d2fcf2a88f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab20e5d865ec1621e019d6d2fcf2a88f4">&#9670;&nbsp;</a></span>import() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Pgs::SegmentData::import </td>
-          <td>(</td>
-          <td class="paramtype">const vector&lt; char &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>vector containing the data to be imported</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classPgs_1_1ImportException.html" title="Custom exception class used to signal a failure in the import process of a SignalData-derived class.">ImportException</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classPgs_1_1WindowDefinition.html#a2a7780206019bd3c72fe07d9e36d9c4a">Pgs::WindowDefinition</a>, <a class="el" href="classPgs_1_1PresentationComposition.html#aeacfdb70018175c06db7b64b704baa69">Pgs::PresentationComposition</a>, <a class="el" href="classPgs_1_1PaletteDefinition.html#a5fa18b30089b640085449a2459b9f230">Pgs::PaletteDefinition</a>, and <a class="el" href="classPgs_1_1ObjectDefinition.html#aa5ab4d736633c9409b941fbe1e317ebd">Pgs::ObjectDefinition</a>.</p>
+<p>Implemented in <a class="el" href="classPgs_1_1WindowDefinition.html#a140c0d3a3ed9620355dc805398ab5a87">Pgs::WindowDefinition</a>, <a class="el" href="classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4">Pgs::PresentationComposition</a>, <a class="el" href="classPgs_1_1PaletteDefinition.html#a7edab6ab9faaed5f33cb92ae1a45e1c3">Pgs::PaletteDefinition</a>, and <a class="el" href="classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02">Pgs::ObjectDefinition</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="SegmentData_8hpp_source.html">SegmentData.hpp</a></li>
+<li>src/<a class="el" href="SegmentData_8hpp_source.html">SegmentData.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

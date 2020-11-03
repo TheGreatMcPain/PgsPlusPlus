@@ -119,7 +119,7 @@ Pgs::SegmentType Subtitle::import(const Segment &segment)
 void Subtitle::importOds(const shared_ptr<SegmentData> &segmentData)
 {
     const auto ods = std::dynamic_pointer_cast<ObjectDefinition>(segmentData);
-    switch (ods->sequenceFlag)
+    switch (ods->getSequenceFlag())
     {
         case SequenceFlag::Last:
             this->numObjectDefinitions = 2u;

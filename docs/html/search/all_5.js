@@ -1,5 +1,19 @@
 var searchData=
 [
-  ['height_18',['height',['../classPgs_1_1ObjectDefinition.html#a4be84a4bf636cb628f5458199432b04e',1,'Pgs::ObjectDefinition::height()'],['../classPgs_1_1PresentationComposition.html#a12a465454fa09f9f525a7cb19d9ac892',1,'Pgs::PresentationComposition::height()'],['../classPgs_1_1WindowObject.html#af5de3a5e4513ddd7f3d33c63d61c9550',1,'Pgs::WindowObject::height()']]],
-  ['hpos_19',['hPos',['../classPgs_1_1CompositionObject.html#a3d5700d65935e869bba679de5ab4415a',1,'Pgs::CompositionObject::hPos()'],['../classPgs_1_1WindowObject.html#a39f40a9462a064783fc02bd08d76cd1c',1,'Pgs::WindowObject::hPos()']]]
+  ['getdatalength_22',['getDataLength',['../classPgs_1_1ObjectDefinition.html#a6799537275befce39c37da0be8300767',1,'Pgs::ObjectDefinition']]],
+  ['getdecodedobjectdata_23',['getDecodedObjectData',['../classPgs_1_1ObjectDefinition.html#a5072e63885f6a662bdc585219d91ec18',1,'Pgs::ObjectDefinition']]],
+  ['getdecodingtime_24',['getDecodingTime',['../classPgs_1_1Subtitle.html#abe1398b78d10f9cd67833bec72f8ab12',1,'Pgs::Subtitle']]],
+  ['getdecodingtimems_25',['getDecodingTimeMs',['../classPgs_1_1Subtitle.html#a2753c644c89a2981715e10da86086c08',1,'Pgs::Subtitle']]],
+  ['getencodedobjectdata_26',['getEncodedObjectData',['../classPgs_1_1ObjectDefinition.html#ad845e93dc24ab1472ab66137e6fd59aa',1,'Pgs::ObjectDefinition']]],
+  ['getheight_27',['getHeight',['../classPgs_1_1ObjectDefinition.html#a58f7413e0c6dd2cadbc348025f080b03',1,'Pgs::ObjectDefinition']]],
+  ['getid_28',['getId',['../classPgs_1_1ObjectDefinition.html#a1e1b7c72cc73f431e207fdb4be9421d7',1,'Pgs::ObjectDefinition']]],
+  ['getods_29',['getOds',['../classPgs_1_1Subtitle.html#a1acee5b06e35d44b8f28a4df358cbe08',1,'Pgs::Subtitle']]],
+  ['getpcs_30',['getPcs',['../classPgs_1_1Subtitle.html#a08c2ffa4ac9e039fd93fc9d9b092ff39',1,'Pgs::Subtitle']]],
+  ['getpds_31',['getPds',['../classPgs_1_1Subtitle.html#a9f1dd6f91412ba0befb71cbae43b87bc',1,'Pgs::Subtitle']]],
+  ['getpresentationtime_32',['getPresentationTime',['../classPgs_1_1Subtitle.html#a54872ec2a4e8e6a2ae165bfc71f5a1c3',1,'Pgs::Subtitle']]],
+  ['getpresentationtimems_33',['getPresentationTimeMs',['../classPgs_1_1Subtitle.html#a28503adb6c7c49409b1d07518b0af7c1',1,'Pgs::Subtitle']]],
+  ['getsequenceflag_34',['getSequenceFlag',['../classPgs_1_1ObjectDefinition.html#a98da524fc7078d30eb2f1d87a70691f9',1,'Pgs::ObjectDefinition']]],
+  ['getversion_35',['getVersion',['../classPgs_1_1ObjectDefinition.html#a832d89d397bde1e68c79fef6dcb1d70d',1,'Pgs::ObjectDefinition']]],
+  ['getwds_36',['getWds',['../classPgs_1_1Subtitle.html#a8ea1a1401fc8d1c32063a61e5e951085',1,'Pgs::Subtitle']]],
+  ['getwidth_37',['getWidth',['../classPgs_1_1ObjectDefinition.html#a78b224effffbf7c12d8d03884eadbede',1,'Pgs::ObjectDefinition']]]
 ];

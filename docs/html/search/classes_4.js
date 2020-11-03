@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['segment_58',['Segment',['../classPgs_1_1Segment.html',1,'Pgs']]],
-  ['segmentdata_59',['SegmentData',['../classPgs_1_1SegmentData.html',1,'Pgs']]]
+  ['segment_85',['Segment',['../classPgs_1_1Segment.html',1,'Pgs']]],
+  ['segmentdata_86',['SegmentData',['../classPgs_1_1SegmentData.html',1,'Pgs']]],
+  ['subtitle_87',['Subtitle',['../classPgs_1_1Subtitle.html',1,'Pgs']]]
 ];

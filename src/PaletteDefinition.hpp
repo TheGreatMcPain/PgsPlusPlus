@@ -76,7 +76,5 @@ namespace Pgs
         PaletteDefinition();
 
         uint16_t import(const char *data, const uint16_t &size) override;
-
-        uint16_t import(const vector<char> &data) override;
     };
 }

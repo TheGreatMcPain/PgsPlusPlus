@@ -54,6 +54,7 @@ namespace Pgs
         uint32_t dataLength; /**< Number of bytes contained in the object data vector. */
         uint16_t width; /**< Width of image after decompression */
         uint16_t height; /**< Height of image after decompression */
+        vector<uint8_t> objectData; /**< RLE-compressed object data. */
 
         /**
          * \brief Reads 3 bytes of data from the provided data.
@@ -68,33 +69,79 @@ namespace Pgs
          */
         inline static uint32_t read3Bytes(const uint8_t *data, uint16_t &readPos);
 
-        uint16_t import(const char *data, const uint16_t &size) override;
+        /**
+         * \brief Decode an individual line from the object data.
+         * \param startPos position to start reading from
+         * \param endPos position to stop reading at
+         * \return decompressed line
+         */
+        vector<uint8_t> decodeLine(const uint32_t &startPos, const uint32_t &endPos) const;
     public:
         static constexpr uint16_t MIN_BYTE_SIZE = 11u;
-
-        vector<uint8_t> objectData; /**< RLE-compressed object data. */
 
         /**
          * \brief Creates a new ObjectDefinition instance.
          */
         ObjectDefinition();
 
-        static shared_ptr<ObjectDefinition> create(const char *data, const uint16_t &size);
+        /**
+         * \brief imports the provided data into the ObjectDefinition instance
+         * \param data pointer to raw data array
+         * \param size size of raw data array
+         * \return number of bytes read from the data array
+         */
+        uint16_t import(const char *data, const uint16_t &size) override;
 
         // =======
         // Getters
         // =======
 
+        /**
+         * \brief Retrieves the ID of this ObjectDefinition instance
+         * \return object ID
+         */
         [[maybe_unused]] const uint16_t &getId() const noexcept;
 
+        /**
+         * \brief Retrieves the version of this ObjectDefinition instance
+         * \return object version
+         */
         [[maybe_unused]] const uint8_t &getVersion() const noexcept;
 
+        /**
+         * \brief Retrieves the sequenceFlag of this ObjectDefinition instance
+         * \return sequence flag
+         */
         [[maybe_unused]] const SequenceFlag &getSequenceFlag() const noexcept;
 
+        /**
+         * \brief Retrieves the size of the encoded data contained in this ObjectDefinition instance
+         * \return data length
+         */
         [[maybe_unused]] const uint32_t &getDataLength() const noexcept;
 
+        /**
+         * \brief Retrieves the width of the decompressed image made from the data in this ObjectDefinition instance
+         * \return decompressed image width
+         */
         [[maybe_unused]] const uint16_t &getWidth() const noexcept;
 
+        /**
+         * \brief Retrieves the height of the decompressed image made from the data in this ObjectDefinition instance
+         * \return decompressed image height
+         */
         [[maybe_unused]] const uint16_t &getHeight() const noexcept;
+
+        /**
+         * \brief Retrieves the compressed image data in this ObjectDefinition instance
+         * \return compressed image data
+         */
+        [[maybe_unused]] const vector<uint8_t> &getEncodedObjectData() const noexcept;
+
+        /**
+         * \brief Retrieves the decompressed image data in this ObjectDefinition instance
+         * \return decompressed image data
+         */
+        [[maybe_unused]] vector<vector<uint8_t>> getDecodedObjectData() const noexcept;
     };
 }

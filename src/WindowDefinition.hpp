@@ -97,11 +97,5 @@ namespace Pgs
          * \param size number of bytes in provided data array
          */
         uint16_t import(const char *data, const uint16_t &size) override;
-
-        /**
-         * \brief imports the provided data into the class instance
-         * \param data vector containing the data to import
-         */
-        uint16_t import(const vector<char> &data) override;
     };
 }

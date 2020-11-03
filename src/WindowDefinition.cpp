@@ -17,9 +17,13 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
  *  USA
 */
+
 #include "WindowDefinition.hpp"
 
+extern "C"
+{
 #include <endian.h>
+}
 
 using namespace Pgs;
 
@@ -100,11 +104,6 @@ uint16_t WindowDefinition::import(const char *data, const uint16_t &size)
     ++readPos;
 
     return readPos;
-}
-
-uint16_t WindowDefinition::import(const vector<char> &data)
-{
-    return this->import(data.data(), data.size());
 }
 
 

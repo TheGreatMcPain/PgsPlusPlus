@@ -34,7 +34,14 @@ namespace Pgs
      */
     class SegmentData
     {
-    protected:
+    public:
+        /**
+         * \brief Constructs a new instance of SegmentData
+         */
+        SegmentData() = default;
+
+        virtual ~SegmentData() noexcept = default;
+
         /**
          * \brief Imports the provided data into this SegmentData object.
          * \param data pointer to raw data array
@@ -43,14 +50,6 @@ namespace Pgs
          * \throws ImportException
          */
         virtual uint16_t import(const char *data, const uint16_t &size) = 0;
-    public:
-
-        /**
-         * \brief Constructs a new instance of SegmentData
-         */
-        SegmentData() = default;
-
-        virtual ~SegmentData() noexcept = default;
     };
 
     /**

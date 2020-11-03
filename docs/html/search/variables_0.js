@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['alpha_72',['alpha',['../classPgs_1_1PaletteEntry.html#a6c98d69396425b917e7c792815b6bb32',1,'Pgs::PaletteEntry']]]
+  ['alpha_122',['alpha',['../classPgs_1_1PaletteEntry.html#a6c98d69396425b917e7c792815b6bb32',1,'Pgs::PaletteEntry']]]
 ];

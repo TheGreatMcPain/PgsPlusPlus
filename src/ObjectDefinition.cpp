@@ -84,13 +84,6 @@ uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
     return readPos;
 }
 
-shared_ptr<ObjectDefinition> ObjectDefinition::create(const char *data, const uint16_t &size)
-{
-    auto ods = std::make_shared<ObjectDefinition>();
-    ods->import(data, size);
-    return ods;
-}
-
 // =======
 // Getters
 // =======
@@ -123,4 +116,100 @@ const uint16_t &ObjectDefinition::getWidth() const noexcept
 const uint16_t &ObjectDefinition::getHeight() const noexcept
 {
     return this->height;
+}
+
+const vector<uint8_t> &ObjectDefinition::getEncodedObjectData() const noexcept
+{
+    return this->objectData;
+}
+
+vector<vector<uint8_t>> ObjectDefinition::getDecodedObjectData() const noexcept
+{
+    auto outVec = vector<vector<uint8_t>>();
+    outVec.resize(this->height);
+
+    uint32_t startPoint = 0u, readPos = 0u;
+    for (uint16_t i = 0u; i < this->height; ++i)
+    {
+        uint8_t buff0 = 1u, buff1 = 1u;
+        // Determine line start and end points
+        while (((buff0 << 8u) | buff1) != 0u)
+        {
+            buff0 = this->objectData[readPos];
+            buff1 = this->objectData[readPos + 1];
+            ++readPos;
+        }
+        ++readPos;
+        outVec[i] = this->decodeLine(startPoint, readPos);
+        startPoint = readPos;
+    }
+
+    return outVec;
+}
+
+vector<uint8_t> ObjectDefinition::decodeLine(const uint32_t &startPos, const uint32_t &endPos) const
+{
+    std::vector<uint8_t> line;
+
+    uint32_t readPos = startPos;
+    uint32_t linePos = 0u;
+    uint8_t buff0, buff1;
+    uint8_t color;
+
+    while (readPos < endPos && linePos < this->width)
+    {
+        buff0 = this->objectData[readPos];
+        ++readPos;
+
+        if (buff0 != 0u)
+        {
+            line.push_back(buff0);
+            ++linePos;
+        }
+        else
+        {
+            buff1 = this->objectData[readPos];
+            ++readPos;
+            uint8_t flagA = buff1 >> 7u;
+            uint8_t flagB = (buff1 & 0b01000000u) >> 6u;
+
+            uint16_t pixCount = 0u;
+
+            if (flagB == 0u)
+            {
+                pixCount = buff1 & 0b00111111u;
+                if (pixCount == 0)
+                {
+                    pixCount = this->width - linePos;
+                }
+            }
+            else
+            {
+                pixCount = ((buff1 & 0b00111111u) << 8u) | this->objectData[readPos];
+                ++readPos;
+            }
+
+            if (flagA == 0u)
+            {
+                color = 0u;
+            }
+            else
+            {
+                color = this->objectData[readPos];
+                ++readPos;
+            }
+
+            for (uint16_t i = 0; i < pixCount; i++)
+            {
+                if (linePos >= this->width)
+                {
+                    break;
+                }
+                line.push_back(color);
+                ++linePos;
+            }
+        }
+    }
+
+    return line;
 }
