@@ -85,8 +85,9 @@ $(document).ready(function(){initNavTree('classPgs_1_1CompositionObject.html',''
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPgs_1_1CompositionObject-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::CompositionObject Class Reference</div>  </div>
@@ -103,12 +104,49 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c7c4223add7c7da9f007b867069f6ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a9c7c4223add7c7da9f007b867069f6ae">CompositionObject</a> ()</td></tr>
 <tr class="memdesc:a9c7c4223add7c7da9f007b867069f6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance.  <a href="classPgs_1_1CompositionObject.html#a9c7c4223add7c7da9f007b867069f6ae">More...</a><br /></td></tr>
 <tr class="separator:a9c7c4223add7c7da9f007b867069f6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13f12f7e4c2d41a0adb7f6b5264ecee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a13f12f7e4c2d41a0adb7f6b5264ecee5">import</a> (const char *data, const uint16_t &amp;size, uint16_t &amp;readPos)</td></tr>
-<tr class="memdesc:a13f12f7e4c2d41a0adb7f6b5264ecee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into the <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance.  <a href="classPgs_1_1CompositionObject.html#a13f12f7e4c2d41a0adb7f6b5264ecee5">More...</a><br /></td></tr>
-<tr class="separator:a13f12f7e4c2d41a0adb7f6b5264ecee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeee3a25e653a207a4990ac114c1890bf"><td class="memItemLeft" align="right" valign="top"><a id="aeee3a25e653a207a4990ac114c1890bf"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getObjectID</b> () const</td></tr>
+<tr class="separator:aeee3a25e653a207a4990ac114c1890bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb12fb2a952cbb774b3d16a33d8d6ac"><td class="memItemLeft" align="right" valign="top"><a id="a7eb12fb2a952cbb774b3d16a33d8d6ac"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getWindowID</b> () const</td></tr>
+<tr class="separator:a7eb12fb2a952cbb774b3d16a33d8d6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae1364c5d561d586d52eabeac94909b"><td class="memItemLeft" align="right" valign="top"><a id="a4ae1364c5d561d586d52eabeac94909b"></a>
+const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCroppedFlag</b> () const</td></tr>
+<tr class="separator:a4ae1364c5d561d586d52eabeac94909b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2f2cc31a307ddaa6a48c98399f56148"><td class="memItemLeft" align="right" valign="top"><a id="ab2f2cc31a307ddaa6a48c98399f56148"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getHPos</b> () const</td></tr>
+<tr class="separator:ab2f2cc31a307ddaa6a48c98399f56148"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9207dfda59d9a130c58a726a82d834f9"><td class="memItemLeft" align="right" valign="top"><a id="a9207dfda59d9a130c58a726a82d834f9"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getVPos</b> () const</td></tr>
+<tr class="separator:a9207dfda59d9a130c58a726a82d834f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af1ff9a29faf92e356bf63496f264f8"><td class="memItemLeft" align="right" valign="top"><a id="a8af1ff9a29faf92e356bf63496f264f8"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCropHPos</b> () const</td></tr>
+<tr class="separator:a8af1ff9a29faf92e356bf63496f264f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea7291e6c14c20bd847b1f57bb9bcde"><td class="memItemLeft" align="right" valign="top"><a id="a8ea7291e6c14c20bd847b1f57bb9bcde"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCropVPos</b> () const</td></tr>
+<tr class="separator:a8ea7291e6c14c20bd847b1f57bb9bcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce350a8bfdde07eb31cb67081d8e9f6"><td class="memItemLeft" align="right" valign="top"><a id="a5ce350a8bfdde07eb31cb67081d8e9f6"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCropWidth</b> () const</td></tr>
+<tr class="separator:a5ce350a8bfdde07eb31cb67081d8e9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaee0f36a4ba5eff6c39a35ab460e3d4a"><td class="memItemLeft" align="right" valign="top"><a id="aaee0f36a4ba5eff6c39a35ab460e3d4a"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCropHeight</b> () const</td></tr>
+<tr class="separator:aaee0f36a4ba5eff6c39a35ab460e3d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a0725c65353559e36ae3afc310f5e3e7f"><td class="memItemLeft" align="right" valign="top">static shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a0725c65353559e36ae3afc310f5e3e7f">create</a> (const char *data, const uint16_t &amp;size, uint16_t &amp;readPos)</td></tr>
+<tr class="memdesc:a0725c65353559e36ae3afc310f5e3e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data and creates a shared pointer to a new <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance.  <a href="classPgs_1_1CompositionObject.html#a0725c65353559e36ae3afc310f5e3e7f">More...</a><br /></td></tr>
+<tr class="separator:a0725c65353559e36ae3afc310f5e3e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:accc3ea659b2eff9c8b89bb76616d8938"><td class="memItemLeft" align="right" valign="top"><a id="accc3ea659b2eff9c8b89bb76616d8938"></a>
+static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#accc3ea659b2eff9c8b89bb76616d8938">MIN_DATA_SIZE</a> = 8u</td></tr>
+<tr class="memdesc:accc3ea659b2eff9c8b89bb76616d8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance from provided data. <br /></td></tr>
+<tr class="separator:accc3ea659b2eff9c8b89bb76616d8938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a9bc79b715545c6d4c255e8b3d25a1fe7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a9bc79b715545c6d4c255e8b3d25a1fe7">objectID</a></td></tr>
 <tr class="separator:a9bc79b715545c6d4c255e8b3d25a1fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a987e5eb699eeefc74b3514b5ccba1064"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a987e5eb699eeefc74b3514b5ccba1064">windowID</a></td></tr>
@@ -127,13 +165,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6277a2212eaba3a449bff9e7892f7208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2db90ffc886f86320854316509ae9f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#a8f2db90ffc886f86320854316509ae9f">cropHeight</a></td></tr>
 <tr class="separator:a8f2db90ffc886f86320854316509ae9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:accc3ea659b2eff9c8b89bb76616d8938"><td class="memItemLeft" align="right" valign="top"><a id="accc3ea659b2eff9c8b89bb76616d8938"></a>
-static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1CompositionObject.html#accc3ea659b2eff9c8b89bb76616d8938">MIN_DATA_SIZE</a> = 8u</td></tr>
-<tr class="memdesc:accc3ea659b2eff9c8b89bb76616d8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance from provided data. <br /></td></tr>
-<tr class="separator:accc3ea659b2eff9c8b89bb76616d8938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Individual Composition Object used to define display attributes of the subtitle image. </p>
@@ -154,19 +185,22 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 </div><div class="memdoc">
 
 <p>Constructs a new <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance. </p>
-<p>To add data to the instance, use one of the <a class="el" href="classPgs_1_1CompositionObject.html#a13f12f7e4c2d41a0adb7f6b5264ecee5" title="Imports the provided data into the CompositionObject instance.">import()</a> methods. </p>
+<p>This constructor should not be used by the end user. Use the create function instead. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a13f12f7e4c2d41a0adb7f6b5264ecee5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13f12f7e4c2d41a0adb7f6b5264ecee5">&#9670;&nbsp;</a></span>import()</h2>
+<a id="a0725c65353559e36ae3afc310f5e3e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0725c65353559e36ae3afc310f5e3e7f">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CompositionObject::import </td>
+          <td class="memname">shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; CompositionObject::create </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -189,13 +223,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Imports the provided data into the <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance. </p>
+<p>Imports the provided data and creates a shared pointer to a new <a class="el" href="classPgs_1_1CompositionObject.html" title="Individual Composition Object used to define display attributes of the subtitle image.">CompositionObject</a> instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>pointer to raw data array </td></tr>
-    <tr><td class="paramname">size</td><td>size of the raw data array</td></tr>
+    <tr><td class="paramname">size</td><td>size of the raw data array </td></tr>
+    <tr><td class="paramname">readPos</td><td>point in array to read from.</td></tr>
   </table>
   </dd>
 </dl>
@@ -214,11 +254,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::cropHeight</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Height of the crop. </p>
 
@@ -229,11 +277,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::cropHPos</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Horizontal (x) crop offset from the top-left pixel of the video frame. </p>
 
@@ -244,11 +300,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Pgs::CompositionObject::croppedFlag</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Set to true to force display of the cropped image object; false, otherwise. </p>
 
@@ -259,11 +323,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::cropVPos</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Vertical (y) crop offset from the top-left pixel of the video frame. </p>
 
@@ -274,11 +346,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::cropWidth</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Width of the crop. </p>
 
@@ -289,11 +369,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::hPos</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Horizontal (x) offset from the top-left pixel of the video frame. </p>
 
@@ -304,11 +392,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::objectID</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>ID of the associated Object Definition <a class="el" href="classPgs_1_1Segment.html" title="Full object definition of a PGS data segment.">Segment</a>. </p>
 
@@ -319,11 +415,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::CompositionObject::vPos</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Vertical (y) offset from the top-left pixel of the video frame. </p>
 
@@ -334,11 +438,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::CompositionObject::windowID</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>ID of the associated Window Definition <a class="el" href="classPgs_1_1Segment.html" title="Full object definition of a PGS data segment.">Segment</a>. Up to 2 images can use 1 window. </p>
 

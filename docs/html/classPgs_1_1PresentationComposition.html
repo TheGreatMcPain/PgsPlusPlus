@@ -85,8 +85,8 @@ $(document).ready(function(){initNavTree('classPgs_1_1PresentationComposition.ht
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPgs_1_1PresentationComposition-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::PresentationComposition Class Reference</div>  </div>
@@ -115,14 +115,48 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af54bc5371fd915770a0bcae11f6672d4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4">import</a> (const char *data, const uint16_t &amp;size) override</td></tr>
 <tr class="memdesc:af54bc5371fd915770a0bcae11f6672d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4">More...</a><br /></td></tr>
 <tr class="separator:af54bc5371fd915770a0bcae11f6672d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a295c3a3ab982722a56fbf11464acb892"><td class="memItemLeft" align="right" valign="top"><a id="a295c3a3ab982722a56fbf11464acb892"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const</td></tr>
+<tr class="separator:a295c3a3ab982722a56fbf11464acb892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5c0c8383e28e5405e7f61d2047ebef"><td class="memItemLeft" align="right" valign="top"><a id="aad5c0c8383e28e5405e7f61d2047ebef"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> () const</td></tr>
+<tr class="separator:aad5c0c8383e28e5405e7f61d2047ebef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85eea949544c133aa63526dfdc95e532"><td class="memItemLeft" align="right" valign="top"><a id="a85eea949544c133aa63526dfdc95e532"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getFrameRate</b> () const</td></tr>
+<tr class="separator:a85eea949544c133aa63526dfdc95e532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c061f229d293ba8a6efc2ed463747d7"><td class="memItemLeft" align="right" valign="top"><a id="a8c061f229d293ba8a6efc2ed463747d7"></a>
+const uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionNumber</b> () const</td></tr>
+<tr class="separator:a8c061f229d293ba8a6efc2ed463747d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f32241a112c06abf8a200895c0573f8"><td class="memItemLeft" align="right" valign="top"><a id="a2f32241a112c06abf8a200895c0573f8"></a>
+const CompositionState &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionState</b> () const</td></tr>
+<tr class="separator:a2f32241a112c06abf8a200895c0573f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5cdb3beb6b6e04f22612ab147f45ab"><td class="memItemLeft" align="right" valign="top"><a id="a7c5cdb3beb6b6e04f22612ab147f45ab"></a>
+const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPaletteUpdateFlag</b> () const</td></tr>
+<tr class="separator:a7c5cdb3beb6b6e04f22612ab147f45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63256d4c35c8ec371a306fe67813061d"><td class="memItemLeft" align="right" valign="top"><a id="a63256d4c35c8ec371a306fe67813061d"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPaletteID</b> () const</td></tr>
+<tr class="separator:a63256d4c35c8ec371a306fe67813061d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad29f8f04ffd9f732c47de2600cdfccb9"><td class="memItemLeft" align="right" valign="top"><a id="ad29f8f04ffd9f732c47de2600cdfccb9"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionObjectCount</b> () const</td></tr>
+<tr class="separator:ad29f8f04ffd9f732c47de2600cdfccb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8193c7f57d5a0a17ff093e2c3fb7593e"><td class="memItemLeft" align="right" valign="top"><a id="a8193c7f57d5a0a17ff093e2c3fb7593e"></a>
+const vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionObjects</b> () const</td></tr>
+<tr class="separator:a8193c7f57d5a0a17ff093e2c3fb7593e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPgs_1_1SegmentData"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPgs_1_1SegmentData')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPgs_1_1SegmentData.html">Pgs::SegmentData</a></td></tr>
 <tr class="memitem:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memItemLeft" align="right" valign="top"><a id="a78f1cc25f1d46f3694732c3498a5ba63"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a78f1cc25f1d46f3694732c3498a5ba63">SegmentData</a> ()=default</td></tr>
 <tr class="memdesc:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new instance of <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a>. <br /></td></tr>
 <tr class="separator:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:af77b81541a1d229f21ad4666a16afa8f"><td class="memItemLeft" align="right" valign="top"><a id="af77b81541a1d229f21ad4666a16afa8f"></a>
+static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#af77b81541a1d229f21ad4666a16afa8f">MIN_DATA_SIZE</a> = 11u</td></tr>
+<tr class="memdesc:af77b81541a1d229f21ad4666a16afa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1PresentationComposition.html" title="Presentation Composition structure containing all relevant display info for the subtitle image.">PresentationComposition</a> instance from provided data. <br /></td></tr>
+<tr class="separator:af77b81541a1d229f21ad4666a16afa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a544d790d48bfb50f6298a039d80975a9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a544d790d48bfb50f6298a039d80975a9">width</a></td></tr>
 <tr class="separator:a544d790d48bfb50f6298a039d80975a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12a465454fa09f9f525a7cb19d9ac892"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a12a465454fa09f9f525a7cb19d9ac892">height</a></td></tr>
@@ -139,15 +173,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a565148e55dbcce1c81d3778e333a70f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a379905888c47ccac1b8d90db60608efb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb">compositionObjectCount</a></td></tr>
 <tr class="separator:a379905888c47ccac1b8d90db60608efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e04071243cec355452347cea5c67f26"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a8e04071243cec355452347cea5c67f26">compositionObjects</a></td></tr>
-<tr class="separator:a8e04071243cec355452347cea5c67f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:af77b81541a1d229f21ad4666a16afa8f"><td class="memItemLeft" align="right" valign="top"><a id="af77b81541a1d229f21ad4666a16afa8f"></a>
-static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#af77b81541a1d229f21ad4666a16afa8f">MIN_DATA_SIZE</a> = 11u</td></tr>
-<tr class="memdesc:af77b81541a1d229f21ad4666a16afa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1PresentationComposition.html" title="Presentation Composition structure containing all relevant display info for the subtitle image.">PresentationComposition</a> instance from provided data. <br /></td></tr>
-<tr class="separator:af77b81541a1d229f21ad4666a16afa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b234e4d2616102825eb5cbaa786d37"><td class="memItemLeft" align="right" valign="top">vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a12b234e4d2616102825eb5cbaa786d37">compositionObjects</a></td></tr>
+<tr class="separator:a12b234e4d2616102825eb5cbaa786d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Presentation Composition structure containing all relevant display info for the subtitle image. </p>
@@ -232,11 +259,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::PresentationComposition::compositionNumber</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Index of this composition. This value is incremented by one for each graphics update. </p>
 
@@ -247,26 +282,42 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PresentationComposition::compositionObjectCount</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Number of composition objects defined in segment. </p>
 
 </div>
 </div>
-<a id="a8e04071243cec355452347cea5c67f26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e04071243cec355452347cea5c67f26">&#9670;&nbsp;</a></span>compositionObjects</h2>
+<a id="a12b234e4d2616102825eb5cbaa786d37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b234e4d2616102825eb5cbaa786d37">&#9670;&nbsp;</a></span>compositionObjects</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;<a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a>&gt; Pgs::PresentationComposition::compositionObjects</td>
+          <td class="memname">vector&lt;shared_ptr&lt;<a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a>&gt; &gt; Pgs::PresentationComposition::compositionObjects</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Vector of Composition Objects in this segment. </p>
 
@@ -277,11 +328,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">CompositionState Pgs::PresentationComposition::compositionState</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Type of composition state being defined. </p>
 
@@ -292,11 +351,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PresentationComposition::frameRate</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p><a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> display frame rate. Should almost always be 0x10 (24fps) </p>
 
@@ -307,11 +374,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::PresentationComposition::height</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Pixels in video height </p>
 
@@ -322,11 +397,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PresentationComposition::paletteID</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>ID of palette to use in palette-only update. </p>
 
@@ -337,11 +420,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Pgs::PresentationComposition::paletteUpdateFlag</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>True if this segment describes a <em>palette only</em> update; false, otherwise. </p>
 
@@ -352,11 +443,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint16_t Pgs::PresentationComposition::width</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Pixels in video width. </p>
 

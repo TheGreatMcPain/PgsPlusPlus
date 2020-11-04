@@ -105,10 +105,6 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a5a88153fc62bf730bfb941fc18d09fd7">Subtitle</a> ()</td></tr>
 <tr class="memdesc:a5a88153fc62bf730bfb941fc18d09fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance of <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a>. <br /></td></tr>
 <tr class="separator:a5a88153fc62bf730bfb941fc18d09fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38038d39e954d1d0d4eac5cd74ffc040"><td class="memItemLeft" align="right" valign="top"><a id="a38038d39e954d1d0d4eac5cd74ffc040"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a38038d39e954d1d0d4eac5cd74ffc040">~Subtitle</a> ()</td></tr>
-<tr class="memdesc:a38038d39e954d1d0d4eac5cd74ffc040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructs this instance of <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a>. <br /></td></tr>
-<tr class="separator:a38038d39e954d1d0d4eac5cd74ffc040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052f920bd97c46bc1b2f6b786e9dd593"><td class="memItemLeft" align="right" valign="top">Pgs::SegmentType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a052f920bd97c46bc1b2f6b786e9dd593">import</a> (const <a class="el" href="classPgs_1_1Segment.html">Segment</a> &amp;segment)</td></tr>
 <tr class="memdesc:a052f920bd97c46bc1b2f6b786e9dd593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports any provided <a class="el" href="classPgs_1_1Segment.html" title="Full object definition of a PGS data segment.">Segment</a> into the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instance.  <a href="classPgs_1_1Subtitle.html#a052f920bd97c46bc1b2f6b786e9dd593">More...</a><br /></td></tr>
 <tr class="separator:a052f920bd97c46bc1b2f6b786e9dd593"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,6 +141,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0377a9183549578894ad2aa3eb4c0b77"><td class="memItemLeft" align="right" valign="top">static shared_ptr&lt; <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a0377a9183549578894ad2aa3eb4c0b77">create</a> (const std::vector&lt; char &gt; &amp;data, uint32_t &amp;readPos)</td></tr>
 <tr class="memdesc:a0377a9183549578894ad2aa3eb4c0b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a shared pointer to a new <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instance and imports the provided data.  <a href="classPgs_1_1Subtitle.html#a0377a9183549578894ad2aa3eb4c0b77">More...</a><br /></td></tr>
 <tr class="separator:a0377a9183549578894ad2aa3eb4c0b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bca630bdf7fb55c19c1f0daf15cbe06"><td class="memItemLeft" align="right" valign="top">static vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a7bca630bdf7fb55c19c1f0daf15cbe06">createAll</a> (const char *data, const uint32_t &amp;size)</td></tr>
+<tr class="memdesc:a7bca630bdf7fb55c19c1f0daf15cbe06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a vector of shared pointer to the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instance created from the provided data.  <a href="classPgs_1_1Subtitle.html#a7bca630bdf7fb55c19c1f0daf15cbe06">More...</a><br /></td></tr>
+<tr class="separator:a7bca630bdf7fb55c19c1f0daf15cbe06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -296,6 +295,52 @@ array&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1ObjectDefinition.html">
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7bca630bdf7fb55c19c1f0daf15cbe06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bca630bdf7fb55c19c1f0daf15cbe06">&#9670;&nbsp;</a></span>createAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &gt; &gt; Subtitle::createAll </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a vector of shared pointer to the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instance created from the provided data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>pointer to raw data array. </td></tr>
+    <tr><td class="paramname">size</td><td>number of bytes in raw data array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of shared pointers to newly created <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instances </dd></dl>
 
 </div>
 </div>

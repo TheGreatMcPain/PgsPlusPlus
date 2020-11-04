@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb">Pgs::PresentationComposition</a>
 </li>
 <li>compositionObjects
-: <a class="el" href="classPgs_1_1PresentationComposition.html#a8e04071243cec355452347cea5c67f26">Pgs::PresentationComposition</a>
+: <a class="el" href="classPgs_1_1PresentationComposition.html#a12b234e4d2616102825eb5cbaa786d37">Pgs::PresentationComposition</a>
 </li>
 <li>compositionState
 : <a class="el" href="classPgs_1_1PresentationComposition.html#a8d092971077e72ddab6275d030cf8726">Pgs::PresentationComposition</a>
@@ -115,7 +115,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classPgs_1_1PaletteEntry.html#ace06decfaeb6d0150c4a97ef315cf15d">Pgs::PaletteEntry</a>
 </li>
 <li>create()
-: <a class="el" href="classPgs_1_1Subtitle.html#a75eb2f8a9194341d4cff7a36d32349a9">Pgs::Subtitle</a>
+: <a class="el" href="classPgs_1_1CompositionObject.html#a0725c65353559e36ae3afc310f5e3e7f">Pgs::CompositionObject</a>
+, <a class="el" href="classPgs_1_1Subtitle.html#a75eb2f8a9194341d4cff7a36d32349a9">Pgs::Subtitle</a>
+, <a class="el" href="classPgs_1_1WindowObject.html#aef6833796908370be9b6d0501d10564f">Pgs::WindowObject</a>
+</li>
+<li>createAll()
+: <a class="el" href="classPgs_1_1Subtitle.html#a7bca630bdf7fb55c19c1f0daf15cbe06">Pgs::Subtitle</a>
 </li>
 <li>cropHeight
 : <a class="el" href="classPgs_1_1CompositionObject.html#a8f2db90ffc886f86320854316509ae9f">Pgs::CompositionObject</a>
@@ -156,7 +161,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>entries
-: <a class="el" href="classPgs_1_1PaletteDefinition.html#a2177f9f4c3138aefdd0b13f952aab879">Pgs::PaletteDefinition</a>
+: <a class="el" href="classPgs_1_1PaletteDefinition.html#acae51881a39f19b80d9c0b7761b646e9">Pgs::PaletteDefinition</a>
 </li>
 </ul>
 
@@ -169,6 +174,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getData()
+: <a class="el" href="classPgs_1_1Segment.html#ac71e2a278fdd359def14817e77a3f8ed">Pgs::Segment</a>
+</li>
 <li>getDataLength()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#a6799537275befce39c37da0be8300767">Pgs::ObjectDefinition</a>
 </li>
@@ -181,14 +189,27 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getDecodingTimeMs()
 : <a class="el" href="classPgs_1_1Subtitle.html#a2753c644c89a2981715e10da86086c08">Pgs::Subtitle</a>
 </li>
+<li>getDecodingTimestamp()
+: <a class="el" href="classPgs_1_1Segment.html#a6e9814cdf5c1322190ad0708d7718b63">Pgs::Segment</a>
+</li>
 <li>getEncodedObjectData()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#ad845e93dc24ab1472ab66137e6fd59aa">Pgs::ObjectDefinition</a>
+</li>
+<li>getEntries()
+: <a class="el" href="classPgs_1_1PaletteDefinition.html#a14b7fe60709b24dcd6b128fc2063aa44">Pgs::PaletteDefinition</a>
 </li>
 <li>getHeight()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#a58f7413e0c6dd2cadbc348025f080b03">Pgs::ObjectDefinition</a>
 </li>
 <li>getId()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#a1e1b7c72cc73f431e207fdb4be9421d7">Pgs::ObjectDefinition</a>
+, <a class="el" href="classPgs_1_1PaletteDefinition.html#a0c107dbe3ddb63cd99f30181eee22ec8">Pgs::PaletteDefinition</a>
+</li>
+<li>getMagicNumber()
+: <a class="el" href="classPgs_1_1Segment.html#aff9da73a25b8b60d7c2408e0e3685f5d">Pgs::Segment</a>
+</li>
+<li>getNumEntries()
+: <a class="el" href="classPgs_1_1PaletteDefinition.html#a67c49f2f4dc474f57f99e21acf34d4d2">Pgs::PaletteDefinition</a>
 </li>
 <li>getOds()
 : <a class="el" href="classPgs_1_1Subtitle.html#a1acee5b06e35d44b8f28a4df358cbe08">Pgs::Subtitle</a>
@@ -205,11 +226,21 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getPresentationTimeMs()
 : <a class="el" href="classPgs_1_1Subtitle.html#a28503adb6c7c49409b1d07518b0af7c1">Pgs::Subtitle</a>
 </li>
+<li>getPresentationTimestamp()
+: <a class="el" href="classPgs_1_1Segment.html#a4742a256fa63929de240c2de33739c55">Pgs::Segment</a>
+</li>
+<li>getSegmentSize()
+: <a class="el" href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">Pgs::Segment</a>
+</li>
+<li>getSegmentType()
+: <a class="el" href="classPgs_1_1Segment.html#ad73100bb95436b9bf775d6de483e6f6d">Pgs::Segment</a>
+</li>
 <li>getSequenceFlag()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#a98da524fc7078d30eb2f1d87a70691f9">Pgs::ObjectDefinition</a>
 </li>
 <li>getVersion()
 : <a class="el" href="classPgs_1_1ObjectDefinition.html#a832d89d397bde1e68c79fef6dcb1d70d">Pgs::ObjectDefinition</a>
+, <a class="el" href="classPgs_1_1PaletteDefinition.html#a9a9c420ad0f76a79cdee5ea47d41f2b6">Pgs::PaletteDefinition</a>
 </li>
 <li>getWds()
 : <a class="el" href="classPgs_1_1Subtitle.html#a8ea1a1401fc8d1c32063a61e5e951085">Pgs::Subtitle</a>
@@ -241,14 +272,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="classPgs_1_1WindowObject.html#a747ae4d9bd94d0dc7dc7b28196a1e14c">Pgs::WindowObject</a>
 </li>
 <li>import()
-: <a class="el" href="classPgs_1_1CompositionObject.html#a13f12f7e4c2d41a0adb7f6b5264ecee5">Pgs::CompositionObject</a>
-, <a class="el" href="classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02">Pgs::ObjectDefinition</a>
+: <a class="el" href="classPgs_1_1ObjectDefinition.html#ab714a1d31ccaae56306d4a0bede27d02">Pgs::ObjectDefinition</a>
 , <a class="el" href="classPgs_1_1PaletteDefinition.html#a7edab6ab9faaed5f33cb92ae1a45e1c3">Pgs::PaletteDefinition</a>
 , <a class="el" href="classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4">Pgs::PresentationComposition</a>
 , <a class="el" href="classPgs_1_1SegmentData.html#a37ea6b052d4087e75c0be74ad6010653">Pgs::SegmentData</a>
 , <a class="el" href="classPgs_1_1Subtitle.html#a052f920bd97c46bc1b2f6b786e9dd593">Pgs::Subtitle</a>
 , <a class="el" href="classPgs_1_1WindowDefinition.html#a140c0d3a3ed9620355dc805398ab5a87">Pgs::WindowDefinition</a>
-, <a class="el" href="classPgs_1_1WindowObject.html#aa22dae5a7109dad0d19f5ca45e9ab711">Pgs::WindowObject</a>
 </li>
 <li>importEnd()
 : <a class="el" href="classPgs_1_1Subtitle.html#af16f52a589e55ff2113e5779eb222a68">Pgs::Subtitle</a>
@@ -393,7 +422,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classPgs_1_1WindowObject.html#aee2064d1f3ec7544f8b73925c75cb1ad">Pgs::WindowObject</a>
 </li>
 <li>windowObjects
-: <a class="el" href="classPgs_1_1WindowDefinition.html#a2ea4aba56e6ca5f0584fc757696f78f2">Pgs::WindowDefinition</a>
+: <a class="el" href="classPgs_1_1WindowDefinition.html#a0cec75a2b8242cd16a352eeef67c31f5">Pgs::WindowDefinition</a>
 </li>
 </ul>
 
@@ -401,13 +430,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_y"></a>- y -</h3><ul>
 <li>y
 : <a class="el" href="classPgs_1_1PaletteEntry.html#a7090f8c73c6e79fdc78b01b9e56ddc56">Pgs::PaletteEntry</a>
-</li>
-</ul>
-
-
-<h3><a id="index__7E"></a>- ~ -</h3><ul>
-<li>~Subtitle()
-: <a class="el" href="classPgs_1_1Subtitle.html#a38038d39e954d1d0d4eac5cd74ffc040">Pgs::Subtitle</a>
 </li>
 </ul>
 </div><!-- contents -->

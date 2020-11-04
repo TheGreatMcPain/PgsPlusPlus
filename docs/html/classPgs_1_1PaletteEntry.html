@@ -85,8 +85,9 @@ $(document).ready(function(){initNavTree('classPgs_1_1PaletteEntry.html',''); in
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPgs_1_1PaletteEntry-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::PaletteEntry Class Reference</div>  </div>
@@ -104,12 +105,37 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#ac1cd955a39201ff32b8805965d76f22a">PaletteEntry</a> ()=default</td></tr>
 <tr class="memdesc:ac1cd955a39201ff32b8805965d76f22a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classPgs_1_1PaletteEntry.html" title="A single color palette used in a PGS subtitle image.">PaletteEntry</a> instance. <br /></td></tr>
 <tr class="separator:ac1cd955a39201ff32b8805965d76f22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04f0a116c7ea8cc9c495fbabd71fd3f8"><td class="memItemLeft" align="right" valign="top"><a id="a04f0a116c7ea8cc9c495fbabd71fd3f8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>import</b> (const char *data, const uint16_t &amp;size, uint16_t &amp;readPos)</td></tr>
-<tr class="separator:a04f0a116c7ea8cc9c495fbabd71fd3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ef2a3a8446785d2ffaf76903be859ef"><td class="memItemLeft" align="right" valign="top"><a id="a3ef2a3a8446785d2ffaf76903be859ef"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
+<tr class="separator:a3ef2a3a8446785d2ffaf76903be859ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920a1508ddc9e5a9d185d577ee0afc0f"><td class="memItemLeft" align="right" valign="top"><a id="a920a1508ddc9e5a9d185d577ee0afc0f"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getY</b> () const</td></tr>
+<tr class="separator:a920a1508ddc9e5a9d185d577ee0afc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09632df26006ac19e6852427871d967f"><td class="memItemLeft" align="right" valign="top"><a id="a09632df26006ac19e6852427871d967f"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCr</b> () const</td></tr>
+<tr class="separator:a09632df26006ac19e6852427871d967f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22e42ffa01b9a9c3ea500cc6cdf628a"><td class="memItemLeft" align="right" valign="top"><a id="ae22e42ffa01b9a9c3ea500cc6cdf628a"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCb</b> () const</td></tr>
+<tr class="separator:ae22e42ffa01b9a9c3ea500cc6cdf628a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40eec013962aa05c246e0f6bff3308f8"><td class="memItemLeft" align="right" valign="top"><a id="a40eec013962aa05c246e0f6bff3308f8"></a>
+const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAlpha</b> () const</td></tr>
+<tr class="separator:a40eec013962aa05c246e0f6bff3308f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aac07b43c4867f8a5ecb39341ffa15d26"><td class="memItemLeft" align="right" valign="top"><a id="aac07b43c4867f8a5ecb39341ffa15d26"></a>
+static shared_ptr&lt; <a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (const char *data, const uint16_t &amp;size, uint16_t &amp;readPos)</td></tr>
+<tr class="separator:aac07b43c4867f8a5ecb39341ffa15d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a5b0af7cbc32491da09513c5291064cab"><td class="memItemLeft" align="right" valign="top"><a id="a5b0af7cbc32491da09513c5291064cab"></a>
+static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a5b0af7cbc32491da09513c5291064cab">MIN_BYTE_SIZE</a> = 5u</td></tr>
+<tr class="memdesc:a5b0af7cbc32491da09513c5291064cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1PaletteEntry.html" title="A single color palette used in a PGS subtitle image.">PaletteEntry</a> instance. <br /></td></tr>
+<tr class="separator:a5b0af7cbc32491da09513c5291064cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:ae32951925f4548dcac6803437ce65ee9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#ae32951925f4548dcac6803437ce65ee9">id</a> = 0u</td></tr>
 <tr class="separator:ae32951925f4548dcac6803437ce65ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7090f8c73c6e79fdc78b01b9e56ddc56"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a7090f8c73c6e79fdc78b01b9e56ddc56">y</a> = 0u</td></tr>
@@ -120,13 +146,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a48a495b917ee0517f78a76f2fa236db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c98d69396425b917e7c792815b6bb32"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a6c98d69396425b917e7c792815b6bb32">alpha</a> = 0u</td></tr>
 <tr class="separator:a6c98d69396425b917e7c792815b6bb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a5b0af7cbc32491da09513c5291064cab"><td class="memItemLeft" align="right" valign="top"><a id="a5b0af7cbc32491da09513c5291064cab"></a>
-static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a5b0af7cbc32491da09513c5291064cab">MIN_BYTE_SIZE</a> = 5u</td></tr>
-<tr class="memdesc:a5b0af7cbc32491da09513c5291064cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1PaletteEntry.html" title="A single color palette used in a PGS subtitle image.">PaletteEntry</a> instance. <br /></td></tr>
-<tr class="separator:a5b0af7cbc32491da09513c5291064cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A single color palette used in a PGS subtitle image. </p>
@@ -136,11 +155,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteEntry::alpha = 0u</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Transparency (0-255) </p>
 
@@ -151,11 +178,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteEntry::cb = 0u</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Blue color difference (0-255) </p>
 
@@ -166,11 +201,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteEntry::cr = 0u</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Red color difference (0-255) </p>
 
@@ -181,11 +224,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteEntry::id = 0u</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Palette Entry ID </p>
 
@@ -196,11 +247,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteEntry::y = 0u</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Luminance value of the color (0-255) </p>
 

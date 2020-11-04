@@ -85,8 +85,8 @@ $(document).ready(function(){initNavTree('classPgs_1_1PaletteDefinition.html',''
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPgs_1_1PaletteDefinition-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::PaletteDefinition Class Reference</div>  </div>
@@ -116,22 +116,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7edab6ab9faaed5f33cb92ae1a45e1c3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a7edab6ab9faaed5f33cb92ae1a45e1c3">import</a> (const char *data, const uint16_t &amp;size) override</td></tr>
 <tr class="memdesc:a7edab6ab9faaed5f33cb92ae1a45e1c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided data into this <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> object.  <a href="classPgs_1_1PaletteDefinition.html#a7edab6ab9faaed5f33cb92ae1a45e1c3">More...</a><br /></td></tr>
 <tr class="separator:a7edab6ab9faaed5f33cb92ae1a45e1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c107dbe3ddb63cd99f30181eee22ec8"><td class="memItemLeft" align="right" valign="top">const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a0c107dbe3ddb63cd99f30181eee22ec8">getId</a> () const</td></tr>
+<tr class="memdesc:a0c107dbe3ddb63cd99f30181eee22ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the palette ID.  <a href="classPgs_1_1PaletteDefinition.html#a0c107dbe3ddb63cd99f30181eee22ec8">More...</a><br /></td></tr>
+<tr class="separator:a0c107dbe3ddb63cd99f30181eee22ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a9c420ad0f76a79cdee5ea47d41f2b6"><td class="memItemLeft" align="right" valign="top">const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a9a9c420ad0f76a79cdee5ea47d41f2b6">getVersion</a> () const</td></tr>
+<tr class="memdesc:a9a9c420ad0f76a79cdee5ea47d41f2b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the palette version.  <a href="classPgs_1_1PaletteDefinition.html#a9a9c420ad0f76a79cdee5ea47d41f2b6">More...</a><br /></td></tr>
+<tr class="separator:a9a9c420ad0f76a79cdee5ea47d41f2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c49f2f4dc474f57f99e21acf34d4d2"><td class="memItemLeft" align="right" valign="top">const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a67c49f2f4dc474f57f99e21acf34d4d2">getNumEntries</a> () const</td></tr>
+<tr class="memdesc:a67c49f2f4dc474f57f99e21acf34d4d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of entries in this palette definition.  <a href="classPgs_1_1PaletteDefinition.html#a67c49f2f4dc474f57f99e21acf34d4d2">More...</a><br /></td></tr>
+<tr class="separator:a67c49f2f4dc474f57f99e21acf34d4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b7fe60709b24dcd6b128fc2063aa44"><td class="memItemLeft" align="right" valign="top">const vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a14b7fe60709b24dcd6b128fc2063aa44">getEntries</a> () const</td></tr>
+<tr class="memdesc:a14b7fe60709b24dcd6b128fc2063aa44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the vector of palette entries controlled by this instance.  <a href="classPgs_1_1PaletteDefinition.html#a14b7fe60709b24dcd6b128fc2063aa44">More...</a><br /></td></tr>
+<tr class="separator:a14b7fe60709b24dcd6b128fc2063aa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPgs_1_1SegmentData"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPgs_1_1SegmentData')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPgs_1_1SegmentData.html">Pgs::SegmentData</a></td></tr>
 <tr class="memitem:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memItemLeft" align="right" valign="top"><a id="a78f1cc25f1d46f3694732c3498a5ba63"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1SegmentData.html#a78f1cc25f1d46f3694732c3498a5ba63">SegmentData</a> ()=default</td></tr>
 <tr class="memdesc:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new instance of <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a>. <br /></td></tr>
 <tr class="separator:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aa9b3c3facfa4af8f3fdce0871ff9a68e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#aa9b3c3facfa4af8f3fdce0871ff9a68e">id</a></td></tr>
-<tr class="separator:aa9b3c3facfa4af8f3fdce0871ff9a68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad13f0f70b3cdf828276e7e8f7cce2d6f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#ad13f0f70b3cdf828276e7e8f7cce2d6f">version</a></td></tr>
-<tr class="separator:ad13f0f70b3cdf828276e7e8f7cce2d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa248bc1989584d21cf9bab7475c4b905"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#aa248bc1989584d21cf9bab7475c4b905">numEntries</a></td></tr>
-<tr class="separator:aa248bc1989584d21cf9bab7475c4b905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2177f9f4c3138aefdd0b13f952aab879"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a2177f9f4c3138aefdd0b13f952aab879">entries</a></td></tr>
-<tr class="separator:a2177f9f4c3138aefdd0b13f952aab879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -139,10 +140,101 @@ Static Public Attributes</h2></td></tr>
 static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#a52de2b1b849b0531521cbbc19e77c962">MIN_BYTE_SIZE</a> = 3u</td></tr>
 <tr class="memdesc:a52de2b1b849b0531521cbbc19e77c962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of bytes needed to create a basic <a class="el" href="classPgs_1_1PaletteDefinition.html" title="SegmentData defining the PaletteEntries in use in a specific subtitle image.">PaletteDefinition</a> instance. <br /></td></tr>
 <tr class="separator:a52de2b1b849b0531521cbbc19e77c962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aa9b3c3facfa4af8f3fdce0871ff9a68e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#aa9b3c3facfa4af8f3fdce0871ff9a68e">id</a></td></tr>
+<tr class="separator:aa9b3c3facfa4af8f3fdce0871ff9a68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13f0f70b3cdf828276e7e8f7cce2d6f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#ad13f0f70b3cdf828276e7e8f7cce2d6f">version</a></td></tr>
+<tr class="separator:ad13f0f70b3cdf828276e7e8f7cce2d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa248bc1989584d21cf9bab7475c4b905"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#aa248bc1989584d21cf9bab7475c4b905">numEntries</a></td></tr>
+<tr class="separator:aa248bc1989584d21cf9bab7475c4b905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acae51881a39f19b80d9c0b7761b646e9"><td class="memItemLeft" align="right" valign="top">vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteDefinition.html#acae51881a39f19b80d9c0b7761b646e9">entries</a></td></tr>
+<tr class="separator:acae51881a39f19b80d9c0b7761b646e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> defining the PaletteEntries in use in a specific subtitle image. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a14b7fe60709b24dcd6b128fc2063aa44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b7fe60709b24dcd6b128fc2063aa44">&#9670;&nbsp;</a></span>getEntries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a> &gt; &gt; &amp; PaletteDefinition::getEntries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the vector of palette entries controlled by this instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector of palette entries. </dd></dl>
+
+</div>
+</div>
+<a id="a0c107dbe3ddb63cd99f30181eee22ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c107dbe3ddb63cd99f30181eee22ec8">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t &amp; PaletteDefinition::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the palette ID. </p>
+<dl class="section return"><dt>Returns</dt><dd>id </dd></dl>
+
+</div>
+</div>
+<a id="a67c49f2f4dc474f57f99e21acf34d4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67c49f2f4dc474f57f99e21acf34d4d2">&#9670;&nbsp;</a></span>getNumEntries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t &amp; PaletteDefinition::getNumEntries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of entries in this palette definition. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of palette entries </dd></dl>
+
+</div>
+</div>
+<a id="a9a9c420ad0f76a79cdee5ea47d41f2b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a9c420ad0f76a79cdee5ea47d41f2b6">&#9670;&nbsp;</a></span>getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t &amp; PaletteDefinition::getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the palette version. </p>
+<dl class="section return"><dt>Returns</dt><dd>version </dd></dl>
+
+</div>
+</div>
 <a id="a7edab6ab9faaed5f33cb92ae1a45e1c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7edab6ab9faaed5f33cb92ae1a45e1c3">&#9670;&nbsp;</a></span>import()</h2>
 
@@ -197,16 +289,24 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2177f9f4c3138aefdd0b13f952aab879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2177f9f4c3138aefdd0b13f952aab879">&#9670;&nbsp;</a></span>entries</h2>
+<a id="acae51881a39f19b80d9c0b7761b646e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acae51881a39f19b80d9c0b7761b646e9">&#9670;&nbsp;</a></span>entries</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;<a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a>&gt; Pgs::PaletteDefinition::entries</td>
+          <td class="memname">vector&lt;shared_ptr&lt;<a class="el" href="classPgs_1_1PaletteEntry.html">PaletteEntry</a>&gt; &gt; Pgs::PaletteDefinition::entries</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Vector of PaletteEntries in this segment </p>
 
@@ -217,11 +317,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteDefinition::id</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Palette ID </p>
 
@@ -232,11 +340,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteDefinition::numEntries</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Number of palette entries. Computed from remaining data in segment. </p>
 
@@ -247,11 +363,19 @@ static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a 
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t Pgs::PaletteDefinition::version</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Version of palette within the epoch. </p>
 
