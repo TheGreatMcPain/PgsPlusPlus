@@ -57,15 +57,15 @@ namespace Pgs
      */
     class Segment
     {
-    public:
-        static constexpr uint16_t MIN_BYTE_SIZE = 13u;
-
+    protected:
         char magicNumber[2]{};             /**< 2-byte value defining the start of a segment. Should always be PGS_MAGIC_NUMBER */
         uint32_t presentationTimestamp;  /**< 32-bit value defining the presentation time of the segment. */
         uint32_t decodingTimestamp;      /**< 32-bit value defining the decoding time of the segment. */
         SegmentType segmentType;         /**< Type of data contained in this segment. */
         uint16_t segmentSize;            /**< Number of bytes containing the segment data. */
         shared_ptr<SegmentData> data;    /**< Shared pointer to the corresponding data container. */
+    public:
+        static constexpr uint16_t MIN_BYTE_SIZE = 13u;
 
         Segment();
 
@@ -76,5 +76,49 @@ namespace Pgs
         uint16_t import(const char *inData, const uint32_t &size);
 
         uint16_t import(const vector<char> &inData);
+
+        // =======
+        // Getters
+        // =======
+
+        /**
+         * \brief Returns the magic number from the Segment.
+         *
+         * \details
+         * This is unlikely to be useful unless the user needs troubleshoot data acquisition.
+         *
+         * \return 2 characters making up the Segment's magic number.
+         */
+        const char *getMagicNumber() const;
+
+        /**
+         * \brief Gets the presentationTimestamp
+         * \return presentationTimestamp
+         */
+        const uint32_t &getPresentationTimestamp() const;
+
+        /**
+         * \brief Gets the decodingTimestamp
+         * \return decodingTimestamp
+         */
+        const uint32_t &getDecodingTimestamp() const;
+
+        /**
+         * \brief Gets the segmentType
+         * \return segmentType
+         */
+        const SegmentType &getSegmentType() const;
+
+        /**
+         * \brief Gets the segmentSize
+         * \return segmentSize
+         */
+        const uint16_t &getSegmentSize() const;
+
+        /**
+         * \brief Retrieves a shared pointer to the stored SegmentData object.
+         * \return shared pointer to stored SegmentData.
+         */
+        shared_ptr<SegmentData> getData() const;
     };
 }

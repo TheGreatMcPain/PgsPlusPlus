@@ -25,7 +25,9 @@
 
 #include <cstdint>
 #include <vector>
+#include <memory>
 
+using std::shared_ptr;
 using std::vector;
 
 namespace Pgs
@@ -38,17 +40,17 @@ namespace Pgs
      */
     class WindowObject
     {
-    public:
-        /**
-         * \brief Minimum number of bytes required to successfully import data.
-         */
-        static constexpr uint16_t MIN_BYTE_SIZE = 9u;
-
+    protected:
         uint8_t id; /**< Window ID */
         uint16_t hPos; /**< Horizontal (x) offset from the top-left pixel of the video frame. */
         uint16_t vPos; /**< Vertical (y) offset from the top-left pixel of the video frame. */
         uint16_t width; /**< Window width */
         uint16_t height; /**< Window height */
+    public:
+        /**
+         * \brief Minimum number of bytes required to successfully import data.
+         */
+        static constexpr uint16_t MIN_BYTE_SIZE = 9u;
 
         /**
          * \brief Creates a new WindowObject instance.
@@ -69,7 +71,21 @@ namespace Pgs
          *
          * \throws ImportException
          */
-        void import(const char* data, const uint16_t &size, uint16_t &readPos);
+        static shared_ptr<WindowObject> create(const char* data, const uint16_t &size, uint16_t &readPos);
+
+        // =======
+        // Getters
+        // =======
+
+        const uint8_t &getId() const;
+
+        const uint16_t &getHPos() const;
+
+        const uint16_t &getVPos() const;
+
+        const uint16_t &getWidth() const;
+
+        const uint16_t &getHeight() const;
     };
 
     /**
@@ -77,15 +93,14 @@ namespace Pgs
      */
     class WindowDefinition : public SegmentData
     {
+    protected:
+        uint8_t numWindows; /**< Number of Windows contained in this segment. */
+        vector<shared_ptr<WindowObject>> windowObjects; /**< Vector of WindowObjects managed by this class instance */
     public:
         /**
          * \brief Minimum number of bytes required to successfully import data.
          */
         static constexpr uint16_t MIN_BYTE_SIZE = 1u;
-
-        uint8_t numWindows; /**< Number of Windows contained in this segment. */
-        vector<WindowObject> windowObjects; /**< Vector of WindowObjects managed by this class instance */
-
         /**
          * \brief Creates a new WindowDefinition instance
          */
@@ -97,5 +112,13 @@ namespace Pgs
          * \param size number of bytes in provided data array
          */
         uint16_t import(const char *data, const uint16_t &size) override;
+
+        // =======
+        // Getters
+        // =======
+
+        const uint8_t &getNumWindows() const;
+
+        const vector<shared_ptr<WindowObject>> &getWindowObjects() const;
     };
 }

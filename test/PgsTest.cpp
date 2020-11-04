@@ -72,7 +72,7 @@ TEST_F(PgsTest, importValidPcsSegment)
     delete[] data;
 
     ASSERT_EQ(readSize, dataSize);
-    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::PresentationComposition);
+    ASSERT_EQ(segment.getSegmentType(), Pgs::SegmentType::PresentationComposition);
 }
 
 TEST_F(PgsTest, importShortPcsData)
@@ -106,7 +106,7 @@ TEST_F(PgsTest, importValidWdsSegment)
     delete[] data;
 
     ASSERT_EQ(readSize, dataSize);
-    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::WindowDefinition);
+    ASSERT_EQ(segment.getSegmentType(), Pgs::SegmentType::WindowDefinition);
 }
 
 TEST_F(PgsTest, importShortWdsSegment)
@@ -140,7 +140,7 @@ TEST_F(PgsTest, importValidPdsSegment)
     delete[] data;
 
     ASSERT_EQ(readSize, dataSize);
-    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::PaletteDefinition);
+    ASSERT_EQ(segment.getSegmentType(), Pgs::SegmentType::PaletteDefinition);
 }
 
 TEST_F(PgsTest, importShortPdsSegment)
@@ -174,7 +174,7 @@ TEST_F(PgsTest, importValidOdsSegment)
     delete[] data;
 
     ASSERT_EQ(readSize, dataSize);
-    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::ObjectDefinition);
+    ASSERT_EQ(segment.getSegmentType(), Pgs::SegmentType::ObjectDefinition);
 }
 
 TEST_F(PgsTest, importShortOdsSegment)
@@ -208,7 +208,7 @@ TEST_F(PgsTest, importValidEndSegment)
     delete[] data;
 
     ASSERT_EQ(readSize, dataSize);
-    ASSERT_EQ(segment.segmentType, Pgs::SegmentType::EndOfDisplaySet);
+    ASSERT_EQ(segment.getSegmentType(), Pgs::SegmentType::EndOfDisplaySet);
 }
 
 int main(int argc, char *argv[])

@@ -23,7 +23,9 @@
 #include <fstream>
 #include <src/Subtitle.hpp>
 #include <memory>
+#include <vector>
 
+using std::vector;
 using std::shared_ptr;
 
 class SubtitleTest : public ::testing::Test
@@ -102,6 +104,17 @@ TEST_F(SubtitleTest, importEmptySubtitle)
     delete[] data;
 
     ASSERT_EQ(readPos, dataSize);
+}
+
+TEST_F(SubtitleTest, importAllSubtitles)
+{
+    char *data = new char[this->fileSize];
+    this->supFileStream.readsome(data, this->fileSize);
+
+    vector<shared_ptr<Pgs::Subtitle>> subtitles;
+    subtitles = Pgs::Subtitle::createAll(data, this->fileSize);
+    delete[] data;
+
 }
 
 int main(int argc, char *argv[])

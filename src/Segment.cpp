@@ -111,3 +111,37 @@ uint16_t Segment::import(const vector<char> &inData)
 {
     return this->import(inData.data(), inData.size());
 }
+
+// =======
+// Getters
+// =======
+
+const char *Segment::getMagicNumber() const
+{
+    return this->magicNumber;
+}
+
+const uint32_t &Segment::getPresentationTimestamp() const
+{
+    return this->presentationTimestamp;
+}
+
+const uint32_t &Segment::getDecodingTimestamp() const
+{
+    return this->decodingTimestamp;
+}
+
+const SegmentType &Segment::getSegmentType() const
+{
+    return this->segmentType;
+}
+
+const uint16_t &Segment::getSegmentSize() const
+{
+    return this->segmentSize;
+}
+
+shared_ptr<SegmentData> Segment::getData() const
+{
+    return this->data;
+}

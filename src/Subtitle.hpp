@@ -25,9 +25,11 @@
 
 #include <cstdint>
 #include <array>
+#include <vector>
 #include <memory>
 #include <stdexcept>
 
+using std::vector;
 using std::array;
 using std::shared_ptr;
 
@@ -122,9 +124,6 @@ namespace Pgs
          */
         Subtitle();
 
-        /**
-         * \brief Deconstructs this instance of Subtitle.
-         */
         ~Subtitle();
 
         /**
@@ -147,6 +146,14 @@ namespace Pgs
          * \throws CreateError
          */
         [[maybe_unused]] static shared_ptr<Subtitle> create(const std::vector<char> &data, uint32_t &readPos);
+
+        /**
+         * \brief Creates a vector of shared pointer to the Subtitle instance created from the provided data.
+         * \param data pointer to raw data array.
+         * \param size number of bytes in raw data array
+         * \return vector of shared pointers to newly created Subtitle instances
+         */
+        static vector<shared_ptr<Subtitle>> createAll(const char *data, const uint32_t &size);
 
         /**
          * \brief Imports any provided Segment into the Subtitle instance.

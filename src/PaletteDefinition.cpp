@@ -22,38 +22,72 @@
 
 using namespace Pgs;
 
-void PaletteEntry::import(const char *data, const uint16_t &size, uint16_t &readPos)
+shared_ptr<PaletteEntry> PaletteEntry::create(const char *data, const uint16_t &size, uint16_t &readPos)
 {
     if(!data)
     {
-        throw ImportException("PaletteEntry: no data provided to import method.");
+        throw ImportException("PaletteEntry: no data provided to create method.");
     }
 
     if(size < PaletteEntry::MIN_BYTE_SIZE)
     {
-        throw ImportException("PaletteEntry: Insufficient data provided to successfully complete import.");
+        throw ImportException("PaletteEntry: Insufficient data provided to successfully complete creation.");
     }
+
+    auto paletteEntry = std::make_shared<PaletteEntry>();
 
     const auto byteData = reinterpret_cast<const uint8_t *>(data);
 
-    this->id = byteData[readPos];
+    paletteEntry->id = byteData[readPos];
     ++readPos;
-    this->y = byteData[readPos];
+    paletteEntry->y = byteData[readPos];
     ++readPos;
-    this->cr = byteData[readPos];
+    paletteEntry->cr = byteData[readPos];
     ++readPos;
-    this->cb = byteData[readPos];
+    paletteEntry->cb = byteData[readPos];
     ++readPos;
-    this->alpha = byteData[readPos];
+    paletteEntry->alpha = byteData[readPos];
     ++readPos;
+
+    return paletteEntry;
 }
+
+// ====================
+// PaletteEntry Getters
+// ====================
+
+const uint8_t & PaletteEntry::getId() const
+{
+    return this->id;
+}
+
+const uint8_t &PaletteEntry::getY() const
+{
+    return this->y;
+}
+
+const uint8_t &PaletteEntry::getCr() const
+{
+    return this->cr;
+}
+
+const uint8_t &PaletteEntry::getCb() const
+{
+    return this->cb;
+}
+
+const uint8_t &PaletteEntry::getAlpha() const
+{
+    return this->alpha;
+}
+
 
 PaletteDefinition::PaletteDefinition() : SegmentData()
 {
     this->id = 0u;
     this->version = 0u;
     this->numEntries = 0u;
-    this->entries = vector<PaletteEntry>();
+    this->entries = vector<shared_ptr<PaletteEntry>>();
 }
 
 uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
@@ -79,13 +113,37 @@ uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
 
     this->numEntries = remainingSize / PaletteEntry::MIN_BYTE_SIZE;
 
-    this->entries.resize(this->numEntries);
+    this->entries.reserve(this->numEntries);
     for (uint8_t i = 0; i < this->numEntries; ++i)
     {
-        this->entries[i].import(data, remainingSize, readPos);
+        this->entries.push_back(PaletteEntry::create(data, remainingSize, readPos));
         remainingSize = size - readPos;
     }
 
     return readPos;
+}
+
+// =======
+// Getters
+// =======
+
+const uint8_t &PaletteDefinition::getId() const
+{
+    return this->id;
+}
+
+const uint8_t &PaletteDefinition::getVersion() const
+{
+    return this->version;
+}
+
+const uint8_t &PaletteDefinition::getNumEntries() const
+{
+    return this->numEntries;
+}
+
+const vector<shared_ptr<PaletteEntry>> &PaletteDefinition::getEntries() const
+{
+    return this->entries;
 }
 

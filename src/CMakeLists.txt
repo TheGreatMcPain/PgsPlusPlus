@@ -16,23 +16,20 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 #  USA
 
-add_library(pgs-util STATIC
-        pgs.cpp pgs.hpp
-        )
-
-target_compile_options(pgs-util BEFORE PUBLIC
-        "-fPIC"
-        )
-
 add_library(pgs SHARED
+        pgs.cpp pgs.hpp
         SegmentData.cpp SegmentData.hpp
         PresentationComposition.cpp PresentationComposition.hpp
         WindowDefinition.cpp WindowDefinition.hpp
         PaletteDefinition.cpp PaletteDefinition.hpp
-        Segment.cpp Segment.hpp ObjectDefinition.cpp ObjectDefinition.hpp Subtitle.cpp Subtitle.hpp)
+        Segment.cpp Segment.hpp
+        ObjectDefinition.cpp ObjectDefinition.hpp
+        Subtitle.cpp Subtitle.hpp)
 
-target_link_libraries(pgs
-        pgs-util
+target_compile_features(pgs PUBLIC
+        cxx_auto_type
+        cxx_constexpr
+        cxx_noexcept
+        cxx_nullptr
+        cxx_range_for
         )
-
-

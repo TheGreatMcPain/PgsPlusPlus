@@ -23,7 +23,9 @@
 
 #include <cstdint>
 #include <vector>
+#include <memory>
 
+using std::shared_ptr;
 using std::vector;
 
 namespace Pgs
@@ -43,7 +45,7 @@ namespace Pgs
      */
     class CompositionObject
     {
-    public:
+    protected:
         uint16_t objectID; /**< ID of the associated Object Definition Segment. */
         uint8_t windowID; /**< ID of the associated Window Definition Segment. Up to 2 images can use 1 window. */
         bool croppedFlag; /**< Set to true to force display of the cropped image object; false, otherwise. */
@@ -53,7 +55,7 @@ namespace Pgs
         uint16_t cropVPos; /**< Vertical (y) crop offset from the top-left pixel of the video frame. */
         uint16_t cropWidth; /**< Width of the crop. */
         uint16_t cropHeight; /**< Height of the crop. */
-
+    public:
         /**
          * \brief Minimum number of bytes needed to create a basic CompositionObject instance from
          * provided data.
@@ -62,20 +64,43 @@ namespace Pgs
 
         /**
          *  \brief Constructs a new CompositionObject instance.
-         * 
+         *
          *  \details
-         *  To add data to the instance, use one of the import() methods.
+         *  This constructor should not be used by the end user. Use the create function instead.
          */
         CompositionObject();
 
         /**
-         *  \brief Imports the provided data into the CompositionObject instance.
+         *  \brief Imports the provided data and creates a shared pointer to a new CompositionObject instance.
          *  \param data pointer to raw data array
          *  \param size size of the raw data array
+         *  \param readPos point in array to read from.
          *
          *  \throws ImportException
          */
-        void import(const char *data, const uint16_t &size, uint16_t &readPos);
+        static shared_ptr<CompositionObject> create(const char *data, const uint16_t &size, uint16_t &readPos);
+
+        // =======
+        // Getters
+        // =======
+
+        const uint16_t &getObjectID() const;
+
+        const uint8_t &getWindowID() const;
+
+        const bool &getCroppedFlag() const;
+
+        const uint16_t &getHPos() const;
+
+        const uint16_t &getVPos() const;
+
+        const uint16_t &getCropHPos() const;
+
+        const uint16_t &getCropVPos() const;
+
+        const uint16_t &getCropWidth() const;
+
+        const uint16_t &getCropHeight() const;
     };
 
     /**
@@ -83,7 +108,7 @@ namespace Pgs
      */
     class PresentationComposition : public SegmentData
     {
-    public:
+    protected:
         uint16_t width;     /**< Pixels in video width. */
         uint16_t height;    /**< Pixels in video height */
         uint8_t frameRate; /**< Subtitle display frame rate. Should almost always be 0x10 (24fps) */
@@ -92,8 +117,8 @@ namespace Pgs
         bool paletteUpdateFlag; /**< True if this segment describes a <em>palette only</em> update; false, otherwise. */
         uint8_t paletteID; /**< ID of palette to use in palette-only update. */
         uint8_t compositionObjectCount; /**< Number of composition objects defined in segment. */
-        vector<CompositionObject> compositionObjects; /**< Vector of Composition Objects in this segment. */
-
+        vector<shared_ptr<CompositionObject>> compositionObjects; /**< Vector of Composition Objects in this segment. */
+    public:
         /**
          * \brief Minimum number of bytes needed to create a basic PresentationComposition instance from
          * provided data.
@@ -109,5 +134,27 @@ namespace Pgs
         PresentationComposition();
 
         uint16_t import(const char *data, const uint16_t &size) override;
+
+        // =======
+        // Getters
+        // =======
+
+        const uint16_t &getWidth() const;
+
+        const uint16_t &getHeight() const;
+
+        const uint8_t &getFrameRate() const;
+
+        const uint16_t &getCompositionNumber() const;
+
+        const CompositionState &getCompositionState() const;
+
+        const bool &getPaletteUpdateFlag() const;
+
+        const uint8_t &getPaletteID() const;
+
+        const uint8_t &getCompositionObjectCount() const;
+
+        const vector<shared_ptr<CompositionObject>> &getCompositionObjects() const;
     };
 }

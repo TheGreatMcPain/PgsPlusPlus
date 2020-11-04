@@ -21,6 +21,8 @@
 
 #include "Subtitle.hpp"
 
+#include <iostream>
+
 using namespace Pgs;
 
 CreateError::CreateError(const char *msg) : std::runtime_error(msg)
@@ -50,6 +52,7 @@ shared_ptr<Subtitle> Subtitle::create(const char *data, const uint32_t &size, ui
      * that way.
      */
 
+    // TODO: Determine how some subtitles are breaking this function.
     auto subtitle = std::make_shared<Subtitle>(Subtitle());
     bool endReached = false;
     uint32_t segmentEnd;
@@ -93,21 +96,50 @@ shared_ptr<Subtitle> Subtitle::create(const vector<char> &data, uint32_t &readPo
     return Subtitle::create(data.data(), data.size(), readPos);
 }
 
+vector<shared_ptr<Subtitle>> Subtitle::createAll(const char *data, const uint32_t &size)
+{
+    if (data == nullptr || size == 0)
+    {
+        throw CreateError("Subtitle::createSubtitles: no data provided.");
+    }
+
+    uint32_t readPos = 0u;
+    auto subtitles = vector<shared_ptr<Subtitle>>();
+    uint32_t remainingSize;
+    uint16_t itr = 0;
+    while(readPos < size-1)
+    {
+        remainingSize = size - readPos;
+        try
+        {
+            subtitles.push_back(Subtitle::create(data, remainingSize, readPos));
+        }
+        catch (const std::runtime_error& err)
+        {
+            std::cerr << err.what() << "\n";
+            std::cerr << "Iteration: " << std::to_string(itr) << "\n";
+        }
+        ++itr;
+    }
+
+    return subtitles;
+}
+
 Pgs::SegmentType Subtitle::import(const Segment &segment)
 {
-    switch(segment.segmentType)
+    switch(segment.getSegmentType())
     {
         case SegmentType::PaletteDefinition:
-            this->paletteDefinition = std::dynamic_pointer_cast<PaletteDefinition>(segment.data);
+            this->paletteDefinition = std::dynamic_pointer_cast<PaletteDefinition>(segment.getData());
             return SegmentType::PaletteDefinition;
         case SegmentType::ObjectDefinition:
-            this->importOds(segment.data);
+            this->importOds(segment.getData());
             return SegmentType::ObjectDefinition;
         case SegmentType::PresentationComposition:
-            this->presentationComposition = std::dynamic_pointer_cast<PresentationComposition>(segment.data);
+            this->presentationComposition = std::dynamic_pointer_cast<PresentationComposition>(segment.getData());
             return SegmentType::PresentationComposition;
         case SegmentType::WindowDefinition:
-            this->windowDefinition = std::dynamic_pointer_cast<WindowDefinition>(segment.data);
+            this->windowDefinition = std::dynamic_pointer_cast<WindowDefinition>(segment.getData());
             return SegmentType::WindowDefinition;
         case SegmentType::EndOfDisplaySet:
             this->importEnd(segment);
@@ -140,8 +172,8 @@ void Subtitle::importOds(const shared_ptr<SegmentData> &segmentData)
 
 void Subtitle::importEnd(const Segment &segment)
 {
-    this->decodingTime = segment.decodingTimestamp;
-    this->presentationTime = segment.presentationTimestamp;
+    this->decodingTime = segment.getDecodingTimestamp();
+    this->presentationTime = segment.getPresentationTimestamp();
 }
 
 // =======

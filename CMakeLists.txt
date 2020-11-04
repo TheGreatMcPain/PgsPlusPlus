@@ -23,7 +23,7 @@ set(CMAKE_PROJECT_VERSION_MAJOR 0)
 set(CMAKE_PROJECT_VERSION_MINOR 1)
 set(CMAKE_PROJECT_VERSION_PATCH 0)
 
-set(CMAKE_CXX_STANDARD 14)
+# Language level requirements are determined using 'target_compile_features'
 
 add_subdirectory(src)
 

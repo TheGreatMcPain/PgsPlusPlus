@@ -36,7 +36,7 @@ WindowObject::WindowObject()
     this->height = 0u;
 }
 
-void WindowObject::import(const char *data, const uint16_t &size, uint16_t &readPos)
+shared_ptr<WindowObject> WindowObject::create(const char *data, const uint16_t &size, uint16_t &readPos)
 {
     if (!data)
     {
@@ -45,17 +45,52 @@ void WindowObject::import(const char *data, const uint16_t &size, uint16_t &read
 
     if (size < WindowObject::MIN_BYTE_SIZE)
     {
-        throw ImportException("WindowObject: Not enough data to import basic structure.");
+        throw ImportException("WindowObject: Not enough data to create basic structure.");
     }
 
+    auto window = std::make_shared<WindowObject>();
+
     const auto byteData = reinterpret_cast<const uint8_t *>(data);
-    this->id = byteData[readPos];
+    window->id = byteData[readPos];
     ++readPos;
-    this->hPos = be16toh(read2Bytes(byteData, readPos));
-    this->vPos = be16toh(read2Bytes(byteData, readPos));
-    this->width = be16toh(read2Bytes(byteData, readPos));
-    this->height = be16toh(read2Bytes(byteData, readPos));
+    window->hPos = be16toh(read2Bytes(byteData, readPos));
+    window->vPos = be16toh(read2Bytes(byteData, readPos));
+    window->width = be16toh(read2Bytes(byteData, readPos));
+    window->height = be16toh(read2Bytes(byteData, readPos));
+
+    return window;
 }
+
+// ====================
+// WindowObject Getters
+// ====================
+
+const uint8_t & WindowObject::getId() const
+{
+    return this->id;
+}
+
+const uint16_t &WindowObject::getHPos() const
+{
+    return this->hPos;
+}
+
+const uint16_t &WindowObject::getVPos() const
+{
+    return this->vPos;
+}
+
+const uint16_t &WindowObject::getWidth() const
+{
+    return this->width;
+}
+
+const uint16_t &WindowObject::getHeight() const
+{
+    return this->height;
+}
+
+
 
 // =========================
 // Window Definition Methods
@@ -64,7 +99,7 @@ void WindowObject::import(const char *data, const uint16_t &size, uint16_t &read
 WindowDefinition::WindowDefinition()
 {
     this->numWindows = 0u;
-    this->windowObjects = vector<WindowObject>();
+    this->windowObjects = vector<shared_ptr<WindowObject>>();
 }
 
 uint16_t WindowDefinition::import(const char *data, const uint16_t &size)
@@ -90,10 +125,10 @@ uint16_t WindowDefinition::import(const char *data, const uint16_t &size)
         throw ImportException("WindowDefinition: Not enough data to import all CompositionObjects.");
     }
 
-    this->windowObjects.resize(this->numWindows);
+    this->windowObjects.reserve(this->numWindows);
     for (uint8_t i = 0; i < this->numWindows; ++i)
     {
-        this->windowObjects[i].import(data, remainingSize, readPos);
+        this->windowObjects.push_back(WindowObject::create(data, remainingSize, readPos));
         remainingSize = size - readPos;
     }
 
@@ -106,4 +141,16 @@ uint16_t WindowDefinition::import(const char *data, const uint16_t &size)
     return readPos;
 }
 
+// ========================
+// WindowDefinition Getters
+// ========================
 
+const uint8_t & WindowDefinition::getNumWindows() const
+{
+    return this->numWindows;
+}
+
+const vector<shared_ptr<WindowObject>> &WindowDefinition::getWindowObjects() const
+{
+    return this->windowObjects;
+}
