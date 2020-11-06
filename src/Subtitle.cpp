@@ -51,8 +51,6 @@ shared_ptr<Subtitle> Subtitle::create(const char *data, const uint32_t &size, ui
      * Each imported segment will return the number of bytes it read from the array, so the read position can be updated
      * that way.
      */
-
-    // TODO: Determine how some subtitles are breaking this function.
     auto subtitle = std::make_shared<Subtitle>(Subtitle());
     bool endReached = false;
     uint32_t segmentEnd;
@@ -105,19 +103,16 @@ vector<shared_ptr<Subtitle>> Subtitle::createAll(const char *data, const uint32_
 
     uint32_t readPos = 0u;
     auto subtitles = vector<shared_ptr<Subtitle>>();
-    uint32_t remainingSize;
     uint16_t itr = 0;
     while(readPos < size-1)
     {
-        remainingSize = size - readPos;
         try
         {
-            subtitles.push_back(Subtitle::create(data, remainingSize, readPos));
+            subtitles.push_back(Subtitle::create(data, size, readPos));
         }
         catch (const std::runtime_error& err)
         {
-            std::cerr << err.what() << "\n";
-            std::cerr << "Iteration: " << std::to_string(itr) << "\n";
+            std::cerr << err.what() << " " << std::to_string(itr) << "\n";
         }
         ++itr;
     }
