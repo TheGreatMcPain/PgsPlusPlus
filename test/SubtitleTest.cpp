@@ -112,7 +112,7 @@ TEST_F(SubtitleTest, importAllSubtitles)
     this->supFileStream.readsome(data, this->fileSize);
 
     vector<shared_ptr<Pgs::Subtitle>> subtitles;
-    subtitles = Pgs::Subtitle::createAll(data, this->fileSize);
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data, this->fileSize));
     delete[] data;
 
 }

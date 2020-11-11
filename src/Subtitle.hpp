@@ -118,6 +118,8 @@ namespace Pgs
          * \param segment Segment to import
          */
         void importEnd(const Segment &segment);
+
+        static uint32_t getSubtitleSize(const char *data, const uint32_t &size);
     public:
         /**
          * \brief Creates a new instance of Subtitle.

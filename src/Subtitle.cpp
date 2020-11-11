@@ -105,14 +105,16 @@ vector<shared_ptr<Subtitle>> Subtitle::createAll(const char *data, const uint32_
 
     uint32_t readPos = 0u;
     auto subtitles = vector<shared_ptr<Subtitle>>();
-    uint32_t remainingSize;
+    uint32_t subtitleSize, readSize;
     uint16_t itr = 0;
     while(readPos < size-1)
     {
-        remainingSize = size - readPos;
+        subtitleSize = Subtitle::getSubtitleSize(data+readPos, size - readPos);
         try
         {
-            subtitles.push_back(Subtitle::create(data, remainingSize, readPos));
+            readSize = 0;
+            subtitles.push_back(Subtitle::create(data+readPos, subtitleSize, readSize));
+            readPos += readSize;
         }
         catch (const std::runtime_error& err)
         {
@@ -179,6 +181,39 @@ void Subtitle::importEnd(const Segment &segment)
 // =======
 // Getters
 // =======
+
+uint32_t Subtitle::getSubtitleSize(const char *data, const uint32_t &size)
+{
+    const auto *byteData = reinterpret_cast<const uint8_t *>(data);
+
+    uint32_t readPos = 0u;
+    SegmentType segmentType = SegmentType::PresentationComposition;
+    char buff[2];
+    while (readPos < size && segmentType != SegmentType::EndOfDisplaySet)
+    {
+        // Find start of segment
+        buff[0] = byteData[readPos];
+        buff[1] = byteData[readPos+1];
+        if (buff[0] != 'P' && buff[1] != 'G')
+        {
+            ++readPos;
+            continue;
+        }
+
+        // Get segment type
+        readPos += 10;
+        segmentType = SegmentType(byteData[readPos]);
+        ++readPos;
+
+        // Get segment size and skip to end of segment.
+        const uint16_t segmentSize = read2Bytes(reinterpret_cast<const uint8_t *>(byteData),
+                                                reinterpret_cast<uint16_t &>(readPos));
+        readPos += segmentSize;
+        // Repeat until the end segment is found or out of data.
+    }
+
+    return readPos;
+}
 
 shared_ptr<PresentationComposition> Subtitle::getPcs() const noexcept
 {
