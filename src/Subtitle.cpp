@@ -22,6 +22,7 @@
 #include "Subtitle.hpp"
 
 #include <iostream>
+#include <algorithm>
 
 using namespace Pgs;
 
@@ -135,16 +136,40 @@ Pgs::SegmentType Subtitle::import(const Segment &segment)
             this->importOds(segment.getData());
             return SegmentType::ObjectDefinition;
         case SegmentType::PresentationComposition:
-            this->presentationComposition = std::dynamic_pointer_cast<PresentationComposition>(segment.getData());
+            this->importPcs(segment.getData());
             return SegmentType::PresentationComposition;
         case SegmentType::WindowDefinition:
-            this->windowDefinition = std::dynamic_pointer_cast<WindowDefinition>(segment.getData());
+            this->importWds(segment.getData());
             return SegmentType::WindowDefinition;
         case SegmentType::EndOfDisplaySet:
             this->importEnd(segment);
             return SegmentType::EndOfDisplaySet;
     }
     return SegmentType::EndOfDisplaySet;
+}
+
+void Subtitle::importPcs(const shared_ptr<SegmentData> &segmentData)
+{
+    const auto pcs = std::dynamic_pointer_cast<PresentationComposition>(segmentData);
+    this->streamWidth = pcs->getWidth();
+    this->streamHeight = pcs->getHeight();
+
+    this->presentationComposition = pcs;
+}
+
+void Subtitle::importWds(const shared_ptr<SegmentData> &segmentData)
+{
+    const auto wds = std::dynamic_pointer_cast<WindowDefinition>(segmentData);
+    if (wds->getNumWindows() > 0)
+    {
+        const auto window = wds->getWindowObjects()[0];
+        this->xOffset = window->getHPos();
+        this->yOffset = window->getVPos();
+        this->height = window->getHeight();
+        this->width = window->getWidth();
+    }
+
+    this->windowDefinition = wds;
 }
 
 void Subtitle::importOds(const shared_ptr<SegmentData> &segmentData)
@@ -265,4 +290,55 @@ const uint8_t & Subtitle::getNumObjectDefinitions() const noexcept
 bool Subtitle::containsImage() const noexcept
 {
     return this->numObjectDefinitions > 0;
+}
+
+vector<vector<array<uint8_t, 4>>> Subtitle::getImage(const ColorSpace &colorSpace) const
+{
+    if (this->numObjectDefinitions == 0)
+    {
+        throw std::runtime_error("Subtitle object does not contain any image data.");
+    }
+
+    // Load decompressed data into vector.
+    auto rawData = vector<vector<uint8_t>>();
+    auto tmp = this->objectDefinitions[0]->getDecodedObjectData();
+    std::move(tmp.begin(), tmp.end(), std::back_inserter(rawData));
+    if (this->objectDefinitions[1] != nullptr)
+    {
+        tmp = this->objectDefinitions[1]->getDecodedObjectData();
+        std::move(tmp.begin(), tmp.end(), std::back_inserter(rawData));
+    }
+
+    auto imageData = vector<vector<array<uint8_t, 4>>>();
+    imageData.reserve(rawData.size());
+
+    // convert the values line by line.
+    const auto &paletteEntries = this->paletteDefinition->getEntries();
+    for (const auto &rawLine : rawData)
+    {
+        vector<array<uint8_t, 4>> colorLine;
+        colorLine.reserve(rawLine.size());
+        for (const uint8_t &pixel : rawLine)
+        {
+            // Check if the palette exists
+            array<uint8_t, 4> color = {0, 0, 0, 0};
+            if (paletteEntries.find(pixel) != paletteEntries.end())
+            {
+                // Color in palette
+                switch (colorSpace)
+                {
+                    case ColorSpace::RGBA:
+                        color = paletteEntries.at(pixel)->getRGBA();
+                        break;
+                    case ColorSpace::YCrCb:
+                        color = paletteEntries.at(pixel)->getYCrCbA();
+                        break;
+                }
+            }
+            colorLine.push_back(color);
+        }
+        imageData.push_back(colorLine);
+    }
+
+    return imageData;
 }

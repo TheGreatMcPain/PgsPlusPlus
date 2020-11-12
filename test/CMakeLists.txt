@@ -42,12 +42,18 @@ add_test(NAME "PgsTest" COMMAND pgs-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}
 
 # Subtitle Test
 
+find_package(OpenMP)
+if(OPENMP_FOUND)
+    message("OpenMP FOUND")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+include_directories(SYSTEM ${OpenMP_INCLUDE_PATH})
+
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(magick REQUIRED GraphicsMagick++)
-
-message(STATUS "Magick include dirs: ${magick_INCLUDE_DIRS}")
-message(STATUS "Magick link libraries: ${magick_LIBRARIES}")
 
 add_executable(subtitle-test SubtitleTest.cpp)
 
@@ -65,11 +71,15 @@ target_link_libraries(subtitle-test PRIVATE
         GTest::GTest
         GTest::Main
         ${magick_LIBRARIES}
+        ${OpenMP_LIBRARIES}
         )
 
 target_compile_features(subtitle-test PUBLIC
         cxx_std_17
         cxx_auto_type
         )
+
+target_compile_options(subtitle-test PRIVATE
+        ${OpenMP_CXX_FLAGS})
 
 add_test(NAME "SubtitleTest" COMMAND subtitle-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)

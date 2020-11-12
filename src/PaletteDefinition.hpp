@@ -128,13 +128,13 @@ namespace Pgs
          * \brief Gets the palette ID
          * \return id
          */
-        const uint8_t &getId() const;
+        [[nodiscard]] const uint8_t &getId() const;
 
         /**
          * \brief Gets the palette version
          * \return version
          */
-        const uint8_t &getVersion() const;
+        [[nodiscard]] const uint8_t &getVersion() const;
 
         /**
          * \brief Gets the number of entries in this palette definition
@@ -146,6 +146,6 @@ namespace Pgs
          * \brief Gets the vector of palette entries controlled by this instance
          * \return vector of palette entries.
          */
-        const map<uint8_t, shared_ptr<PaletteEntry>> & getEntries() const;
+        [[nodiscard]] const map<uint8_t, shared_ptr<PaletteEntry>> & getEntries() const;
     };
 }

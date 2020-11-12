@@ -20,6 +20,7 @@
 
 #include "PaletteDefinition.hpp"
 
+
 using namespace Pgs;
 
 shared_ptr<PaletteEntry> PaletteEntry::create(const char *data, const uint16_t &size, uint16_t &readPos)
@@ -89,26 +90,27 @@ array<uint8_t, 4> PaletteEntry::getYCrCbA() const
 
 uint8_t PaletteEntry::getRed() const
 {
-    const auto crLess = this->cr - 128;
-    const uint8_t red = this->y + crLess + (crLess >> 2) + (crLess >> 3) + (crLess >> 5);
-    return red;
+    const double yPrime = static_cast<double>(this->y) / UINT8_MAX;
+    const double vNorm = (static_cast<double>(this->cr) / 255.0f) - 0.5f;
+    const double red = yPrime + (vNorm * (2 - 2 * Kr));
+    return static_cast<uint8_t>(red * UINT8_MAX);
 }
 
 uint8_t PaletteEntry::getGreen() const
 {
-    const auto crLess = this->cr - 128;
-    const auto cbLess = this->cb - 128;
-    const uint8_t comp0 = (cbLess >> 2) + (cbLess >> 4) + (cbLess >> 5);
-    const uint8_t comp1 = (crLess >> 1) + (crLess >> 3) + (crLess >> 4) + (crLess >> 5);
-    const uint8_t green = comp0 - comp1;
-    return green;
+    const double yPrime = static_cast<double>(this->y) / UINT8_MAX;
+    const double uNorm = (static_cast<double>(this->cr) / 255.0f) - 0.5f;
+    const double vNorm = (static_cast<double>(this->cr) / 255.0f) - 0.5f;
+    const double green = yPrime + (uNorm * (-1 * (Kb / Kg) * (2 - 2 * Kb))) + (vNorm * (-1 * (Kr / Kg) * (2 - 2 * Kr)));
+    return static_cast<uint8_t>(green * UINT8_MAX);
 }
 
 uint8_t PaletteEntry::getBlue() const
 {
-    const auto cbLess = this->cb - 128;
-    const uint8_t blue = this->y + cbLess + (cbLess >> 1) + (cbLess >> 2) + (cbLess >> 6);
-    return blue;
+    const double yPrime = static_cast<double>(this->y) / UINT8_MAX;
+    const double uNorm = (static_cast<double>(this->cr) / 255.0f) - 0.5f;
+    const double blue = yPrime + (uNorm * (2 - 2 * Kb));
+    return static_cast<uint8_t>(blue * UINT8_MAX);
 }
 
 array<uint8_t, 4> PaletteEntry::getRGBA() const

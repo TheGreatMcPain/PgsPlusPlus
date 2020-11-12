@@ -27,6 +27,7 @@ add_library(pgs SHARED
         Subtitle.cpp Subtitle.hpp)
 
 target_compile_features(pgs PUBLIC
+        cxx_std_17
         cxx_auto_type
         cxx_constexpr
         cxx_noexcept

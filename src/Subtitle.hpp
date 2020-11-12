@@ -43,6 +43,12 @@ namespace Pgs
         ~CreateError() noexcept override = default;
     };
 
+    enum class ColorSpace
+    {
+        RGBA,
+        YCrCb
+    };
+
     /**
      * \brief The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instance,
      * and retains pointers to the imported segments so that a user may access less commonly-used data.
@@ -74,7 +80,7 @@ namespace Pgs
         /**
          * \brief Number of object definition segments in this subtitle. Value can be 0-2.
          */
-        [[maybe_unused]] uint8_t numObjectDefinitions;
+        uint8_t numObjectDefinitions;
 
         /**
          * \brief Array containing shared pointers to imported object definition segments.
@@ -98,6 +104,22 @@ namespace Pgs
          * This value has an accuracy of 90kHz.
          */
         uint32_t presentationTime;
+
+        uint16_t streamWidth = 0u;
+
+        uint16_t streamHeight = 0u;
+
+        uint16_t xOffset = 0u;
+
+        uint16_t yOffset = 0u;
+
+        uint16_t width = 0u;
+
+        uint16_t height = 0u;
+
+        void importPcs(const shared_ptr<SegmentData> &segmentData);
+
+        void importWds(const shared_ptr<SegmentData> &segmentData);
 
         /**
          * \brief Imports the provided SegmentData as an ObjectDefinition.
@@ -242,6 +264,19 @@ namespace Pgs
          * \return true if image data is present
          */
         [[maybe_unused]] [[nodiscard]] bool containsImage() const noexcept;
+
+        /**
+         * \brief Generates raw, decompressed image data from the associated ObjectDefinitions.
+         *
+         * \param colorSpace ColorSpace to use when converting from PaletteEntry.
+         *
+         * \details
+         * The data from all associated ObjectDefinitions are combined into a single collection then the
+         * palette indices are replaced with their colorspace values.
+         *
+         * \return 2D vector containing the colorspace values stored as arrays at each index.
+         */
+        [[nodiscard]] vector<vector<array<uint8_t, 4>>> getImage(const ColorSpace &colorSpace) const;
 
         // ==================
         // Operator Overloads
