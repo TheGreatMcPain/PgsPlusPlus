@@ -81,6 +81,12 @@ const uint8_t &PaletteEntry::getAlpha() const
     return this->alpha;
 }
 
+array<uint8_t, 4> PaletteEntry::getYCrCbA() const
+{
+    const array<uint8_t, 4> color = {this->y, this->cr, this->cb, this->alpha};
+    return color;
+}
+
 uint8_t PaletteEntry::getRed() const
 {
     const auto crLess = this->cr - 128;
@@ -103,6 +109,12 @@ uint8_t PaletteEntry::getBlue() const
     const auto cbLess = this->cb - 128;
     const uint8_t blue = this->y + cbLess + (cbLess >> 1) + (cbLess >> 2) + (cbLess >> 6);
     return blue;
+}
+
+array<uint8_t, 4> PaletteEntry::getRGBA() const
+{
+    const array<uint8_t, 4> color = {this->getRed(), this->getGreen(), this->getBlue(), this->alpha};
+    return color;
 }
 
 // =========================

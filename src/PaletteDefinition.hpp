@@ -23,11 +23,15 @@
 #include "pgs.hpp"
 #include "SegmentData.hpp"
 #include <cstdint>
+#include <array>
 #include <vector>
+#include <map>
 #include <memory>
 
 using std::shared_ptr;
 using std::vector;
+using std::map;
+using std::array;
 
 namespace Pgs
 {
@@ -74,11 +78,23 @@ namespace Pgs
 
         [[nodiscard]] const uint8_t &getAlpha() const;
 
+        /**
+         * \brief Gets all color components including alpha in the YCrCb format.
+         * \return array containing YCrCBA color data.
+         */
+        [[nodiscard]] array<uint8_t, 4> getYCrCbA() const;
+
         [[nodiscard]] uint8_t getRed() const;
 
         [[nodiscard]] uint8_t getGreen() const;
 
         [[nodiscard]] uint8_t getBlue() const;
+
+        /**
+         * \brief Gets all color components including alpha in the RGB format.
+         * \return array containing RGBA color data.
+         */
+        [[nodiscard]] array<uint8_t, 4> getRGBA() const;
     };
 
     /**
