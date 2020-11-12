@@ -257,4 +257,12 @@ uint32_t Subtitle::getDecodingTimeMs() const noexcept
     return this->decodingTime / 90;
 }
 
+const uint8_t & Subtitle::getNumObjectDefinitions() const noexcept
+{
+    return this->numObjectDefinitions;
+}
 
+bool Subtitle::containsImage() const noexcept
+{
+    return this->numObjectDefinitions > 0;
+}

@@ -42,6 +42,13 @@ add_test(NAME "PgsTest" COMMAND pgs-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}
 
 # Subtitle Test
 
+find_package(PkgConfig REQUIRED)
+
+pkg_check_modules(magick REQUIRED GraphicsMagick++)
+
+message(STATUS "Magick include dirs: ${magick_INCLUDE_DIRS}")
+message(STATUS "Magick link libraries: ${magick_LIBRARIES}")
+
 add_executable(subtitle-test SubtitleTest.cpp)
 
 target_include_directories(subtitle-test PUBLIC
@@ -50,12 +57,19 @@ target_include_directories(subtitle-test PUBLIC
 
 target_include_directories(subtitle-test PRIVATE SYSTEM
         ${GTest_INCLUDE_DIRS}
+        ${magick_INCLUDE_DIRS}
         )
 
 target_link_libraries(subtitle-test PRIVATE
         pgs
         GTest::GTest
         GTest::Main
+        ${magick_LIBRARIES}
+        )
+
+target_compile_features(subtitle-test PUBLIC
+        cxx_std_17
+        cxx_auto_type
         )
 
 add_test(NAME "SubtitleTest" COMMAND subtitle-test WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/)

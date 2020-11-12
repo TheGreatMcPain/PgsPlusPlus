@@ -74,7 +74,7 @@ namespace Pgs
         /**
          * \brief Number of object definition segments in this subtitle. Value can be 0-2.
          */
-        uint8_t numObjectDefinitions;
+        [[maybe_unused]] uint8_t numObjectDefinitions;
 
         /**
          * \brief Array containing shared pointers to imported object definition segments.
@@ -181,19 +181,19 @@ namespace Pgs
          * \brief Retrieves a shared pointer to the PresentationComposition attached to this instance.
          * \return shared pointer to the PresentationComposition
          */
-        [[maybe_unused]] shared_ptr<PresentationComposition> getPcs() const noexcept;
+        [[maybe_unused]] [[nodiscard]] shared_ptr<PresentationComposition> getPcs() const noexcept;
 
         /**
          * \brief Retrieves a shared pointer to the WindowDefinition attached to this instance.
          * \return shared pointer to the WindowDefinition
          */
-        [[maybe_unused]] shared_ptr<WindowDefinition> getWds() const noexcept;
+        [[maybe_unused]] [[nodiscard]] shared_ptr<WindowDefinition> getWds() const noexcept;
 
         /**
          * \brief Retrieves a shared pointer to the PaletteDefinition attached to this instance.
          * \return shared pointer to the PaletteDefinition
          */
-        [[maybe_unused]] shared_ptr<PaletteDefinition> getPds() const noexcept;
+        [[maybe_unused]] [[nodiscard]] shared_ptr<PaletteDefinition> getPds() const noexcept;
 
         /**
          * \brief Retrieves a shared pointer to the selected ObjectDefinition attached to this instance.
@@ -205,30 +205,78 @@ namespace Pgs
          * \param index index of ObjectDefinition to access.
          * \return shared pointer to selected ObjectDefinition
          */
-        [[maybe_unused]] shared_ptr<ObjectDefinition> getOds(const uint8_t &index) const noexcept;
+        [[maybe_unused]] [[nodiscard]] shared_ptr<ObjectDefinition> getOds(const uint8_t &index) const noexcept;
 
         /**
          * \brief Retrieves the presentationTime exactly as it's stored in this instance.
          * \return presentationTime with 90kHz accuracy
          */
-        [[maybe_unused]] const uint32_t &getPresentationTime() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint32_t &getPresentationTime() const noexcept;
 
         /**
          * \brief Retrieves the presentationTime as a millisecond value.
          * \return presentationTime with millisecond accuracy
          */
-        [[maybe_unused]] uint32_t getPresentationTimeMs() const noexcept;
+        [[maybe_unused]] [[nodiscard]] uint32_t getPresentationTimeMs() const noexcept;
 
         /**
          * \brief Retrieves the decodingTime exactly as it's stored in this instance.
          * \return decodingTime with 90kHz accuracy
          */
-        [[maybe_unused]] const uint32_t &getDecodingTime() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint32_t &getDecodingTime() const noexcept;
 
         /**
          * \brief Retrieves the decodingTime as a millisecond value.
          * \return decodingTime with millisecond accuracy
          */
-        [[maybe_unused]] uint32_t getDecodingTimeMs() const noexcept;
+        [[maybe_unused]] [[nodiscard]] uint32_t getDecodingTimeMs() const noexcept;
+
+        /**
+         * \brief Retrieves the number of object definitions in the Subtitle.
+         * \return number of object definitions
+         */
+        [[maybe_unused]] [[nodiscard]] const uint8_t &getNumObjectDefinitions() const noexcept;
+
+        /**
+         * \brief Quick check to confirm whether the Subtitle contains an image.
+         * \return true if image data is present
+         */
+        [[maybe_unused]] [[nodiscard]] bool containsImage() const noexcept;
+
+        // ==================
+        // Operator Overloads
+        // ==================
+
+        // Relational Comparisons
+
+        inline friend bool operator< (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return lhs.presentationTime < rhs.presentationTime;
+        }
+
+        inline friend bool operator> (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return rhs < lhs;
+        }
+
+        inline friend bool operator<= (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return !(lhs > rhs);
+        }
+
+        inline friend bool operator>= (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return !(lhs < rhs);
+        }
+
+        inline friend bool operator== (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return lhs.presentationTime == rhs.presentationTime;
+        }
+
+        inline friend bool operator!= (const Subtitle &lhs, const Subtitle &rhs)
+        {
+            return !(lhs == rhs);
+        }
     };
 }

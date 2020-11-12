@@ -126,7 +126,7 @@ PaletteDefinition::PaletteDefinition() : SegmentData()
     this->id = 0u;
     this->version = 0u;
     this->numEntries = 0u;
-    this->entries = vector<shared_ptr<PaletteEntry>>();
+    this->entries = map<uint8_t, shared_ptr<PaletteEntry>>();
 }
 
 uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
@@ -152,10 +152,10 @@ uint16_t PaletteDefinition::import(const char *data, const uint16_t &size)
 
     this->numEntries = remainingSize / PaletteEntry::MIN_BYTE_SIZE;
 
-    this->entries.reserve(this->numEntries);
     for (uint8_t i = 0; i < this->numEntries; ++i)
     {
-        this->entries.push_back(PaletteEntry::create(data, remainingSize, readPos));
+        auto entry = PaletteEntry::create(data, remainingSize, readPos);
+        this->entries.insert(std::make_pair(entry->getId(), entry));
         remainingSize = size - readPos;
     }
 
@@ -181,7 +181,7 @@ const uint8_t &PaletteDefinition::getNumEntries() const
     return this->numEntries;
 }
 
-const vector<shared_ptr<PaletteEntry>> &PaletteDefinition::getEntries() const
+const map<uint8_t, shared_ptr<PaletteEntry>> & PaletteDefinition::getEntries() const
 {
     return this->entries;
 }

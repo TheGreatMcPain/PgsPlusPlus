@@ -106,7 +106,7 @@ namespace Pgs
         uint8_t id; /**< Palette ID */
         uint8_t version; /**< Version of palette within the epoch. */
         uint8_t numEntries; /**< Number of palette entries. Computed from remaining data in segment. */
-        vector<shared_ptr<PaletteEntry>> entries; /**< Vector of PaletteEntries in this segment */
+        map<uint8_t, shared_ptr<PaletteEntry>> entries; /**< Vector of PaletteEntries in this segment */
     public:
         /**
          * \brief Minimum number of bytes needed to create a basic PaletteDefinition instance.
@@ -146,6 +146,6 @@ namespace Pgs
          * \brief Gets the vector of palette entries controlled by this instance
          * \return vector of palette entries.
          */
-        const vector<shared_ptr<PaletteEntry>> &getEntries() const;
+        const map<uint8_t, shared_ptr<PaletteEntry>> & getEntries() const;
     };
 }

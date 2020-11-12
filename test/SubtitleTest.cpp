@@ -19,14 +19,19 @@
 */
 
 #include <gtest/gtest.h>
+#include <GraphicsMagick/Magick++.h>
 
-#include <fstream>
 #include <src/Subtitle.hpp>
+#include <fstream>
 #include <memory>
 #include <vector>
+#include <filesystem>
+#include <string>
 
 using std::vector;
 using std::shared_ptr;
+
+namespace fs = std::filesystem;
 
 class SubtitleTest : public ::testing::Test
 {
@@ -40,6 +45,8 @@ protected:
     {
         this->shortSUPStream.seekg(std::ios::beg);
         this->fullSUPStream.seekg(std::ios::beg);
+
+        fs::remove_all("./out");
     }
 
     SubtitleTest()
@@ -124,13 +131,38 @@ TEST_F(SubtitleTest, importEmptySubtitle)
 
 TEST_F(SubtitleTest, importShortSubtitleFile)
 {
-    char *data = new char[this->shortFileSize];
-    this->shortSUPStream.readsome(data, this->shortFileSize);
+    const auto data = std::unique_ptr<char>(new char[this->shortFileSize]);
+    this->shortSUPStream.readsome(data.get(), this->shortFileSize);
 
     vector<shared_ptr<Pgs::Subtitle>> subtitles;
-    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data, this->shortFileSize));
-    delete[] data;
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->shortFileSize));
 }
+
+//TEST_F(SubtitleTest, exportShortSubtitleImages)
+//{
+//    const auto data = std::unique_ptr<char>(new char[this->shortFileSize]);
+//    this->shortSUPStream.readsome(data.get(), this->shortFileSize);
+//
+//    vector<shared_ptr<Pgs::Subtitle>> subtitles;
+//    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->shortFileSize));
+//
+//    fs::path outDir = fs::path("./out");
+//    fs::create_directories(outDir);
+//
+//    for (const auto &sub : subtitles)
+//    {
+//        const std::string fileName = std::to_string(sub->getPresentationTimeMs()) + ".png";
+//        const auto numODS = sub->getNumObjectDefinitions();
+//
+//        Magick::Image image = Magick::Image();
+//
+//        for (uint8_t i = 0; i < numODS; ++i)
+//        {
+//            const auto objectData = sub->getOds(i)->getDecodedObjectData();
+//
+//        }
+//    }
+//}
 
 TEST_F(SubtitleTest, importFullSubtitleFile)
 {
@@ -144,6 +176,7 @@ TEST_F(SubtitleTest, importFullSubtitleFile)
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
+    Magick::InitializeMagick(nullptr);
     return RUN_ALL_TESTS();
 }
 
