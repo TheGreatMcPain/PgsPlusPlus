@@ -31,24 +31,40 @@ using std::shared_ptr;
 class SubtitleTest : public ::testing::Test
 {
 protected:
-    std::ifstream supFileStream;
-    uint32_t fileSize;
+    std::ifstream shortSUPStream;
+    uint32_t shortFileSize;
+    std::ifstream fullSUPStream;
+    uint32_t fullFileSize;
 
     void SetUp() override
     {
-        this->supFileStream.seekg(std::ios::beg);
+        this->shortSUPStream.seekg(std::ios::beg);
+        this->fullSUPStream.seekg(std::ios::beg);
     }
 
     SubtitleTest()
     {
-        this->supFileStream = std::ifstream("./res/subs_short.sup", std::ios::binary | std::ios::in | std::ios::ate);
-        this->fileSize = supFileStream.tellg();
-        this->supFileStream.seekg(std::ios::beg);
+        this->shortSUPStream = std::ifstream("./res/subs_short.sup", std::ios::binary | std::ios::in | std::ios::ate);
+        if (!this->shortSUPStream.is_open())
+        {
+            throw std::runtime_error("Failed to open short subtitle test file.");
+        }
+        this->shortFileSize = shortSUPStream.tellg();
+        this->shortSUPStream.seekg(std::ios::beg);
+
+        this->fullSUPStream = std::ifstream ("./res/subs.sup", std::ios::binary | std::ios::in | std::ios::ate);
+        if (!this->fullSUPStream.is_open())
+        {
+            throw std::runtime_error("Failed to open large subtitle test file.");
+        }
+        this->fullFileSize = fullSUPStream.tellg();
+        this->fullSUPStream.seekg(std::ios::beg);
     }
 
     ~SubtitleTest() override
     {
-        this->supFileStream.close();
+        this->shortSUPStream.close();
+        this->fullSUPStream.close();
     }
 };
 
@@ -61,10 +77,10 @@ TEST_F(SubtitleTest, importNullData)
 TEST_F(SubtitleTest, importSmallSubtitle)
 {
     const uint32_t dataSize = 4086;
-    this->supFileStream.seekg(std::ios::beg + 0x8C);
+    this->shortSUPStream.seekg(std::ios::beg + 0x8C);
 
     char *data = new char[dataSize];
-    this->supFileStream.readsome(data, dataSize);
+    this->shortSUPStream.readsome(data, dataSize);
 
     shared_ptr<Pgs::Subtitle> subtitle;
     uint32_t readPos = 0u;
@@ -77,10 +93,10 @@ TEST_F(SubtitleTest, importSmallSubtitle)
 TEST_F(SubtitleTest, importLargeSubtitle)
 {
     const uint32_t dataSize = 27120;
-    this->supFileStream.seekg(std::ios::beg + 0x17BFD6);
+    this->shortSUPStream.seekg(std::ios::beg + 0x17BFD6);
 
     char *data = new char[dataSize];
-    this->supFileStream.readsome(data, dataSize);
+    this->shortSUPStream.readsome(data, dataSize);
 
     shared_ptr<Pgs::Subtitle> subtitle;
     uint32_t readPos = 0u;
@@ -93,10 +109,10 @@ TEST_F(SubtitleTest, importLargeSubtitle)
 TEST_F(SubtitleTest, importEmptySubtitle)
 {
     const uint32_t dataSize = 60;
-    this->supFileStream.seekg(std::ios::beg + 0x17BF9A);
+    this->shortSUPStream.seekg(std::ios::beg + 0x17BF9A);
 
     char *data = new char[dataSize];
-    this->supFileStream.readsome(data, dataSize);
+    this->shortSUPStream.readsome(data, dataSize);
 
     shared_ptr<Pgs::Subtitle> subtitle;
     uint32_t readPos = 0u;
@@ -106,15 +122,23 @@ TEST_F(SubtitleTest, importEmptySubtitle)
     ASSERT_EQ(readPos, dataSize);
 }
 
-TEST_F(SubtitleTest, importAllSubtitles)
+TEST_F(SubtitleTest, importShortSubtitleFile)
 {
-    char *data = new char[this->fileSize];
-    this->supFileStream.readsome(data, this->fileSize);
+    char *data = new char[this->shortFileSize];
+    this->shortSUPStream.readsome(data, this->shortFileSize);
 
     vector<shared_ptr<Pgs::Subtitle>> subtitles;
-    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data, this->fileSize));
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data, this->shortFileSize));
     delete[] data;
+}
 
+TEST_F(SubtitleTest, importFullSubtitleFile)
+{
+    const auto data = std::unique_ptr<char>(new char[this->fullFileSize]);
+    this->fullSUPStream.readsome(data.get(), this->fullFileSize);
+
+    vector<shared_ptr<Pgs::Subtitle>> subtitles;
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->fullFileSize));
 }
 
 int main(int argc, char *argv[])

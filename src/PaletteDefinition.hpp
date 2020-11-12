@@ -36,6 +36,11 @@ namespace Pgs
      */
     class PaletteEntry
     {
+    private:
+        // ITU-R BT.709 color space conversion constants
+        constexpr static const double Kb = 0.0722f;
+        constexpr static const double Kr = 0.2126f;
+        constexpr static const double Kg = 0.7152f;
     protected:
         uint8_t id = 0u; /**< Palette Entry ID */
         uint8_t y = 0u; /**< Luminance value of the color (0-255) */
@@ -59,15 +64,21 @@ namespace Pgs
         // Getters
         // =======
 
-        const uint8_t &getId() const;
+        [[nodiscard]] const uint8_t &getId() const;
 
-        const uint8_t &getY() const;
+        [[nodiscard]] const uint8_t &getY() const;
 
-        const uint8_t &getCr() const;
+        [[nodiscard]] const uint8_t &getCr() const;
 
-        const uint8_t &getCb() const;
+        [[nodiscard]] const uint8_t &getCb() const;
 
-        const uint8_t &getAlpha() const;
+        [[nodiscard]] const uint8_t &getAlpha() const;
+
+        [[nodiscard]] uint8_t getRed() const;
+
+        [[nodiscard]] uint8_t getGreen() const;
+
+        [[nodiscard]] uint8_t getBlue() const;
     };
 
     /**

@@ -71,6 +71,12 @@ namespace Pgs
 
         ~Segment();
 
+        /**
+         * \brief Gets the size of a single segment in the provided data.
+         * \param data raw data array to read from
+         * \param size size of provided array
+         * \return size of first detected segment.
+         */
         static uint16_t getSegmentSize(const char *data, const uint16_t &size) noexcept;
 
         uint16_t import(const char *inData, const uint32_t &size);

@@ -81,6 +81,33 @@ const uint8_t &PaletteEntry::getAlpha() const
     return this->alpha;
 }
 
+uint8_t PaletteEntry::getRed() const
+{
+    const auto crLess = this->cr - 128;
+    const uint8_t red = this->y + crLess + (crLess >> 2) + (crLess >> 3) + (crLess >> 5);
+    return red;
+}
+
+uint8_t PaletteEntry::getGreen() const
+{
+    const auto crLess = this->cr - 128;
+    const auto cbLess = this->cb - 128;
+    const uint8_t comp0 = (cbLess >> 2) + (cbLess >> 4) + (cbLess >> 5);
+    const uint8_t comp1 = (crLess >> 1) + (crLess >> 3) + (crLess >> 4) + (crLess >> 5);
+    const uint8_t green = comp0 - comp1;
+    return green;
+}
+
+uint8_t PaletteEntry::getBlue() const
+{
+    const auto cbLess = this->cb - 128;
+    const uint8_t blue = this->y + cbLess + (cbLess >> 1) + (cbLess >> 2) + (cbLess >> 6);
+    return blue;
+}
+
+// =========================
+// PaletteDefinition methods
+// =========================
 
 PaletteDefinition::PaletteDefinition() : SegmentData()
 {

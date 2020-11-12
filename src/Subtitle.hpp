@@ -119,6 +119,12 @@ namespace Pgs
          */
         void importEnd(const Segment &segment);
 
+        /**
+         * \brief Gets size of next subtitle in the data array
+         * \param data raw data array
+         * \param size number of bytes in provided array
+         * \return size of subtitle in bytes.
+         */
         static uint32_t getSubtitleSize(const char *data, const uint32_t &size);
     public:
         /**
