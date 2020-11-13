@@ -139,7 +139,7 @@ TEST_F(SubtitleTest, importShortSubtitleFile)
     ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->shortFileSize));
 }
 
-TEST_F(SubtitleTest, exportShortSubtitleImages)
+TEST_F(SubtitleTest, exportSubtitleImagesShort)
 {
     const auto data = std::unique_ptr<char>(new char[this->shortFileSize]);
     this->shortSUPStream.readsome(data.get(), this->shortFileSize);
@@ -217,6 +217,77 @@ TEST_F(SubtitleTest, importFullSubtitleFile)
 
     vector<shared_ptr<Pgs::Subtitle>> subtitles;
     ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->fullFileSize));
+}
+
+TEST_F(SubtitleTest, exportSubtitleImagesFull)
+{
+    const auto data = std::unique_ptr<char>(new char[this->fullFileSize]);
+    this->fullSUPStream.readsome(data.get(), this->fullFileSize);
+
+    vector<shared_ptr<Pgs::Subtitle>> subtitles;
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->fullFileSize));
+
+    fs::path outDir = fs::path("./out");
+    fs::create_directories(outDir);
+
+    const auto quantumScale = static_cast<uint32_t>((1 << QuantumDepth) - 1);
+
+#pragma omp parallel for default(none) shared(quantumScale, subtitles) private(outDir)
+    for (uint32_t i = 0; i < subtitles.size(); ++i)
+    {
+        const auto &sub = subtitles[i];
+
+        outDir = fs::path("./out");
+        if (!sub->containsImage())
+        {
+            continue;
+        }
+
+        const auto filePath = outDir.append(std::to_string(sub->getPresentationTimeMs()) + ".png");
+        const auto imgData = sub->getImage(Pgs::ColorSpace::RGBA);
+        const auto objHeight = sub->getOds(0)->getHeight();
+        const auto objWidth = sub->getOds(0)->getWidth();
+
+        Magick::Image image(Magick::Geometry(objWidth, objHeight),
+                            Magick::Color(0, 0, UINT8_MAX, 0));
+        image.modifyImage();
+        image.type(Magick::ImageType::TrueColorMatteType);
+        image.colorSpace(Magick::ColorspaceType::RGBColorspace);
+
+        Magick::Pixels pixelView(image);
+        for (uint16_t row = 0; row < objHeight; ++row)
+        {
+            for (uint16_t col = 0; col < objWidth; ++col)
+            {
+                const auto &color = imgData[row][col];
+                const auto red = static_cast<uint16_t>(color[0]);
+                const auto green = static_cast<uint16_t>(color[1]);
+                const auto blue = static_cast<uint16_t>(color[2]);
+                const auto alpha = static_cast<uint16_t>(color[3]);
+
+                const auto scaledRed = static_cast<uint16_t>(
+                        (static_cast<double>(red) / static_cast<double>(UINT8_MAX)) *
+                        quantumScale);
+                const auto scaledGreen = static_cast<uint16_t>(
+                        (static_cast<double>(green) / static_cast<double>(UINT8_MAX)) *
+                        quantumScale);
+                const auto scaledBlue = static_cast<uint16_t>(
+                        (static_cast<double>(blue) / static_cast<double>(UINT8_MAX)) *
+                        quantumScale);
+                const auto scaledAlpha = static_cast<uint16_t>(
+                        (static_cast<double>(UINT8_MAX - alpha) / static_cast<double>(UINT8_MAX)) *
+                        quantumScale);
+
+                *(pixelView.get(col, row, 1, 1)) = Magick::Color(scaledRed, scaledGreen, scaledBlue, scaledAlpha);
+            }
+        }
+        image.syncPixels();
+
+        image.matte(true);
+        image.magick("PNG32");
+
+        image.write(filePath.string());
+    }
 }
 
 int main(int argc, char *argv[])
