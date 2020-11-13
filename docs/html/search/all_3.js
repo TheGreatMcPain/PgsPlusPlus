@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entries_21',['entries',['../classPgs_1_1PaletteDefinition.html#acae51881a39f19b80d9c0b7761b646e9',1,'Pgs::PaletteDefinition']]]
+  ['entries_22',['entries',['../classPgs_1_1PaletteDefinition.html#ab6b8cff58cc1d71da03990ff92baa4f6',1,'Pgs::PaletteDefinition']]]
 ];

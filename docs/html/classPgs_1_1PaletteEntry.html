@@ -120,6 +120,21 @@ const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCb<
 <tr class="memitem:a40eec013962aa05c246e0f6bff3308f8"><td class="memItemLeft" align="right" valign="top"><a id="a40eec013962aa05c246e0f6bff3308f8"></a>
 const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAlpha</b> () const</td></tr>
 <tr class="separator:a40eec013962aa05c246e0f6bff3308f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9a84ab9e54443d3aba66889e1ede7d"><td class="memItemLeft" align="right" valign="top">array&lt; uint8_t, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a7f9a84ab9e54443d3aba66889e1ede7d">getYCrCbA</a> () const</td></tr>
+<tr class="memdesc:a7f9a84ab9e54443d3aba66889e1ede7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all color components including alpha in the YCrCb format.  <a href="classPgs_1_1PaletteEntry.html#a7f9a84ab9e54443d3aba66889e1ede7d">More...</a><br /></td></tr>
+<tr class="separator:a7f9a84ab9e54443d3aba66889e1ede7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65e7fc0b26a9d00c43be0a1d8616d31"><td class="memItemLeft" align="right" valign="top"><a id="ae65e7fc0b26a9d00c43be0a1d8616d31"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getRed</b> () const</td></tr>
+<tr class="separator:ae65e7fc0b26a9d00c43be0a1d8616d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1513cd0bb687af1114bdadf7cebd69"><td class="memItemLeft" align="right" valign="top"><a id="a2f1513cd0bb687af1114bdadf7cebd69"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getGreen</b> () const</td></tr>
+<tr class="separator:a2f1513cd0bb687af1114bdadf7cebd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf2af69b37f9b40c26a53f98c745d0b"><td class="memItemLeft" align="right" valign="top"><a id="abcf2af69b37f9b40c26a53f98c745d0b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getBlue</b> () const</td></tr>
+<tr class="separator:abcf2af69b37f9b40c26a53f98c745d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862232d34bcb96ae63efe063e2cae82a"><td class="memItemLeft" align="right" valign="top">array&lt; uint8_t, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PaletteEntry.html#a862232d34bcb96ae63efe063e2cae82a">getRGBA</a> () const</td></tr>
+<tr class="memdesc:a862232d34bcb96ae63efe063e2cae82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all color components including alpha in the RGB format.  <a href="classPgs_1_1PaletteEntry.html#a862232d34bcb96ae63efe063e2cae82a">More...</a><br /></td></tr>
+<tr class="separator:a862232d34bcb96ae63efe063e2cae82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -149,7 +164,48 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A single color palette used in a PGS subtitle image. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a862232d34bcb96ae63efe063e2cae82a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862232d34bcb96ae63efe063e2cae82a">&#9670;&nbsp;</a></span>getRGBA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">array&lt; uint8_t, 4 &gt; PaletteEntry::getRGBA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets all color components including alpha in the RGB format. </p>
+<dl class="section return"><dt>Returns</dt><dd>array containing RGBA color data. </dd></dl>
+
+</div>
+</div>
+<a id="a7f9a84ab9e54443d3aba66889e1ede7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f9a84ab9e54443d3aba66889e1ede7d">&#9670;&nbsp;</a></span>getYCrCbA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">array&lt; uint8_t, 4 &gt; PaletteEntry::getYCrCbA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets all color components including alpha in the YCrCb format. </p>
+<dl class="section return"><dt>Returns</dt><dd>array containing YCrCBA color data. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a6c98d69396425b917e7c792815b6bb32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c98d69396425b917e7c792815b6bb32">&#9670;&nbsp;</a></span>alpha</h2>
 

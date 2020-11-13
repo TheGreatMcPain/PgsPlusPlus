@@ -87,7 +87,9 @@ $(document).ready(function(){initNavTree('classPgs_1_1Subtitle.html',''); initRe
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classPgs_1_1Subtitle-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgs::Subtitle Class Reference</div>  </div>
@@ -132,6 +134,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2753c644c89a2981715e10da86086c08"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a2753c644c89a2981715e10da86086c08">getDecodingTimeMs</a> () const noexcept</td></tr>
 <tr class="memdesc:a2753c644c89a2981715e10da86086c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the decodingTime as a millisecond value.  <a href="classPgs_1_1Subtitle.html#a2753c644c89a2981715e10da86086c08">More...</a><br /></td></tr>
 <tr class="separator:a2753c644c89a2981715e10da86086c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b868c14abfff824a74d06bc971f8dc9"><td class="memItemLeft" align="right" valign="top">const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a0b868c14abfff824a74d06bc971f8dc9">getNumObjectDefinitions</a> () const noexcept</td></tr>
+<tr class="memdesc:a0b868c14abfff824a74d06bc971f8dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the number of object definitions in the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a>.  <a href="classPgs_1_1Subtitle.html#a0b868c14abfff824a74d06bc971f8dc9">More...</a><br /></td></tr>
+<tr class="separator:a0b868c14abfff824a74d06bc971f8dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e753f14f679a51a146201e89d97483"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a60e753f14f679a51a146201e89d97483">containsImage</a> () const noexcept</td></tr>
+<tr class="memdesc:a60e753f14f679a51a146201e89d97483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quick check to confirm whether the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> contains an image.  <a href="classPgs_1_1Subtitle.html#a60e753f14f679a51a146201e89d97483">More...</a><br /></td></tr>
+<tr class="separator:a60e753f14f679a51a146201e89d97483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08427dcdeb019ad4d9a1fb71a43391f7"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; array&lt; uint8_t, 4 &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a08427dcdeb019ad4d9a1fb71a43391f7">getImage</a> (const ColorSpace &amp;colorSpace) const</td></tr>
+<tr class="memdesc:a08427dcdeb019ad4d9a1fb71a43391f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates raw, decompressed image data from the associated ObjectDefinitions.  <a href="classPgs_1_1Subtitle.html#a08427dcdeb019ad4d9a1fb71a43391f7">More...</a><br /></td></tr>
+<tr class="separator:a08427dcdeb019ad4d9a1fb71a43391f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -147,12 +158,24 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a0c28097df6e88c2b384b01218f095e3c"><td class="memItemLeft" align="right" valign="top"><a id="a0c28097df6e88c2b384b01218f095e3c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>importPcs</b> (const shared_ptr&lt; <a class="el" href="classPgs_1_1SegmentData.html">SegmentData</a> &gt; &amp;segmentData)</td></tr>
+<tr class="separator:a0c28097df6e88c2b384b01218f095e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d6add396c72582db6a1579d887ad6a"><td class="memItemLeft" align="right" valign="top"><a id="a96d6add396c72582db6a1579d887ad6a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>importWds</b> (const shared_ptr&lt; <a class="el" href="classPgs_1_1SegmentData.html">SegmentData</a> &gt; &amp;segmentData)</td></tr>
+<tr class="separator:a96d6add396c72582db6a1579d887ad6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60fe8ce19c0f7ef97c409ab844720858"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a60fe8ce19c0f7ef97c409ab844720858">importOds</a> (const shared_ptr&lt; <a class="el" href="classPgs_1_1SegmentData.html">SegmentData</a> &gt; &amp;segmentData)</td></tr>
 <tr class="memdesc:a60fe8ce19c0f7ef97c409ab844720858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports the provided <a class="el" href="classPgs_1_1SegmentData.html" title="Abstract base class for classes used for storing segment data.">SegmentData</a> as an <a class="el" href="classPgs_1_1ObjectDefinition.html" title="Subclass of SegmentData containing information needed for constructing a subtitle image.">ObjectDefinition</a>.  <a href="classPgs_1_1Subtitle.html#a60fe8ce19c0f7ef97c409ab844720858">More...</a><br /></td></tr>
 <tr class="separator:a60fe8ce19c0f7ef97c409ab844720858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af16f52a589e55ff2113e5779eb222a68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#af16f52a589e55ff2113e5779eb222a68">importEnd</a> (const <a class="el" href="classPgs_1_1Segment.html">Segment</a> &amp;segment)</td></tr>
 <tr class="memdesc:af16f52a589e55ff2113e5779eb222a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imports an End <a class="el" href="classPgs_1_1Segment.html" title="Full object definition of a PGS data segment.">Segment</a>.  <a href="classPgs_1_1Subtitle.html#af16f52a589e55ff2113e5779eb222a68">More...</a><br /></td></tr>
 <tr class="separator:af16f52a589e55ff2113e5779eb222a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a3c780399c3e648251cf6e15b4174ce7b"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a3c780399c3e648251cf6e15b4174ce7b">getSubtitleSize</a> (const char *data, const uint32_t &amp;size)</td></tr>
+<tr class="memdesc:a3c780399c3e648251cf6e15b4174ce7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets size of next subtitle in the data array.  <a href="classPgs_1_1Subtitle.html#a3c780399c3e648251cf6e15b4174ce7b">More...</a><br /></td></tr>
+<tr class="separator:a3c780399c3e648251cf6e15b4174ce7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -182,11 +205,78 @@ array&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1ObjectDefinition.html">
 <tr class="memitem:a502f318c837d9d41e064cd70fb108883"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1Subtitle.html#a502f318c837d9d41e064cd70fb108883">presentationTime</a></td></tr>
 <tr class="memdesc:a502f318c837d9d41e064cd70fb108883"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time since the start of the stream when to present the subtitle.  <a href="classPgs_1_1Subtitle.html#a502f318c837d9d41e064cd70fb108883">More...</a><br /></td></tr>
 <tr class="separator:a502f318c837d9d41e064cd70fb108883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57cb855716a8b6cd73ff283a113d64b"><td class="memItemLeft" align="right" valign="top"><a id="ad57cb855716a8b6cd73ff283a113d64b"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>streamWidth</b> = 0u</td></tr>
+<tr class="separator:ad57cb855716a8b6cd73ff283a113d64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f644c0f2141071f04c0283642be639a"><td class="memItemLeft" align="right" valign="top"><a id="a5f644c0f2141071f04c0283642be639a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>streamHeight</b> = 0u</td></tr>
+<tr class="separator:a5f644c0f2141071f04c0283642be639a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaebb8d7bf3ff11ed7277e2841101d07d"><td class="memItemLeft" align="right" valign="top"><a id="aaebb8d7bf3ff11ed7277e2841101d07d"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>xOffset</b> = 0u</td></tr>
+<tr class="separator:aaebb8d7bf3ff11ed7277e2841101d07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8745bcde897f7ca48a1da5e6290393a"><td class="memItemLeft" align="right" valign="top"><a id="ad8745bcde897f7ca48a1da5e6290393a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>yOffset</b> = 0u</td></tr>
+<tr class="separator:ad8745bcde897f7ca48a1da5e6290393a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a335f83b958198d23d4b3a5aa7a906a33"><td class="memItemLeft" align="right" valign="top"><a id="a335f83b958198d23d4b3a5aa7a906a33"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> = 0u</td></tr>
+<tr class="separator:a335f83b958198d23d4b3a5aa7a906a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee01a3f90f097143a97fc5842eb60ae"><td class="memItemLeft" align="right" valign="top"><a id="a5ee01a3f90f097143a97fc5842eb60ae"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> = 0u</td></tr>
+<tr class="separator:a5ee01a3f90f097143a97fc5842eb60ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0132528346dfb273239cce709e3964dd"><td class="memItemLeft" align="right" valign="top"><a id="a0132528346dfb273239cce709e3964dd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:a0132528346dfb273239cce709e3964dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8929653d673aac50212b61f952577633"><td class="memItemLeft" align="right" valign="top"><a id="a8929653d673aac50212b61f952577633"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:a8929653d673aac50212b61f952577633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af19dc98e8f94f85b615838afa247391f"><td class="memItemLeft" align="right" valign="top"><a id="af19dc98e8f94f85b615838afa247391f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:af19dc98e8f94f85b615838afa247391f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5068ce7b9b37e2d8b9eb3b8ce024124"><td class="memItemLeft" align="right" valign="top"><a id="ac5068ce7b9b37e2d8b9eb3b8ce024124"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:ac5068ce7b9b37e2d8b9eb3b8ce024124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac91bd8d34769eef524709e7be899b9ea"><td class="memItemLeft" align="right" valign="top"><a id="ac91bd8d34769eef524709e7be899b9ea"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:ac91bd8d34769eef524709e7be899b9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40415f181770d62e53d892286fe21e5"><td class="memItemLeft" align="right" valign="top"><a id="af40415f181770d62e53d892286fe21e5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;lhs, const <a class="el" href="classPgs_1_1Subtitle.html">Subtitle</a> &amp;rhs)</td></tr>
+<tr class="separator:af40415f181770d62e53d892286fe21e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> class takes the data from imported PGS segments, copies relevant data to its own instance, and retains pointers to the imported segments so that a user may access less commonly-used data. </p>
 <p>On segment import, this class <b>copies</b> relevant data to itself. While a pointer to the original segment class is retained, updates to data stored in this class are not reflected in the associated segment instance and vice versa. If the user wishes to update data in both places, they should first update the segment instance then re-import it in the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> instance. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a60e753f14f679a51a146201e89d97483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e753f14f679a51a146201e89d97483">&#9670;&nbsp;</a></span>containsImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Subtitle::containsImage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Quick check to confirm whether the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a> contains an image. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if image data is present </dd></dl>
+
+</div>
+</div>
 <a id="a75eb2f8a9194341d4cff7a36d32349a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75eb2f8a9194341d4cff7a36d32349a9">&#9670;&nbsp;</a></span>create() <span class="overload">[1/2]</span></h2>
 
@@ -400,6 +490,62 @@ array&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1ObjectDefinition.html">
 
 </div>
 </div>
+<a id="a08427dcdeb019ad4d9a1fb71a43391f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08427dcdeb019ad4d9a1fb71a43391f7">&#9670;&nbsp;</a></span>getImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; array&lt; uint8_t, 4 &gt; &gt; &gt; Subtitle::getImage </td>
+          <td>(</td>
+          <td class="paramtype">const ColorSpace &amp;&#160;</td>
+          <td class="paramname"><em>colorSpace</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates raw, decompressed image data from the associated ObjectDefinitions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">colorSpace</td><td>ColorSpace to use when converting from <a class="el" href="classPgs_1_1PaletteEntry.html" title="A single color palette used in a PGS subtitle image.">PaletteEntry</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The data from all associated ObjectDefinitions are combined into a single collection then the palette indices are replaced with their colorspace values.</p>
+<dl class="section return"><dt>Returns</dt><dd>2D vector containing the colorspace values stored as arrays at each index. </dd></dl>
+
+</div>
+</div>
+<a id="a0b868c14abfff824a74d06bc971f8dc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b868c14abfff824a74d06bc971f8dc9">&#9670;&nbsp;</a></span>getNumObjectDefinitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t &amp; Subtitle::getNumObjectDefinitions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the number of object definitions in the <a class="el" href="classPgs_1_1Subtitle.html" title="The Subtitle class takes the data from imported PGS segments, copies relevant data to its own instanc...">Subtitle</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of object definitions </dd></dl>
+
+</div>
+</div>
 <a id="a1acee5b06e35d44b8f28a4df358cbe08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1acee5b06e35d44b8f28a4df358cbe08">&#9670;&nbsp;</a></span>getOds()</h2>
 
@@ -545,6 +691,52 @@ array&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1ObjectDefinition.html">
 
 <p>Retrieves the presentationTime as a millisecond value. </p>
 <dl class="section return"><dt>Returns</dt><dd>presentationTime with millisecond accuracy </dd></dl>
+
+</div>
+</div>
+<a id="a3c780399c3e648251cf6e15b4174ce7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c780399c3e648251cf6e15b4174ce7b">&#9670;&nbsp;</a></span>getSubtitleSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Subtitle::getSubtitleSize </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets size of next subtitle in the data array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>raw data array </td></tr>
+    <tr><td class="paramname">size</td><td>number of bytes in provided array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size of subtitle in bytes. </dd></dl>
 
 </div>
 </div>
