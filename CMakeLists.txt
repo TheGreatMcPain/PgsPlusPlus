@@ -25,6 +25,8 @@ set(CMAKE_PROJECT_VERSION_PATCH 0)
 
 # Language level requirements are determined using 'target_compile_features'
 
+option(BUILD_SHARED_LIBS "Builds libpgs as a shared library instead of static." OFF)
+
 add_subdirectory(src)
 
 include(CTest)

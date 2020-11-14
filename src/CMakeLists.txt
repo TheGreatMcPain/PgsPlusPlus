@@ -16,7 +16,7 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 #  USA
 
-add_library(pgs SHARED
+add_library(pgs
         pgs.cpp pgs.hpp
         SegmentData.cpp SegmentData.hpp
         PresentationComposition.cpp PresentationComposition.hpp
@@ -33,3 +33,13 @@ target_compile_features(pgs PUBLIC
         cxx_nullptr
         cxx_range_for
         )
+
+# Set up install instructions
+
+include(GNUInstallDirs)
+
+if (${BUILD_SHARED_LIBS} == on)
+        install(TARGETS pgs LIBRARY)
+else()
+        install(TARGETS pgs ARCHIVE)
+endif()
