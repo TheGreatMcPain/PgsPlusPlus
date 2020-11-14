@@ -18,9 +18,13 @@
  *  USA
 */
 
-#include "pgs.hpp"
+#include "PgsUtil.hpp"
 
 #include "PresentationComposition.hpp"
+
+using std::shared_ptr;
+using std::vector;
+
 
 using namespace Pgs;
 

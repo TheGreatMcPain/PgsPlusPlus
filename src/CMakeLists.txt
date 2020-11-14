@@ -16,15 +16,20 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 #  USA
 
+set(LIBPGS_HEADERS
+        PgsUtil.hpp SegmentData.hpp PresentationComposition.hpp
+        WindowDefinition.hpp PaletteDefinition.hpp Segment.hpp
+        ObjectDefinition.hpp Subtitle.hpp)
+
 add_library(pgs
-        pgs.cpp pgs.hpp
-        SegmentData.cpp SegmentData.hpp
-        PresentationComposition.cpp PresentationComposition.hpp
-        WindowDefinition.cpp WindowDefinition.hpp
-        PaletteDefinition.cpp PaletteDefinition.hpp
-        Segment.cpp Segment.hpp
-        ObjectDefinition.cpp ObjectDefinition.hpp
-        Subtitle.cpp Subtitle.hpp)
+        PgsUtil.cpp SegmentData.cpp PresentationComposition.cpp
+        WindowDefinition.cpp PaletteDefinition.cpp Segment.cpp
+        ObjectDefinition.cpp Subtitle.cpp)
+
+target_include_directories(pgs INTERFACE
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+        "$<INSTALL_INTERFACE:include>"
+        )
 
 target_compile_features(pgs PUBLIC
         cxx_auto_type
@@ -36,10 +41,12 @@ target_compile_features(pgs PUBLIC
 
 # Set up install instructions
 
-include(GNUInstallDirs)
+if (${BUILD_SHARED_LIBS})
+    install(TARGETS pgs LIBRARY)
+else ()
+    install(TARGETS pgs ARCHIVE)
+endif ()
 
-if (${BUILD_SHARED_LIBS} == on)
-        install(TARGETS pgs LIBRARY)
-else()
-        install(TARGETS pgs ARCHIVE)
-endif()
+if (${EXPORT_HEADERS})
+    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs)
+endif ()

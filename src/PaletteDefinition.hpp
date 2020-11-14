@@ -20,18 +20,12 @@
 
 #pragma once
 
-#include "pgs.hpp"
 #include "SegmentData.hpp"
-#include <cstdint>
+
 #include <array>
 #include <vector>
 #include <map>
 #include <memory>
-
-using std::shared_ptr;
-using std::vector;
-using std::map;
-using std::array;
 
 namespace Pgs
 {
@@ -62,7 +56,7 @@ namespace Pgs
          */
         PaletteEntry() = default;
 
-        static shared_ptr<PaletteEntry> create(const char *data, const uint16_t &size, uint16_t &readPos);
+        static std::shared_ptr<PaletteEntry> create(const char *data, const uint16_t &size, uint16_t &readPos);
 
         // =======
         // Getters
@@ -82,7 +76,7 @@ namespace Pgs
          * \brief Gets all color components including alpha in the YCrCb format.
          * \return array containing YCrCBA color data.
          */
-        [[nodiscard]] array<uint8_t, 4> getYCrCbA() const;
+        [[nodiscard]] std::array<uint8_t, 4> getYCrCbA() const;
 
         [[nodiscard]] uint8_t getRed() const;
 
@@ -94,7 +88,7 @@ namespace Pgs
          * \brief Gets all color components including alpha in the RGB format.
          * \return array containing RGBA color data.
          */
-        [[nodiscard]] array<uint8_t, 4> getRGBA() const;
+        [[nodiscard]] std::array<uint8_t, 4> getRGBA() const;
     };
 
     /**
@@ -106,7 +100,7 @@ namespace Pgs
         uint8_t id; /**< Palette ID */
         uint8_t version; /**< Version of palette within the epoch. */
         uint8_t numEntries; /**< Number of palette entries. Computed from remaining data in segment. */
-        map<uint8_t, shared_ptr<PaletteEntry>> entries; /**< Vector of PaletteEntries in this segment */
+        std::map<uint8_t, std::shared_ptr<PaletteEntry>> entries; /**< Vector of PaletteEntries in this segment */
     public:
         /**
          * \brief Minimum number of bytes needed to create a basic PaletteDefinition instance.
@@ -140,12 +134,12 @@ namespace Pgs
          * \brief Gets the number of entries in this palette definition
          * \return number of palette entries
          */
-        const uint8_t &getNumEntries() const;
+        [[nodiscard]] const uint8_t &getNumEntries() const;
 
         /**
          * \brief Gets the vector of palette entries controlled by this instance
          * \return vector of palette entries.
          */
-        [[nodiscard]] const map<uint8_t, shared_ptr<PaletteEntry>> & getEntries() const;
+        [[nodiscard]] const std::map<uint8_t, std::shared_ptr<PaletteEntry>> & getEntries() const;
     };
 }

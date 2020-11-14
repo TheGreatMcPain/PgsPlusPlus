@@ -17,9 +17,19 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
  *  USA
 */
+
 #include "Segment.hpp"
+#include "PresentationComposition.hpp"
+#include "WindowDefinition.hpp"
+#include "PaletteDefinition.hpp"
+#include "ObjectDefinition.hpp"
+#include "PgsUtil.hpp"
 
 #include <cstring>
+
+using std::vector;
+using std::unique_ptr;
+using std::shared_ptr;
 
 using namespace Pgs;
 
@@ -116,7 +126,7 @@ uint16_t Segment::import(const vector<char> &inData)
 // Getters
 // =======
 
-const char *Segment::getMagicNumber() const
+[[maybe_unused]] const char *Segment::getMagicNumber() const
 {
     return this->magicNumber;
 }
@@ -136,7 +146,7 @@ const SegmentType &Segment::getSegmentType() const
     return this->segmentType;
 }
 
-const uint16_t &Segment::getSegmentSize() const
+[[maybe_unused]] const uint16_t &Segment::getSegmentSize() const
 {
     return this->segmentSize;
 }

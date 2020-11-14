@@ -23,11 +23,20 @@ set(CMAKE_PROJECT_VERSION_MAJOR 0)
 set(CMAKE_PROJECT_VERSION_MINOR 1)
 set(CMAKE_PROJECT_VERSION_PATCH 0)
 
-# Language level requirements are determined using 'target_compile_features'
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-option(BUILD_SHARED_LIBS "Builds libpgs as a shared library instead of static." OFF)
+# Extra language level requirements are determined using 'target_compile_features'
+
+option(BUILD_SHARED_LIBS "Build libpgs as a shared library instead of static." OFF)
+option(EXPORT_HEADERS "Header files will be installed in addition to the library." OFF)
+
+
+include(GNUInstallDirs)
 
 add_subdirectory(src)
+include_directories(src)
+add_subdirectory(include)
 
 include(CTest)
 if(BUILD_TESTING)

@@ -20,19 +20,9 @@
 
 #pragma once
 
-#include "pgs.hpp"
-#include "PresentationComposition.hpp"
-#include "WindowDefinition.hpp"
-#include "PaletteDefinition.hpp"
-#include "ObjectDefinition.hpp"
-
-#include <vector>
-#include <cstdint>
+#include "SegmentData.hpp"
 #include <memory>
-
-using std::vector;
-using std::unique_ptr;
-using std::shared_ptr;
+#include <vector>
 
 namespace Pgs
 {
@@ -63,7 +53,7 @@ namespace Pgs
         uint32_t decodingTimestamp;      /**< 32-bit value defining the decoding time of the segment. */
         SegmentType segmentType;         /**< Type of data contained in this segment. */
         uint16_t segmentSize;            /**< Number of bytes containing the segment data. */
-        shared_ptr<SegmentData> data;    /**< Shared pointer to the corresponding data container. */
+        std::shared_ptr<SegmentData> data;    /**< Shared pointer to the corresponding data container. */
     public:
         static constexpr uint16_t MIN_BYTE_SIZE = 13u;
 
@@ -81,7 +71,7 @@ namespace Pgs
 
         uint16_t import(const char *inData, const uint32_t &size);
 
-        uint16_t import(const vector<char> &inData);
+        uint16_t import(const std::vector<char> &inData);
 
         // =======
         // Getters
@@ -95,36 +85,36 @@ namespace Pgs
          *
          * \return 2 characters making up the Segment's magic number.
          */
-        const char *getMagicNumber() const;
+        [[maybe_unused]] [[nodiscard]] const char *getMagicNumber() const;
 
         /**
          * \brief Gets the presentationTimestamp
          * \return presentationTimestamp
          */
-        const uint32_t &getPresentationTimestamp() const;
+        [[nodiscard]] const uint32_t &getPresentationTimestamp() const;
 
         /**
          * \brief Gets the decodingTimestamp
          * \return decodingTimestamp
          */
-        const uint32_t &getDecodingTimestamp() const;
+        [[nodiscard]] const uint32_t &getDecodingTimestamp() const;
 
         /**
          * \brief Gets the segmentType
          * \return segmentType
          */
-        const SegmentType &getSegmentType() const;
+        [[nodiscard]] const SegmentType &getSegmentType() const;
 
         /**
          * \brief Gets the segmentSize
          * \return segmentSize
          */
-        const uint16_t &getSegmentSize() const;
+        [[maybe_unused]] [[nodiscard]] const uint16_t &getSegmentSize() const;
 
         /**
          * \brief Retrieves a shared pointer to the stored SegmentData object.
          * \return shared pointer to stored SegmentData.
          */
-        shared_ptr<SegmentData> getData() const;
+        [[nodiscard]] std::shared_ptr<SegmentData> getData() const;
     };
 }

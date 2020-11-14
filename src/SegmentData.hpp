@@ -20,12 +20,7 @@
 
 #pragma once
 
-#include <vector>
 #include <stdexcept>
-#include <memory>
-
-using std::shared_ptr;
-using std::vector;
 
 namespace Pgs
 {

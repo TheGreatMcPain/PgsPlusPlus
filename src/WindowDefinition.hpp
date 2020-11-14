@@ -20,15 +20,10 @@
 
 #pragma once
 
-#include "pgs.hpp"
 #include "SegmentData.hpp"
 
-#include <cstdint>
 #include <vector>
 #include <memory>
-
-using std::shared_ptr;
-using std::vector;
 
 namespace Pgs
 {
@@ -71,21 +66,21 @@ namespace Pgs
          *
          * \throws ImportException
          */
-        static shared_ptr<WindowObject> create(const char* data, const uint16_t &size, uint16_t &readPos);
+        static std::shared_ptr<WindowObject> create(const char* data, const uint16_t &size, uint16_t &readPos);
 
         // =======
         // Getters
         // =======
 
-        const uint8_t &getId() const;
+        [[nodiscard]] const uint8_t &getId() const;
 
-        const uint16_t &getHPos() const;
+        [[nodiscard]] const uint16_t &getHPos() const;
 
-        const uint16_t &getVPos() const;
+        [[nodiscard]] const uint16_t &getVPos() const;
 
-        const uint16_t &getWidth() const;
+        [[nodiscard]] const uint16_t &getWidth() const;
 
-        const uint16_t &getHeight() const;
+        [[nodiscard]] const uint16_t &getHeight() const;
     };
 
     /**
@@ -95,7 +90,7 @@ namespace Pgs
     {
     protected:
         uint8_t numWindows; /**< Number of Windows contained in this segment. */
-        vector<shared_ptr<WindowObject>> windowObjects; /**< Vector of WindowObjects managed by this class instance */
+        std::vector<std::shared_ptr<WindowObject>> windowObjects; /**< Vector of WindowObjects managed by this class instance */
     public:
         /**
          * \brief Minimum number of bytes required to successfully import data.
@@ -117,8 +112,8 @@ namespace Pgs
         // Getters
         // =======
 
-        const uint8_t &getNumWindows() const;
+        [[nodiscard]] const uint8_t &getNumWindows() const;
 
-        const vector<shared_ptr<WindowObject>> &getWindowObjects() const;
+        [[nodiscard]] const std::vector<std::shared_ptr<WindowObject>> &getWindowObjects() const;
     };
 }

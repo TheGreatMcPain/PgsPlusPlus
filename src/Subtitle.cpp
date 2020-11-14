@@ -20,6 +20,7 @@
 
 
 #include "Subtitle.hpp"
+#include "PgsUtil.hpp"
 
 #include <iostream>
 #include <algorithm>

@@ -20,13 +20,8 @@
 #pragma once
 
 #include "SegmentData.hpp"
-
-#include <cstdint>
-#include <vector>
 #include <memory>
-
-using std::shared_ptr;
-using std::vector;
+#include <vector>
 
 namespace Pgs
 {
@@ -78,29 +73,29 @@ namespace Pgs
          *
          *  \throws ImportException
          */
-        static shared_ptr<CompositionObject> create(const char *data, const uint16_t &size, uint16_t &readPos);
+        static std::shared_ptr<CompositionObject> create(const char *data, const uint16_t &size, uint16_t &readPos);
 
         // =======
         // Getters
         // =======
 
-        const uint16_t &getObjectID() const;
+        [[nodiscard]] const uint16_t &getObjectID() const;
 
-        const uint8_t &getWindowID() const;
+        [[nodiscard]] const uint8_t &getWindowID() const;
 
-        const bool &getCroppedFlag() const;
+        [[nodiscard]] const bool &getCroppedFlag() const;
 
-        const uint16_t &getHPos() const;
+        [[nodiscard]] const uint16_t &getHPos() const;
 
-        const uint16_t &getVPos() const;
+        [[nodiscard]] const uint16_t &getVPos() const;
 
-        const uint16_t &getCropHPos() const;
+        [[nodiscard]] const uint16_t &getCropHPos() const;
 
-        const uint16_t &getCropVPos() const;
+        [[nodiscard]] const uint16_t &getCropVPos() const;
 
-        const uint16_t &getCropWidth() const;
+        [[nodiscard]] const uint16_t &getCropWidth() const;
 
-        const uint16_t &getCropHeight() const;
+        [[nodiscard]] const uint16_t &getCropHeight() const;
     };
 
     /**
@@ -117,7 +112,7 @@ namespace Pgs
         bool paletteUpdateFlag; /**< True if this segment describes a <em>palette only</em> update; false, otherwise. */
         uint8_t paletteID; /**< ID of palette to use in palette-only update. */
         uint8_t compositionObjectCount; /**< Number of composition objects defined in segment. */
-        vector<shared_ptr<CompositionObject>> compositionObjects; /**< Vector of Composition Objects in this segment. */
+        std::vector<std::shared_ptr<CompositionObject>> compositionObjects; /**< Vector of Composition Objects in this segment. */
     public:
         /**
          * \brief Minimum number of bytes needed to create a basic PresentationComposition instance from
@@ -139,22 +134,22 @@ namespace Pgs
         // Getters
         // =======
 
-        const uint16_t &getWidth() const;
+        [[nodiscard]] const uint16_t &getWidth() const;
 
-        const uint16_t &getHeight() const;
+        [[nodiscard]] const uint16_t &getHeight() const;
 
-        const uint8_t &getFrameRate() const;
+        [[nodiscard]] const uint8_t &getFrameRate() const;
 
-        const uint16_t &getCompositionNumber() const;
+        [[nodiscard]] const uint16_t &getCompositionNumber() const;
 
-        const CompositionState &getCompositionState() const;
+        [[nodiscard]] const CompositionState &getCompositionState() const;
 
-        const bool &getPaletteUpdateFlag() const;
+        [[nodiscard]] const bool &getPaletteUpdateFlag() const;
 
-        const uint8_t &getPaletteID() const;
+        [[nodiscard]] const uint8_t &getPaletteID() const;
 
-        const uint8_t &getCompositionObjectCount() const;
+        [[nodiscard]] const uint8_t &getCompositionObjectCount() const;
 
-        const vector<shared_ptr<CompositionObject>> &getCompositionObjects() const;
+        [[nodiscard]] const std::vector<std::shared_ptr<CompositionObject>> &getCompositionObjects() const;
     };
 }

@@ -22,6 +22,10 @@
 #pragma once
 
 #include "Segment.hpp"
+#include "PresentationComposition.hpp"
+#include "WindowDefinition.hpp"
+#include "PaletteDefinition.hpp"
+#include "ObjectDefinition.hpp"
 
 #include <cstdint>
 #include <array>

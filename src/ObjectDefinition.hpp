@@ -20,14 +20,10 @@
 
 #pragma once
 
-#include "pgs.hpp"
 #include "SegmentData.hpp"
-#include <memory>
-#include <cstdint>
-#include <vector>
 
-using std::shared_ptr;
-using std::vector;
+#include <memory>
+#include <vector>
 
 namespace Pgs
 {
@@ -54,7 +50,7 @@ namespace Pgs
         uint32_t dataLength; /**< Number of bytes contained in the object data vector. */
         uint16_t width; /**< Width of image after decompression */
         uint16_t height; /**< Height of image after decompression */
-        vector<uint8_t> objectData; /**< RLE-compressed object data. */
+        std::vector<uint8_t> objectData; /**< RLE-compressed object data. */
 
         /**
          * \brief Reads 3 bytes of data from the provided data.
@@ -75,7 +71,7 @@ namespace Pgs
          * \param endPos position to stop reading at
          * \return decompressed line
          */
-        vector<uint8_t> decodeLine(const uint32_t &startPos, const uint32_t &endPos) const;
+        [[nodiscard]] std::vector<uint8_t> decodeLine(const uint32_t &startPos, const uint32_t &endPos) const;
     public:
         static constexpr uint16_t MIN_BYTE_SIZE = 11u;
 
@@ -100,48 +96,48 @@ namespace Pgs
          * \brief Retrieves the ID of this ObjectDefinition instance
          * \return object ID
          */
-        [[maybe_unused]] const uint16_t &getId() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint16_t &getId() const noexcept;
 
         /**
          * \brief Retrieves the version of this ObjectDefinition instance
          * \return object version
          */
-        [[maybe_unused]] const uint8_t &getVersion() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint8_t &getVersion() const noexcept;
 
         /**
          * \brief Retrieves the sequenceFlag of this ObjectDefinition instance
          * \return sequence flag
          */
-        [[maybe_unused]] const SequenceFlag &getSequenceFlag() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const SequenceFlag &getSequenceFlag() const noexcept;
 
         /**
          * \brief Retrieves the size of the encoded data contained in this ObjectDefinition instance
          * \return data length
          */
-        [[maybe_unused]] const uint32_t &getDataLength() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint32_t &getDataLength() const noexcept;
 
         /**
          * \brief Retrieves the width of the decompressed image made from the data in this ObjectDefinition instance
          * \return decompressed image width
          */
-        [[maybe_unused]] const uint16_t &getWidth() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint16_t &getWidth() const noexcept;
 
         /**
          * \brief Retrieves the height of the decompressed image made from the data in this ObjectDefinition instance
          * \return decompressed image height
          */
-        [[maybe_unused]] const uint16_t &getHeight() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const uint16_t &getHeight() const noexcept;
 
         /**
          * \brief Retrieves the compressed image data in this ObjectDefinition instance
          * \return compressed image data
          */
-        [[maybe_unused]] const vector<uint8_t> &getEncodedObjectData() const noexcept;
+        [[maybe_unused]] [[nodiscard]] const std::vector<uint8_t> &getEncodedObjectData() const noexcept;
 
         /**
          * \brief Retrieves the decompressed image data in this ObjectDefinition instance
          * \return decompressed image data
          */
-        [[maybe_unused]] vector<vector<uint8_t>> getDecodedObjectData() const noexcept;
+        [[maybe_unused]] [[nodiscard]] std::vector<std::vector<uint8_t>> getDecodedObjectData() const noexcept;
     };
 }

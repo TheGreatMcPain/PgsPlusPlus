@@ -19,11 +19,15 @@
 */
 
 #include "WindowDefinition.hpp"
+#include "PgsUtil.hpp"
 
 extern "C"
 {
 #include <endian.h>
 }
+
+using std::shared_ptr;
+using std::vector;
 
 using namespace Pgs;
 

@@ -21,7 +21,7 @@
 #include <gtest/gtest.h>
 
 #include <fstream>
-#include <src/pgs.hpp>
+#include <src/PgsUtil.hpp>
 #include <src/Segment.hpp>
 
 class PgsTest : public ::testing::Test

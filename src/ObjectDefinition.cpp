@@ -19,10 +19,13 @@
 */
 
 #include "ObjectDefinition.hpp"
+#include "PgsUtil.hpp"
 #include <endian.h>
 
-using namespace Pgs;
+using std::shared_ptr;
+using std::vector;
 
+using namespace Pgs;
 
 uint32_t ObjectDefinition::read3Bytes(const uint8_t *data, uint16_t &readPos)
 {
