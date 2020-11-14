@@ -20,7 +20,6 @@
 
 #include "PaletteDefinition.hpp"
 
-
 using namespace Pgs;
 
 shared_ptr<PaletteEntry> PaletteEntry::create(const char *data, const uint16_t &size, uint16_t &readPos)
