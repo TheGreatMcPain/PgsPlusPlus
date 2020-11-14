@@ -29,7 +29,7 @@ Check out the documentation [here](https://iamsomeone2.github.io/libpgs/html/ind
 
 #### Library tests
 
-- Everything in [previous section](#library-only)
+- Everything in [previous section](#library)
 - GTest
 - GraphicsMagick with Magick++
 - OpenMP
@@ -79,7 +79,7 @@ The end of any PGS stream or section will be denoted as such:
 
 | Magic Number (2 bytes) | Decode timestamp (4 bytes) | Presentation timestamp (4 bytes) | Segment type flag (1 byte) | Segment Size (2 bytes) |
 | :----------: | :--------------: | :--------------------: | :---------------: | :----------: |
-| "PG"         | 32-bit value     | 32-bit value           | 0x80 (END flag)   | 00 00        |
+| "PG"         | 32-bit value     | 32-bit value           | 0x80 (END flag)   | 0x00 0x00        |
 
 It is best to seek to between 2-3 megabytes into the file, find the closest `END` section as described above, and remove all data after the `END` section.
 
