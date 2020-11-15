@@ -31,7 +31,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 option(BUILD_SHARED_LIBS "Build libpgs as a shared library instead of static." OFF)
 option(EXPORT_HEADERS "Header files will be installed in addition to the library." OFF)
 
-
 include(GNUInstallDirs)
 
 add_subdirectory(src)

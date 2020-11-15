@@ -1,0 +1,10 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable-20.04 # Basic Ubuntu 20.04 image
+    
+    steps:
+      - checkout
+      - run: echo "Hello, libpgs!"
