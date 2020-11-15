@@ -29,6 +29,7 @@ jobs:
           name: 'Download CMake'
           command: |
             wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz
+            ls -la | grep -i "cmake"
             tar -zxvf cmake-3.18.4
             cd cmake-3.18.4
 
