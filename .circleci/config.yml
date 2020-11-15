@@ -21,11 +21,41 @@ jobs:
             - ".git"
 
       # Get CMake installed
+
+      # Install CMake dependencies
+
+      # OpenSSL
+      - restore_cache:
+          keys:
+            - openssl-1.1.1g-{{ arch }}
+
+      - run:
+          name: 'Download OpenSSL'
+          command: |
+            wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz
+            tar -zxf openssl-OpenSSL_1_1_1g.tar.gz
+
+      -run:
+          name: 'Build OpenSSL'
+          command: |
+            cd openssl-OpenSSL_1_1_1g
+            ./Configure
+            make -j$(nproc)
+            cd ..
+
+      - save_cache:
+          paths:
+            - ./openssl-OpenSSL_1_1_1g
+          key: openssl-1.1.1g-{{ arch }}
+
       - run:
           name: 'Install OpenSSL'
           command: |
-            sudo apt install -y libssl-dev
+            cd ./openssl-OpenSSL_1_1_1g
+            sudo make install
+            cd ..
 
+      # CMake
       - restore_cache:
           keys:
             - cmake-3.18.4-{{ arch }}
@@ -41,7 +71,7 @@ jobs:
           command: |
             cd cmake-3.18.4
             ./bootstrap
-            make
+            make -j$(nproc)
             cd ..
 
       - save_cache:
