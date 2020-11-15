@@ -6,17 +6,51 @@ jobs:
       - image: cimg/base:stable-20.04 # Basic Ubuntu 20.04 image
     
     steps:
+
+      # Deal with source set up
+      - restore_cache:
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+            - source-v1-{{ .Branch }}-
+
       - checkout
+
+      - save_cache:
+          key: source-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - ".git"
+
+      # Get CMake installed
+      -restore_cache:
+          keys:
+            - cmake-3.18.4-{{ arch }}
+
       - run:
-          name: 'Check that CMake is installed'
+          name: 'Download CMake'
           command: |
-            which cmake
-            cmake --version
+            wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz
+            tar -zxvf cmake-3.18.4
+            cd cmake-3.18.4
+
+      - run:
+          name: 'Build CMake'
+          command: ./bootstrap && make
+
+      - save_cache:
+          paths:
+            - ./cmake-3.18.4
+          key: cmake-3.18.4-{{ arch }}
+
+      - run:
+          name: 'Install CMake'
+          command: sudo make install && cd ..
+
       - run:
           name: 'Set up build environment'
           command: |
             mkdir build && cd build
             cmake -DCMAKE_BUILD_TYPE=Release ..
+
       - run:
           name: 'Build libpgs'
           command: make -j$(nproc)
