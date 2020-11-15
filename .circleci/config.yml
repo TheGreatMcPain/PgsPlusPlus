@@ -35,7 +35,7 @@ jobs:
             wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz
             tar -zxf openssl-OpenSSL_1_1_1g.tar.gz
 
-      -run:
+      - run:
           name: 'Build OpenSSL'
           command: |
             cd openssl-OpenSSL_1_1_1g
