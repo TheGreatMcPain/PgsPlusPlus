@@ -21,6 +21,11 @@ jobs:
             - ".git"
 
       # Get CMake installed
+      - run:
+          name: 'Install OpenSSL'
+          command: |
+            sudo apt install -y libssl-dev
+
       - restore_cache:
           keys:
             - cmake-3.18.4-{{ arch }}
@@ -46,7 +51,10 @@ jobs:
 
       - run:
           name: 'Install CMake'
-          command: sudo make install && cd ..
+          command: |
+            cd ./cmake-3.18.4
+            sudo make install
+            cd ..
 
       - run:
           name: 'Set up build environment'
