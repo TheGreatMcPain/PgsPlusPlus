@@ -8,12 +8,12 @@ jobs:
     steps:
       - checkout
       - run:
-        - name: 'Get build dependencies'
-        - command: sudo apt install cmake
+          name: 'Get build dependencies'
+          command: sudo apt install cmake
       - run:
-        - name: 'Set up build environment'
-        - command: mkdir build && cd build
-        - command: cmake -DCMAKE_BUILD_TYPE=Release ..
+          name: 'Set up build environment'
+          command: mkdir build && cd build
+          command: cmake -DCMAKE_BUILD_TYPE=Release ..
       - run:
-        - name: 'Build libpgs'
-        - command: make -j$(nproc)
+          name: 'Build libpgs'
+          command: make -j$(nproc)
