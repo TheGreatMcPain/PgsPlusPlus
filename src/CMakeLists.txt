@@ -21,17 +21,17 @@ set(LIBPGS_HEADERS
         WindowDefinition.hpp PaletteDefinition.hpp Segment.hpp
         ObjectDefinition.hpp Subtitle.hpp)
 
-add_library(pgs
+add_library(pgs++
         PgsUtil.cpp SegmentData.cpp PresentationComposition.cpp
         WindowDefinition.cpp PaletteDefinition.cpp Segment.cpp
         ObjectDefinition.cpp Subtitle.cpp)
 
-target_include_directories(pgs INTERFACE
+target_include_directories(pgs++ INTERFACE
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
         "$<INSTALL_INTERFACE:include>"
         )
 
-target_compile_features(pgs PUBLIC
+target_compile_features(pgs++ PUBLIC
         cxx_auto_type
         cxx_constexpr
         cxx_noexcept
@@ -42,11 +42,11 @@ target_compile_features(pgs PUBLIC
 # Set up install instructions
 
 if (${BUILD_SHARED_LIBS})
-    install(TARGETS pgs LIBRARY)
+    install(TARGETS pgs++ LIBRARY)
 else ()
-    install(TARGETS pgs ARCHIVE)
+    install(TARGETS pgs++ ARCHIVE)
 endif ()
 
 if (${EXPORT_HEADERS})
-    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs)
+    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++)
 endif ()
