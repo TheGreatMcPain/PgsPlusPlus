@@ -17,7 +17,7 @@
 #  USA
 
 cmake_minimum_required(VERSION 3.15)
-project(libpgs CXX)
+project(pgs++ CXX)
 
 set(CMAKE_PROJECT_VERSION_MAJOR 0)
 set(CMAKE_PROJECT_VERSION_MINOR 1)
@@ -26,9 +26,13 @@ set(CMAKE_PROJECT_VERSION_PATCH 0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Using Conan CMake generator
+set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
+set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
+
 # Extra language level requirements are determined using 'target_compile_features'
 
-option(BUILD_SHARED_LIBS "Build libpgs as a shared library instead of static." OFF)
+option(BUILD_SHARED_LIBS "Build pgs++ as a shared library instead of static." OFF)
 option(EXPORT_HEADERS "Header files will be installed in addition to the library." OFF)
 
 include(GNUInstallDirs)
