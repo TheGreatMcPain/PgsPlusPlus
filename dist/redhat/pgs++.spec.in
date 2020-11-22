@@ -1,0 +1,37 @@
+Name:           pgs++
+Version:        @CMAKE_PROJECT_VERSION_MAJOR@.@CMAKE_PROJECT_VERSION_MINOR@.@CMAKE_PROJECT_VERSION_PATCH@
+Release:        1%{?dist}
+Summary:        @CMAKE_PROJECT_DESCRIPTION@
+
+License:        LGPLv2.1
+URL:            https://github.com/iAmSomeone2/PgsPlusPlus
+Source0:        https://github.com/iAmSomeone2/PgsPlusPlus.git
+
+BuildRequires:  git, cmake >= 3.15, gcc >= 5.0, cmake-rpm-macros
+
+%description
+@CMAKE_PROJECT_DESCRIPTION@
+
+%prep
+%autosetup
+
+
+%build
+%configure
+%make_build
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+%make_install
+
+
+%files
+%license add-license-file-here
+%doc add-docs-here
+
+
+
+%changelog
+* Sun Nov 22 13:44:57 CST 2020 Brenden Davidson <davidson.brenden15@gmail.com>
+- 

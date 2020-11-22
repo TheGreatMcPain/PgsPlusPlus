@@ -1,0 +1,1 @@
+configure_file(pgs++.spec.in ${CMAKE_CURRENT_SOURCE_DIR}/pgs++.spec @ONLY)

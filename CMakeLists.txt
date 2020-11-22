@@ -76,6 +76,10 @@ endif()
 install(FILES "./AUTHORS" DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT core)
 install(FILES "./LICENSE" DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT core)
 
+# Set up packaging scripts
+add_subdirectory(dist)
+
+# Finalize CPack set up
 include(CPack)
 
 cpack_add_component(core
