@@ -3,6 +3,9 @@
 [Bb]uild/
 [Bb]uild-*/
 
+# Release directories
+PgsPlusPlus-*/
+
 # Generated Documentations
 [Dd]ocs/*
 ![Dd]ocs/html/

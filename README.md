@@ -14,6 +14,8 @@ Check out the documentation [here](https://iamsomeone2.github.io/libpgs/html/ind
      - [Library with tests](#library-with-tests)
    - [A note about the tests](#a-note-about-the-tests)
    - [Acquiring test data](#acquiring-test-data)
+  - [Generate Packages](#generate-packages)
+    - [RPM](#rpm)
 
 ## How to Build
 
@@ -84,3 +86,11 @@ The end of any PGS stream or section will be denoted as such:
 It is best to seek to between 2-3 megabytes into the file, find the closest `END` section as described above, and remove all data after the `END` section.
 
 Save this new file as `<project_dir>/test/res/subs_short.sup`.
+
+## Generate Packages
+
+Pgs++ can be packed for various OSes to make system and project integration easier.
+
+### RPM
+
+Currently, Pgs++ has support for building native RPM packages on any platform.

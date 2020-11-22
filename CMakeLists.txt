@@ -61,6 +61,7 @@ set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
 
 option(BUILD_SHARED_LIBS "Build pgs++ as a shared library instead of static." ON)
 option(EXPORT_HEADERS "Header files will be installed in addition to the library." ON)
+option(BUILD_TESTING "Build package tests" OFF)
 
 include(GNUInstallDirs)
 
