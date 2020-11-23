@@ -3,10 +3,13 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/base:stable-20.04 # Basic Ubuntu 20.04 image
+      # Base Ubuntu 20.04 image used for hosting other containers.
+      - image: cimg/base:stable-20.04
     
-    steps:
+      # Secondary container used for building RPMs
+      - image: fedora:latest
 
+    steps:
       # Deal with source set up
       - restore_cache:
           keys:
@@ -20,77 +23,16 @@ jobs:
           paths:
             - ".git"
 
-      # Get CMake installed
-
-      # Install CMake dependencies
-
-      # OpenSSL
-      - restore_cache:
-          keys:
-            - openssl-1.1.1g-{{ arch }}
-
       - run:
-          name: 'Download OpenSSL'
+          name: 'Install build dependencies'
           command: |
-            wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz
-            tar -zxf openssl-OpenSSL_1_1_1g.tar.gz
-
-      - run:
-          name: 'Build OpenSSL'
-          command: |
-            cd openssl-OpenSSL_1_1_1g
-            ./Configure
-            make -j$(nproc)
-            cd ..
-
-      - save_cache:
-          paths:
-            - ./openssl-OpenSSL_1_1_1g
-          key: openssl-1.1.1g-{{ arch }}
-
-      - run:
-          name: 'Install OpenSSL'
-          command: |
-            cd ./openssl-OpenSSL_1_1_1g
-            sudo make install
-            cd ..
-
-      # CMake
-      - restore_cache:
-          keys:
-            - cmake-3.18.4-{{ arch }}
-
-      - run:
-          name: 'Download CMake'
-          command: |
-            wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz
-            tar -zxf cmake-3.18.4.tar.gz
-
-      - run:
-          name: 'Build CMake'
-          command: |
-            cd cmake-3.18.4
-            ./bootstrap
-            make -j$(nproc)
-            cd ..
-
-      - save_cache:
-          paths:
-            - ./cmake-3.18.4
-          key: cmake-3.18.4-{{ arch }}
-
-      - run:
-          name: 'Install CMake'
-          command: |
-            cd ./cmake-3.18.4
-            sudo make install
-            cd ..
+            sudo dnf install -y gcc-c++ cmake
 
       - run:
           name: 'Set up build environment'
           command: |
             mkdir build && cd build
-            cmake -DCMAKE_BUILD_TYPE=Release ..
+            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
 
       - run:
           name: 'Build libpgs'
