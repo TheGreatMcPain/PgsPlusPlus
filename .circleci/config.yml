@@ -32,4 +32,6 @@ jobs:
 
       - run:
           name: 'Build libpgs'
-          command: make -j$(nproc)
+          command: |
+            cd build
+            make -j$(nproc)
