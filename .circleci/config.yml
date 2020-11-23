@@ -1,13 +1,14 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  ubuntu:
     docker:
       # Base Ubuntu 20.04 image used for hosting other containers.
-      - image: cimg/base:stable-20.04
-    
-      # Secondary container used for building RPMs
-      - image: fedora:latest
+      - image: iamsomeone2/ubuntu-cmake:latest
+
+jobs:
+  build:
+    executor: ubuntu
 
     steps:
       # Deal with source set up
@@ -22,11 +23,6 @@ jobs:
           key: source-v1-{{ .Branch }}-{{ .Revision }}
           paths:
             - ".git"
-
-      - run:
-          name: 'Install build dependencies'
-          command: |
-            sudo dnf install -y gcc-c++ cmake
 
       - run:
           name: 'Set up build environment'
