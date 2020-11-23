@@ -1,0 +1,57 @@
+%global git_name    PgsPlusPlus
+%global version     @CMAKE_PROJECT_VERSION_MAJOR@.@CMAKE_PROJECT_VERSION_MINOR@.@CMAKE_PROJECT_VERSION_PATCH@
+
+Name:           pgs++
+Version:        %{version}
+Release:        1%{?dist}
+Summary:        @CMAKE_PROJECT_DESCRIPTION@
+
+License:        LGPLv2.1
+URL:            https://github.com/iAmSomeone2/%{git_name}
+Vendor:         @CPACK_PACKAGE_VENDOR@
+
+Source0:        https://github.com/iAmSomeone2/%{git_name}/archive/v%{version}-alpha.tar.gz
+
+BuildRequires:  cmake >= 3.15, gcc >= 5.0
+
+
+%description
+@CMAKE_PROJECT_DESCRIPTION@
+
+
+%prep
+%setup -n %{git_name}-%{version}-alpha -q
+
+%build
+%cmake . 
+%cmake_build
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+%cmake_install
+
+
+%files
+%dir "%{_docdir}/pgs++/"
+%license "%{_docdir}/pgs++/LICENSE"
+%doc "%{_docdir}/pgs++/AUTHORS"
+"%{_libdir}/libpgs++.so"
+
+# Build directives for the 'devel' sub-package
+
+%package devel
+Summary: "Development files for Pgs++"
+
+%description devel
+Development files for Pgs++
+
+%files devel
+%defattr(-,root,root)
+%dir "%{_includedir}/pgs++/"
+"%{_includedir}/pgs++/*.hpp"
+
+
+%changelog
+* Sun Nov 22 13:44:57 CST 2020 Brenden Davidson <davidson.brenden15@gmail.com>
+- Packaged first alpha version for 0.1.0

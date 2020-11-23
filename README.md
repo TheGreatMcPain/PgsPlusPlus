@@ -14,6 +14,10 @@ Check out the documentation [here](https://iamsomeone2.github.io/libpgs/html/ind
      - [Library with tests](#library-with-tests)
    - [A note about the tests](#a-note-about-the-tests)
    - [Acquiring test data](#acquiring-test-data)
+  - [Generate Packages](#generate-packages)
+    - [RPM](#rpm)
+      - [Configuration](#configuration)
+      - [Packaging](#packaging)
 
 ## How to Build
 
@@ -44,15 +48,15 @@ Check out the documentation [here](https://iamsomeone2.github.io/libpgs/html/ind
 #### Library only
 
 ``` sh
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
 ```
 
 #### Library with tests
 
 ``` sh
-    cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=on ..
-    make
+cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=on ..
+make
 ```
 
 ### A note about the tests
@@ -68,7 +72,7 @@ After MakeMKV has finished processing the file, you can use [FFmpeg](https://ffm
 For example:
 
 ``` sh
-    ffmpeg -i '<extracted_file>.mkv' -vn -an -c:s copy '<subtitle_file>.sup'
+ffmpeg -i '<extracted_file>.mkv' -vn -an -c:s copy '<subtitle_file>.sup'
 ```
 
 Copy or move the extracted file to the project's `./test/res/` directory and rename it to `subs.sup`.
@@ -84,3 +88,66 @@ The end of any PGS stream or section will be denoted as such:
 It is best to seek to between 2-3 megabytes into the file, find the closest `END` section as described above, and remove all data after the `END` section.
 
 Save this new file as `<project_dir>/test/res/subs_short.sup`.
+
+## Generate Packages
+
+Pgs++ can be packed for various OSes to make system and project integration easier.
+
+### RPM
+
+Currently, Pgs++ has support for building native RPM packages on any architecture provided it has the following packages along with the minimum requirements listed [here](#library):
+
+- rpm-build
+- rpmlint
+- python
+- coreutils
+- diffutils
+- patch
+- rpmdevtools
+
+To install all base requirements on Fedora, CentOS 8, and RedHat Enterprise Linux 8, use the following command:
+
+``` sh
+dnf install gcc cmake rpm-build rpm-devel rpmlint python bash coreutils diffutils patch rpmdevtools
+```
+
+#### Configuration
+
+Pgs++ uses CMake to generate an RPM SPEC file based on the template located in `<project_dir>/dist/redhat`. To have CMake generate the file, simply create a fresh build directory or use one configured for a release build, enter it, and run CMake from there.
+
+<strong>Example:</strong>
+``` sh
+mkdir build-rpm && cd build-rpm
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off -DEXPORT_HEADERS=on ..
+```
+or
+``` sh
+cd build-release
+cmake ..
+```
+
+At this point a new SPEC file will have been created at `<project_dir>/dist/redhat/pgs++.spec`. Take note of this location for the next step.
+
+#### Packaging
+
+If you have not created RPM packages before, use the following command to generate the required directories in your `HOME` directory:
+
+``` sh
+rpmdev-setuptree
+```
+
+From here, either copy the generated SPEC file from the previous step to `$HOME/rpmbuild/SPECS/` or create a symlink in the same directory.
+
+Open a terminal in `$HOME/rpmbuild/SPECS/` and enter the following command to download the required sources to `$HOME/rpmbuild/SOURCES/`:
+
+``` sh
+spectool -g -R pgs++.spec
+```
+
+Next, run the following command to build the code and generate the RPM packages:
+
+``` sh
+rpmbuild -bb pgs++.spec
+```
+
+If the command is successful, a freshly-generated set of Pgs++ packages will be waiting at `$HOME/rpmbuild/RPMS/`

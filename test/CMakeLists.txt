@@ -33,7 +33,7 @@ target_include_directories(pgs-test PRIVATE SYSTEM
         )
 
 target_link_libraries(pgs-test PRIVATE
-        pgs
+        pgs++
         GTest::GTest
         GTest::Main
         )
@@ -66,7 +66,7 @@ target_include_directories(subtitle-test PRIVATE SYSTEM
         )
 
 target_link_libraries(subtitle-test PRIVATE
-        pgs
+        pgs++
         GTest::GTest
         GTest::Main
         ${magick_LIBRARIES}

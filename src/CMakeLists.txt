@@ -42,11 +42,11 @@ target_compile_features(pgs++ PUBLIC
 # Set up install instructions
 
 if (${BUILD_SHARED_LIBS})
-    install(TARGETS pgs++ LIBRARY)
+    install(TARGETS pgs++ LIBRARY COMPONENT core)
 else ()
-    install(TARGETS pgs++ ARCHIVE)
+    install(TARGETS pgs++ ARCHIVE COMPONENT core)
 endif ()
 
 if (${EXPORT_HEADERS})
-    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++)
+    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++ COMPONENT headers)
 endif ()
