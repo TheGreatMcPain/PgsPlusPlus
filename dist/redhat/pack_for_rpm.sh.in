@@ -1,0 +1,22 @@
+#!/bin/sh
+
+VERSION="@CMAKE_PROJECT_VERSION_MAJOR@.@CMAKE_PROJECT_VERSION_MINOR@.@CMAKE_PROJECT_VERSION_PATCH@"
+PACKAGE_NAME="PgsPlusPlus-$VERSION-alpha"
+
+mkdir $PACKAGE_NAME
+
+echo "Copying project files to package folder..."
+cp AUTHORS $PACKAGE_NAME/
+cp CHANGELOG.md $PACKAGE_NAME/
+cp CMakeLists.txt $PACKAGE_NAME/
+cp -r dist $PACKAGE_NAME/
+cp -r include $PACKAGE_NAME/
+cp LICENSE $PACKAGE_NAME/
+cp README.md $PACKAGE_NAME/
+cp -r src $PACKAGE_NAME/
+cp -r test $PACKAGE_NAME/
+
+echo "Creating project archive..."
+tar -cJf $PACKAGE_NAME.tar.xz $PACKAGE_NAME
+
+rm -r $PACKAGE_NAME

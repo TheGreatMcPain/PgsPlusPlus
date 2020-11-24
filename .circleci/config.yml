@@ -39,7 +39,36 @@ jobs:
             cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
 
       - run:
-          name: 'Build libpgs'
+          name: 'Build Pgs++'
           command: |
             cd build
             make -j$(nproc)
+
+  package:
+    executor: fedora
+
+    steps:
+      - restore_cache:
+        keys:
+          - source-v1-{{ .Branch }}-{{ .Revision }}
+          - source-v1-{{ .Branch }}-
+
+    - checkout
+
+    - save_cache:
+        key: source-v1-{{ .Branch }}-{{ .Revision }}
+        paths:
+          - ".git"
+
+    
+
+    - run:
+        name: 'Set up build environment'
+        command: |
+          mkdir build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+
+    - run:
+        name: 'Copy SPEC file to rpmbuild dirs'
+        command: |
+          cp dist/redhat/pgs++.spec ~/rpmbuild/SPECS

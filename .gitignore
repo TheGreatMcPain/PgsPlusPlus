@@ -13,6 +13,7 @@ PgsPlusPlus-*/
 # Generated build scripts
 *.spec
 !*.spec.in
+pack_for_rpm.sh
 
 # Binary PGS files
 *.sup
