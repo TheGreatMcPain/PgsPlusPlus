@@ -49,9 +49,9 @@ jobs:
 
     steps:
       - restore_cache:
-        keys:
-          - source-v1-{{ .Branch }}-{{ .Revision }}
-          - source-v1-{{ .Branch }}-
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+            - source-v1-{{ .Branch }}-
 
       - checkout
 
@@ -67,9 +67,9 @@ jobs:
             cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
 
       - restore_cache:
-        keys:
-          - tarball-{{ .Branch }}-{{ .Revision }}
-          - tarball-{{ .Branch }}-
+          keys:
+            - tarball-{{ .Branch }}-{{ .Revision }}
+            - tarball-{{ .Branch }}-
 
       - run:
           name: 'Generate source pacakge'
@@ -79,9 +79,9 @@ jobs:
             mv PgsPlusPlus-0.1.0-alpha.tar.xz ~/rpmbuild/SOURCES/
 
       - save_cache:
-        key: tarball-{{ .Branch }}-{{ .Revision }}
-        paths:
-          - "/home/circleci/rpmbuild/SOURCES/PgsPlusPlus-0.1.0-alpha.tar.xz"
+          key: tarball-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - "/home/circleci/rpmbuild/SOURCES/PgsPlusPlus-0.1.0-alpha.tar.xz"
 
       - run:
           name: 'Move SPEC file to rpmbuild dirs'
