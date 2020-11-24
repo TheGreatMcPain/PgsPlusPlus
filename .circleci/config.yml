@@ -15,55 +15,90 @@ executors:
           username: iamsomeone2
           password: $docker_password
 jobs:
-  build:
-    executor: fedora
+  - build:
+      executor: fedora
 
-    steps:
+      steps:
+        # Deal with source set up
+        - restore_cache:
+            keys:
+              - source-v1-{{ .Branch }}-{{ .Revision }}
+              - source-v1-{{ .Branch }}-
+
+        - checkout
+
+        - save_cache:
+            key: source-v1-{{ .Branch }}-{{ .Revision }}
+            paths:
+              - ".git"
+
+        - run:
+            name: 'Set up build environment'
+            command: |
+              mkdir build && cd build
+              cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+
+        - run:
+            name: 'Build Pgs++'
+            command: |
+              cd build
+              make -j$(nproc)
+
+  - package:
+      executor: fedora
+
+      steps:
+        - restore_cache:
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+            - source-v1-{{ .Branch }}-
+
+      - checkout
+
+      - save_cache:
+          key: source-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - ".git"
+
+      - run:
+          name: 'Set up build environment'
+          command: |
+            mkdir build && cd build
+            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+
       - restore_cache:
         keys:
-          - source-v1-{{ .Branch }}-{{ .Revision }}
-          - source-v1-{{ .Branch }}-
+          - tarball-{{ .Branch }}-{{ .Revision }}
+          - tarball-{{ .Branch }}-
 
-    - checkout
+      - run:
+          name: 'Generate source pacakge'
+          command: |
+            chmod +x dist/redhat/pack_for_rpm.sh
+            dist/redhat/pack_for_rpm.sh
+            mv PgsPlusPlus-0.1.0-alpha.tar.xz ~/rpmbuild/SOURCES/
 
-    - save_cache:
-        key: source-v1-{{ .Branch }}-{{ .Revision }}
+      - save_cache:
+        key: tarball-{{ .Branch }}-{{ .Revision }}
         paths:
-          - ".git"
+          - "/home/circleci/rpmbuild/SOURCES/PgsPlusPlus-0.1.0-alpha.tar.xz"
 
-    - run:
-        name: 'Set up build environment'
-        command: |
-          mkdir build && cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+      - run:
+          name: 'Move SPEC file to rpmbuild dirs'
+          command: |
+            cp dist/redhat/pgs++.spec ~/rpmbuild/SPECS
+          
+      - run:
+          name: 'Create RPM packages'
+          command: |
+            rpmbuild -bb ~/rpmbuild/SPECS/pgs++.spec
 
-    - restore_cache:
-      keys:
-        - tarball-{{ .Branch }}-{{ .Revision }}
-        - tarball-{{ .Branch }}-
+      - store_artifacts:
+          path: /home/circleci/rpmbuild/RPMS/
+          destination: RPMs
 
-    - run:
-        name: 'Generate source pacakge'
-        command: |
-          chmod +x dist/redhat/pack_for_rpm.sh
-          dist/redhat/pack_for_rpm.sh
-          mv PgsPlusPlus-0.1.0-alpha.tar.xz ~/rpmbuild/SOURCES/
-
-    - save_cache:
-      key: tarball-{{ .Branch }}-{{ .Revision }}
-      paths:
-        - "/home/circleci/rpmbuild/SOURCES/PgsPlusPlus-0.1.0-alpha.tar.xz"
-
-    - run:
-        name: 'Move SPEC file to rpmbuild dirs'
-        command: |
-          cp dist/redhat/pgs++.spec ~/rpmbuild/SPECS
-        
-    - run:
-        name: 'Create RPM packages'
-        command: |
-          rpmbuild -bb ~/rpmbuild/SPECS/pgs++.spec
-
-    - store_artifacts:
-        path: /home/circleci/rpmbuild/RPMS/
-        destination: RPMs
+workflows:
+  build_and_pack:
+    jobs:
+      - build
+      - package
