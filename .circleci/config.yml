@@ -5,10 +5,18 @@ executors:
     docker:
       # Base Ubuntu 20.04 image used for hosting other containers.
       - image: iamsomeone2/ubuntu-cmake:latest
-
+        auth:
+          username: iamsomeone2
+          password: $docker_password
+  fedora:
+    docker:
+      - image: iamsomeone2/cpp_base:fedora-latest
+        auth:
+          username: iamsomeone2
+          password: $docker_password
 jobs:
   build:
-    executor: ubuntu
+    executor: fedora
 
     steps:
       # Deal with source set up
