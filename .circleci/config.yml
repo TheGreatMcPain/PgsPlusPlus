@@ -76,12 +76,12 @@ jobs:
           command: |
             chmod +x dist/redhat/pack_for_rpm.sh
             dist/redhat/pack_for_rpm.sh
-            mv PgsPlusPlus-0.1.0-alpha.tar.xz ~/rpmbuild/SOURCES/
+            mv v0.1.0-alpha.tar.gz /home/circleci/rpmbuild/SOURCES/
 
       - save_cache:
           key: tarball-{{ .Branch }}-{{ .Revision }}
           paths:
-            - "/home/circleci/rpmbuild/SOURCES/PgsPlusPlus-0.1.0-alpha.tar.xz"
+            - "/home/circleci/rpmbuild/SOURCES/v0.1.0-alpha.tar.gz"
 
       - run:
           name: 'Move SPEC file to rpmbuild dirs'
@@ -91,7 +91,7 @@ jobs:
       - run:
           name: 'Create RPM packages'
           command: |
-            rpmbuild -bb ~/rpmbuild/SPECS/pgs++.spec
+            rpmbuild -bb /home/circleci/rpmbuild/SPECS/pgs++.spec
 
       - store_artifacts:
           path: /home/circleci/rpmbuild/RPMS/
