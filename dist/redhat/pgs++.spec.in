@@ -1,5 +1,5 @@
 %global git_name    PgsPlusPlus
-%global version     @CMAKE_PROJECT_VERSION_MAJOR@.@CMAKE_PROJECT_VERSION_MINOR@.@CMAKE_PROJECT_VERSION_PATCH@
+%global version     @PROJECT_VERSION@
 
 Name:           pgs++
 Version:        %{version}
@@ -37,6 +37,7 @@ rm -rf $RPM_BUILD_ROOT
 %license "%{_docdir}/pgs++/LICENSE"
 %doc "%{_docdir}/pgs++/AUTHORS"
 "%{_libdir}/libpgs++.so"
+"%{_libdir}/libpgs++.so.*"
 
 # Build directives for the 'devel' sub-package
 
@@ -50,6 +51,10 @@ Development files for Pgs++
 %defattr(-,root,root)
 %dir "%{_includedir}/pgs++/"
 "%{_includedir}/pgs++/*.hpp"
+"%{_includedir}/pgs++/*.h"
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/pgs++
+"%{%{_libdir}/cmake/pgs++/*.cmake}"
 
 
 %changelog

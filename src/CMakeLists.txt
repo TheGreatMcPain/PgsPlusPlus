@@ -16,7 +16,9 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 #  USA
 
-set(LIBPGS_HEADERS
+include(GenerateExportHeader)
+
+set(PGS++_HEADERS
         PgsUtil.hpp SegmentData.hpp PresentationComposition.hpp
         WindowDefinition.hpp PaletteDefinition.hpp Segment.hpp
         ObjectDefinition.hpp Subtitle.hpp)
@@ -26,9 +28,15 @@ add_library(pgs++
         WindowDefinition.cpp PaletteDefinition.cpp Segment.cpp
         ObjectDefinition.cpp Subtitle.cpp)
 
+generate_export_header(pgs++)
+
+set_property(TARGET pgs++ PROPERTY VERSION ${PROJECT_VERSION})
+set_property(TARGET pgs++ PROPERTY SOVERSION ${PROJECT_VERSION_MAJOR})
+set_property(TARGET pgs++ PROPERTY INTERFACE_pgs++_MAJOR_VERSION ${PROJECT_VERSION_MAJOR})
+set_property(TARGET pgs++ APPEND PROPERTY COMPATIBLE_INTERFACE_STRING pgs++_MAJOR_VERSION)
+
 target_include_directories(pgs++ INTERFACE
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-        "$<INSTALL_INTERFACE:include>"
+        "$<INSTALL_INTERFACE:$<$<INSTALL_PREFIX>/include>>"
         )
 
 target_compile_features(pgs++ PUBLIC
@@ -41,12 +49,18 @@ target_compile_features(pgs++ PUBLIC
 
 # Set up install instructions
 
-if (${BUILD_SHARED_LIBS})
-    install(TARGETS pgs++ LIBRARY COMPONENT core)
-else ()
-    install(TARGETS pgs++ ARCHIVE COMPONENT core)
-endif ()
+install(TARGETS pgs++ EXPORT pgs++Targets
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT core
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT core)
 
-if (${EXPORT_HEADERS})
-    install(FILES ${LIBPGS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++ COMPONENT headers)
-endif ()
+install(FILES ${PGS++_HEADERS}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++ COMPONENT headers)
+
+install(
+        FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/pgs++_export.h"
+        DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/pgs++
+        COMPONENT
+        headers
+)

@@ -17,11 +17,7 @@
 #  USA
 
 cmake_minimum_required(VERSION 3.15)
-project(pgs++ CXX)
-
-set(CMAKE_PROJECT_VERSION_MAJOR 0)
-set(CMAKE_PROJECT_VERSION_MINOR 1)
-set(CMAKE_PROJECT_VERSION_PATCH 0)
+project(pgs++ LANGUAGES CXX VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -70,12 +66,52 @@ include_directories(src)
 add_subdirectory(include)
 
 include(CTest)
-if(BUILD_TESTING)
+if (BUILD_TESTING)
     add_subdirectory(./test)
-endif()
+endif ()
 
 install(FILES "./AUTHORS" DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT core)
 install(FILES "./LICENSE" DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT core)
+
+# Set up package config docs
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++ConfigVersion.cmake"
+        COMPATIBILITY SameMinorVersion
+)
+
+export(EXPORT pgs++Targets
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++Targets.cmake"
+        NAMESPACE pgs++::
+        )
+
+configure_file(cmake/pgs++Config.cmake
+        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++Config.cmake"
+        COPYONLY
+        )
+
+set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/pgs++)
+install(EXPORT pgs++Targets
+        FILE
+        pgs++Targets.cmake
+        NAMESPACE
+        pgs++::
+        DESTINATION
+        ${ConfigPackageLocation}
+        COMPONENT
+        cmake_config
+        )
+
+install(
+        FILES
+        cmake/pgs++Config.cmake
+        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++ConfigVersion.cmake"
+        DESTINATION
+        ${ConfigPackageLocation}
+        COMPONENT
+        cmake_config
+)
 
 # Set up packaging scripts
 add_subdirectory(dist)
@@ -84,18 +120,23 @@ add_subdirectory(dist)
 include(CPack)
 
 cpack_add_component(core
-    DISPLAY NAME "Core library"
-    DESCRIPTION "The core Pgs++ shared library"
-    REQUIRED
-    GROUP BASE)
+        DISPLAY NAME "Core library"
+        DESCRIPTION "The core Pgs++ shared library"
+        REQUIRED
+        GROUP BASE)
 cpack_add_component(headers
-    DISPLAY NAME "Headers"
-    DESCRIPTION "Header files needed for building programs using Pgs++."
-    DISABLED 
-    DEPENDS CORE
-    GROUP DEVEL)
+        DISPLAY NAME "Headers"
+        DESCRIPTION "Header files needed for building programs using Pgs++"
+        DISABLED
+        DEPENDS CORE
+        GROUP DEVEL)
+cpack_add_component(cmake_config
+        DISPLAY NAME "CMake configuration files"
+        DESCRIPTION "Files used for importing Pgs++ with CMake"
+        DEPENDS CORE
+        GROUP DEVEL)
 
 cpack_add_component_group(base
-    DISPLAY NAME "Pgs++")
+        DISPLAY NAME "Pgs++")
 cpack_add_component_group(devel
-    DISPLAY NAME "Pgs++ Development Files")   
+        DISPLAY NAME "Pgs++ Development Files")
