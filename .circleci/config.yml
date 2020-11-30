@@ -14,7 +14,7 @@ executors:
           username: iamsomeone2
           password: $docker_password
 jobs:
-  build:
+  fedora_33-build_and_test:
     executor: fedora
 
     steps:
@@ -69,31 +69,45 @@ jobs:
             mkdir test-results
             make test > test-results/results.txt
 
+      # Store working directory
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./*
+
+      - store_artifacts:
+        path: build/test-results
+        destination: test-results
+
       - store_test_results:
           path: build/test-results
 
-  package:
+  fedora_33-package:
     executor: fedora
 
     steps:
-      - restore_cache:
-          keys:
-            - source-v1-{{ .Branch }}-{{ .Revision }}
-            - source-v1-{{ .Branch }}-
+      - attach_workspace:
+          at: ./
+    
+      # - restore_cache:
+      #     keys:
+      #       - source-v1-{{ .Branch }}-{{ .Revision }}
+      #       - source-v1-{{ .Branch }}-
 
-      - checkout
+      # - checkout
 
-      - save_cache:
-          key: source-v1-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - ".git"
+      # - save_cache:
+      #     key: source-v1-{{ .Branch }}-{{ .Revision }}
+      #     paths:
+      #       - ".git"
 
-      - run:
-          name: 'Set up build environment'
-          command: |
-            mkdir build && cd build
-            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+      # - run:
+      #     name: 'Set up build environment'
+      #     command: |
+      #       mkdir build && cd build
+      #       cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
 
+      # CMake config should already be complete from the previous job
       - restore_cache:
           keys:
             - tarball-{{ .Branch }}-{{ .Revision }}
@@ -115,7 +129,8 @@ jobs:
           name: 'Move SPEC file to rpmbuild dirs'
           command: |
             cp dist/redhat/pgs++.spec ~/rpmbuild/SPECS
-          
+    
+      # Project must still be rebuilt to be packaged
       - run:
           name: 'Create RPM packages'
           command: |
@@ -126,7 +141,9 @@ jobs:
           destination: RPMs
 
 workflows:
-  build_and_pack:
+  fedora_33:
     jobs:
-      - build
-      - package
+      - fedora_33-build_and_test
+      - fedora_33-package:
+          requires:
+            - fedora_33-build_and_test
