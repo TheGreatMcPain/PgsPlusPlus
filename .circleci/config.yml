@@ -40,7 +40,7 @@ jobs:
           name: 'Retrieve test resources'
           command: |
             cd test/res
-            wget --quiet "https://onedrive.live.com/download?cid=$onedrive_cid&resid=$onedrive_resid&authkey=$onedrive_auth_key"
+            wget --quiet "https://onedrive.live.com/download?cid=3ACEA36CBA105F99&resid=3ACEA36CBA105F99%2112023&authkey=AEb0x9TqgVsT4_M"
             tar -xJf test_resources.tar.xz
             rm test_resources.tar.xz
       
