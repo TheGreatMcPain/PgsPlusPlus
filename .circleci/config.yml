@@ -40,9 +40,11 @@ jobs:
           name: 'Retrieve test resources'
           command: |
             cd test/res
-            wget --quiet "https://onedrive.live.com/download?cid=3ACEA36CBA105F99&resid=3ACEA36CBA105F99%2112023&authkey=AEb0x9TqgVsT4_M"
-            tar -xJf test_resources.tar.xz
+            wget -nc -O test_resources.tar.xz "https://onedrive.live.com/download?cid=3ACEA36CBA105F99&resid=3ACEA36CBA105F99%2112023&authkey=AEb0x9TqgVsT4_M"
+            tar -xJvf test_resources.tar.xz
             rm test_resources.tar.xz
+            mv ./test_resources/* ./
+            rm -r test_resources
       
       - save_cache:
           key: test-resources-{{ .Branch }}
