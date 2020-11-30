@@ -76,8 +76,8 @@ jobs:
             - ./*
 
       - store_artifacts:
-        path: build/test-results
-        destination: test-results
+          path: build/test-results
+          destination: test-results
 
       - store_test_results:
           path: build/test-results
