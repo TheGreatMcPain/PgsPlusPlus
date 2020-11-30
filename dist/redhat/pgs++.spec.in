@@ -44,6 +44,8 @@ rm -rf $RPM_BUILD_ROOT
 %package devel
 Summary: "Development files for Pgs++"
 
+Requires: pgs++ == %{version}
+
 %description devel
 Development files for Pgs++
 
