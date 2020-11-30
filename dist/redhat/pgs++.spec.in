@@ -54,7 +54,7 @@ Development files for Pgs++
 "%{_includedir}/pgs++/*.h"
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/pgs++
-"%{%{_libdir}/cmake/pgs++/*.cmake}"
+"%{_libdir}/cmake/pgs++/*.cmake"
 
 
 %changelog
