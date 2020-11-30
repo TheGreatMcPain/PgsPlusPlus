@@ -3,14 +3,13 @@ version: 2.1
 executors:
   ubuntu:
     docker:
-      # Base Ubuntu 20.04 image used for hosting other containers.
       - image: iamsomeone2/ubuntu-cmake:latest
         auth:
           username: iamsomeone2
           password: $docker_password
   fedora:
     docker:
-      - image: iamsomeone2/cpp_base:fedora-latest
+      - image: iamsomeone2/pgsplusplus_build:fedora-latest
         auth:
           username: iamsomeone2
           password: $docker_password
@@ -32,17 +31,46 @@ jobs:
           paths:
             - ".git"
 
+      - restore_cache:
+          keys: 
+            - test-resources-{{ .Branch }}
+            - test-resources
+
+      - run:
+          name: 'Retrieve test resources'
+          command: |
+            cd test/res
+            wget --quiet "https://onedrive.live.com/download?cid=$onedrive_cid&resid=$onedrive_resid&authkey=$onedrive_auth_key"
+            tar -xJf test_resources.tar.xz
+            rm test_resources.tar.xz
+      
+      - save_cache:
+          key: test-resources-{{ .Branch }}
+          paths:
+            - "test/res/subs.sup"
+            - "test/res/subs_short.sup"
+
       - run:
           name: 'Set up build environment'
           command: |
             mkdir build && cd build
-            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=on ..
 
       - run:
           name: 'Build Pgs++'
           command: |
             cd build
             make -j$(nproc)
+
+      - run:
+          name: 'Execute tests'
+          command: |
+            cd build
+            mkdir test-results
+            make test > test-results/results.txt
+
+      - store_test_results:
+          path: build/test-results
 
   package:
     executor: fedora
