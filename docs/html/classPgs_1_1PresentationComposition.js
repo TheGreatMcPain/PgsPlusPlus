@@ -13,7 +13,7 @@ var classPgs_1_1PresentationComposition =
     [ "import", "classPgs_1_1PresentationComposition.html#af54bc5371fd915770a0bcae11f6672d4", null ],
     [ "compositionNumber", "classPgs_1_1PresentationComposition.html#a1bced02c0ca716002b170b973e781474", null ],
     [ "compositionObjectCount", "classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb", null ],
-    [ "compositionObjects", "classPgs_1_1PresentationComposition.html#a12b234e4d2616102825eb5cbaa786d37", null ],
+    [ "compositionObjects", "classPgs_1_1PresentationComposition.html#afb85f0d6fc9f2deb73a70e32b3f2d887", null ],
     [ "compositionState", "classPgs_1_1PresentationComposition.html#a8d092971077e72ddab6275d030cf8726", null ],
     [ "frameRate", "classPgs_1_1PresentationComposition.html#ae9fcca5f114058f623537a71750e0e88", null ],
     [ "height", "classPgs_1_1PresentationComposition.html#a12a465454fa09f9f525a7cb19d9ac892", null ],

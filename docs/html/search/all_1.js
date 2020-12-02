@@ -4,7 +4,7 @@ var searchData=
   ['compositionnumber_2',['compositionNumber',['../classPgs_1_1PresentationComposition.html#a1bced02c0ca716002b170b973e781474',1,'Pgs::PresentationComposition']]],
   ['compositionobject_3',['CompositionObject',['../classPgs_1_1CompositionObject.html',1,'Pgs::CompositionObject'],['../classPgs_1_1CompositionObject.html#a9c7c4223add7c7da9f007b867069f6ae',1,'Pgs::CompositionObject::CompositionObject()']]],
   ['compositionobjectcount_4',['compositionObjectCount',['../classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb',1,'Pgs::PresentationComposition']]],
-  ['compositionobjects_5',['compositionObjects',['../classPgs_1_1PresentationComposition.html#a12b234e4d2616102825eb5cbaa786d37',1,'Pgs::PresentationComposition']]],
+  ['compositionobjects_5',['compositionObjects',['../classPgs_1_1PresentationComposition.html#afb85f0d6fc9f2deb73a70e32b3f2d887',1,'Pgs::PresentationComposition']]],
   ['compositionstate_6',['compositionState',['../classPgs_1_1PresentationComposition.html#a8d092971077e72ddab6275d030cf8726',1,'Pgs::PresentationComposition']]],
   ['containsimage_7',['containsImage',['../classPgs_1_1Subtitle.html#a60e753f14f679a51a146201e89d97483',1,'Pgs::Subtitle']]],
   ['cr_8',['cr',['../classPgs_1_1PaletteEntry.html#ace06decfaeb6d0150c4a97ef315cf15d',1,'Pgs::PaletteEntry']]],
