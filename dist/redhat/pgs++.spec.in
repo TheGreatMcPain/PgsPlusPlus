@@ -10,27 +10,23 @@ License:        LGPLv2.1
 URL:            https://github.com/iAmSomeone2/%{git_name}
 Vendor:         @CPACK_PACKAGE_VENDOR@
 
-Source0:        https://github.com/iAmSomeone2/%{git_name}/archive/v%{version}-alpha.tar.gz
+Source0:        https://github.com/iAmSomeone2/%{git_name}/archive/v%{version}.tar.gz
 
 BuildRequires:  cmake >= 3.15, gcc >= 5.0
-
 
 %description
 @CMAKE_PROJECT_DESCRIPTION@
 
-
 %prep
-%setup -n %{git_name}-%{version}-alpha -q
+%setup -n %{git_name}-%{version} -q
 
 %build
 %cmake . 
 %cmake_build
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
 %cmake_install
-
 
 %files
 %dir "%{_docdir}/pgs++/"
@@ -58,7 +54,9 @@ Development files for Pgs++
 %dir %{_libdir}/cmake/pgs++
 "%{_libdir}/cmake/pgs++/*.cmake"
 
-
 %changelog
+* Wed Dec 02 2020 Brenden Davidson <davidson.brenden15@gmail.com>
+- Packaged first full v1.0.0 release.
+
 * Sun Nov 22 13:44:57 CST 2020 Brenden Davidson <davidson.brenden15@gmail.com>
 - Packaged first alpha version for 0.1.0
