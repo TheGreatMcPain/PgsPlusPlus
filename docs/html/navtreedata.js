@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "libpgs", "index.html", [
+  [ "Pgs++", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -43,7 +43,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ObjectDefinition_8hpp_source.html"
+""
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

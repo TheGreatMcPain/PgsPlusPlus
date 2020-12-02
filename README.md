@@ -1,3 +1,4 @@
+[![iAmSomeone2](https://circleci.com/gh/iAmSomeone2/PgsPlusPlus/tree/v1.0.svg?style=svg)](https://app.circleci.com/pipelines/github/iAmSomeone2/PgsPlusPlus)
 # Pgs++
 
 A C++ library for reading Presentation Graphics Stream (PGS) subtitles.

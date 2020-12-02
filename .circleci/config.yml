@@ -1,12 +1,23 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  ubuntu:
     docker:
-      - image: cimg/base:stable-20.04 # Basic Ubuntu 20.04 image
-    
-    steps:
+      - image: iamsomeone2/ubuntu-cmake:latest
+        auth:
+          username: iamsomeone2
+          password: $docker_password
+  fedora:
+    docker:
+      - image: iamsomeone2/pgsplusplus_build:fedora-latest
+        auth:
+          username: iamsomeone2
+          password: $docker_password
+jobs:
+  fedora_33-build_and_test:
+    executor: fedora
 
+    steps:
       # Deal with source set up
       - restore_cache:
           keys:
@@ -20,78 +31,101 @@ jobs:
           paths:
             - ".git"
 
-      # Get CMake installed
-
-      # Install CMake dependencies
-
-      # OpenSSL
       - restore_cache:
-          keys:
-            - openssl-1.1.1g-{{ arch }}
+          keys: 
+            - test-resources-{{ .Branch }}
+            - test-resources
 
       - run:
-          name: 'Download OpenSSL'
+          name: 'Retrieve test resources'
           command: |
-            wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz
-            tar -zxf openssl-OpenSSL_1_1_1g.tar.gz
-
-      - run:
-          name: 'Build OpenSSL'
-          command: |
-            cd openssl-OpenSSL_1_1_1g
-            ./Configure
-            make -j$(nproc)
-            cd ..
-
+            cd test/res
+            wget -nc -O test_resources.tar.xz "https://onedrive.live.com/download?cid=3ACEA36CBA105F99&resid=3ACEA36CBA105F99%2112023&authkey=AEb0x9TqgVsT4_M"
+            tar -xJvf test_resources.tar.xz
+            rm test_resources.tar.xz
+      
       - save_cache:
+          key: test-resources-{{ .Branch }}
           paths:
-            - ./openssl-OpenSSL_1_1_1g
-          key: openssl-1.1.1g-{{ arch }}
-
-      - run:
-          name: 'Install OpenSSL'
-          command: |
-            cd ./openssl-OpenSSL_1_1_1g
-            sudo make install
-            cd ..
-
-      # CMake
-      - restore_cache:
-          keys:
-            - cmake-3.18.4-{{ arch }}
-
-      - run:
-          name: 'Download CMake'
-          command: |
-            wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz
-            tar -zxf cmake-3.18.4.tar.gz
-
-      - run:
-          name: 'Build CMake'
-          command: |
-            cd cmake-3.18.4
-            ./bootstrap
-            make -j$(nproc)
-            cd ..
-
-      - save_cache:
-          paths:
-            - ./cmake-3.18.4
-          key: cmake-3.18.4-{{ arch }}
-
-      - run:
-          name: 'Install CMake'
-          command: |
-            cd ./cmake-3.18.4
-            sudo make install
-            cd ..
+            - "test/res/subs.sup"
+            - "test/res/subs_short.sup"
 
       - run:
           name: 'Set up build environment'
           command: |
             mkdir build && cd build
-            cmake -DCMAKE_BUILD_TYPE=Release ..
+            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=on ..
 
       - run:
-          name: 'Build libpgs'
-          command: make -j$(nproc)
+          name: 'Build Pgs++'
+          command: |
+            cd build
+            make -j$(nproc)
+
+      - run:
+          name: 'Execute tests'
+          command: |
+            cd build
+            mkdir test-results
+            make test > test-results/results.txt
+
+      # Store working directory
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./*
+
+      - store_artifacts:
+          path: build/test-results
+          destination: test-results
+
+      - store_test_results:
+          path: build/test-results
+
+  fedora_33-package:
+    executor: fedora
+
+    steps:
+      - attach_workspace:
+          at: ./
+
+      # CMake config should already be complete from the previous job
+      - restore_cache:
+          keys:
+            - tarball-{{ .Branch }}-{{ .Revision }}
+            - tarball-{{ .Branch }}-
+
+      - run:
+          name: 'Generate source pacakge'
+          command: |
+            chmod +x dist/redhat/pack_for_rpm.sh
+            dist/redhat/pack_for_rpm.sh
+            mv v1.0.0.tar.gz /home/circleci/rpmbuild/SOURCES/
+
+      - save_cache:
+          key: tarball-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - "/home/circleci/rpmbuild/SOURCES/v1.0.0.tar.gz"
+
+      - run:
+          name: 'Move SPEC file to rpmbuild dirs'
+          command: |
+            cp dist/redhat/pgs++.spec ~/rpmbuild/SPECS
+    
+      # Project must still be rebuilt to be packaged
+      - run:
+          name: 'Create RPM packages'
+          command: |
+            rpmbuild -bb /home/circleci/rpmbuild/SPECS/pgs++.spec
+
+      - store_artifacts:
+          path: /home/circleci/rpmbuild/RPMS/
+          destination: RPMs
+
+workflows:
+  fedora_33:
+    jobs:
+      - fedora_33-build_and_test
+      - fedora_33-package:
+          requires:
+            - fedora_33-build_and_test

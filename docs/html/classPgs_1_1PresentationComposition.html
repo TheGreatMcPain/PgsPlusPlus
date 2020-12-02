@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libpgs: Pgs::PresentationComposition Class Reference</title>
+<title>Pgs++: Pgs::PresentationComposition Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,8 +25,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">libpgs
-   &#160;<span id="projectnumber">0.1.0</span>
+   <div id="projectname">Pgs++
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">A C++ library for reading Presentation Graphics Stream (PGS) subtitles.</div>
   </td>
@@ -140,7 +140,7 @@ const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPal
 const uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionObjectCount</b> () const</td></tr>
 <tr class="separator:ad29f8f04ffd9f732c47de2600cdfccb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8193c7f57d5a0a17ff093e2c3fb7593e"><td class="memItemLeft" align="right" valign="top"><a id="a8193c7f57d5a0a17ff093e2c3fb7593e"></a>
-const vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionObjects</b> () const</td></tr>
+const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCompositionObjects</b> () const</td></tr>
 <tr class="separator:a8193c7f57d5a0a17ff093e2c3fb7593e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPgs_1_1SegmentData"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPgs_1_1SegmentData')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPgs_1_1SegmentData.html">Pgs::SegmentData</a></td></tr>
 <tr class="memitem:a78f1cc25f1d46f3694732c3498a5ba63 inherit pub_methods_classPgs_1_1SegmentData"><td class="memItemLeft" align="right" valign="top"><a id="a78f1cc25f1d46f3694732c3498a5ba63"></a>
@@ -173,8 +173,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a565148e55dbcce1c81d3778e333a70f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a379905888c47ccac1b8d90db60608efb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a379905888c47ccac1b8d90db60608efb">compositionObjectCount</a></td></tr>
 <tr class="separator:a379905888c47ccac1b8d90db60608efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b234e4d2616102825eb5cbaa786d37"><td class="memItemLeft" align="right" valign="top">vector&lt; shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#a12b234e4d2616102825eb5cbaa786d37">compositionObjects</a></td></tr>
-<tr class="separator:a12b234e4d2616102825eb5cbaa786d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb85f0d6fc9f2deb73a70e32b3f2d887"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgs_1_1PresentationComposition.html#afb85f0d6fc9f2deb73a70e32b3f2d887">compositionObjects</a></td></tr>
+<tr class="separator:afb85f0d6fc9f2deb73a70e32b3f2d887"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Presentation Composition structure containing all relevant display info for the subtitle image. </p>
@@ -300,8 +300,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a12b234e4d2616102825eb5cbaa786d37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b234e4d2616102825eb5cbaa786d37">&#9670;&nbsp;</a></span>compositionObjects</h2>
+<a id="afb85f0d6fc9f2deb73a70e32b3f2d887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb85f0d6fc9f2deb73a70e32b3f2d887">&#9670;&nbsp;</a></span>compositionObjects</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,7 +310,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;shared_ptr&lt;<a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a>&gt; &gt; Pgs::PresentationComposition::compositionObjects</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classPgs_1_1CompositionObject.html">CompositionObject</a>&gt; &gt; Pgs::PresentationComposition::compositionObjects</td>
         </tr>
       </table>
   </td>

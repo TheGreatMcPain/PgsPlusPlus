@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libpgs: src/Segment.hpp Source File</title>
+<title>Pgs++: src/Segment.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,8 +25,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">libpgs
-   &#160;<span id="projectnumber">0.1.0</span>
+   <div id="projectname">Pgs++
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">A C++ library for reading Presentation Graphics Stream (PGS) subtitles.</div>
   </td>
@@ -109,85 +109,75 @@ $(document).ready(function(){initNavTree('Segment_8hpp_source.html',''); initRes
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;pgs.hpp&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;PresentationComposition.hpp&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;WindowDefinition.hpp&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;PaletteDefinition.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;ObjectDefinition.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> std::vector;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> std::unique_ptr;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> std::shared_ptr;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>Pgs</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">enum class</span> SegmentType</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        PaletteDefinition = 0x14,       </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        ObjectDefinition = 0x15,        </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        PresentationComposition = 0x16, </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        WindowDefinition = 0x17,        </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        EndOfDisplaySet = 0x80          </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html">   58</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classPgs_1_1Segment.html">Segment</a></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">   61</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">magicNumber</a>[2]{};             </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">   62</a></span>&#160;        uint32_t <a class="code" href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">presentationTimestamp</a>;  </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">   63</a></span>&#160;        uint32_t <a class="code" href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">decodingTimestamp</a>;      </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">   64</a></span>&#160;        SegmentType <a class="code" href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">segmentType</a>;         </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">   65</a></span>&#160;        uint16_t <a class="code" href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">segmentSize</a>;            </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#aeba4976e540f287cf1428bba8bb35327">   66</a></span>&#160;        shared_ptr&lt;SegmentData&gt; <a class="code" href="classPgs_1_1Segment.html#aeba4976e540f287cf1428bba8bb35327">data</a>;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">static</span> constexpr uint16_t MIN_BYTE_SIZE = 13u;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classPgs_1_1Segment.html">Segment</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;SegmentData.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>Pgs</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">enum class</span> SegmentType</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        PaletteDefinition = 0x14,       </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        ObjectDefinition = 0x15,        </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        PresentationComposition = 0x16, </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        WindowDefinition = 0x17,        </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        EndOfDisplaySet = 0x80          </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html">   48</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classPgs_1_1Segment.html">Segment</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">   51</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">magicNumber</a>[2]{};             </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">   52</a></span>&#160;        uint32_t <a class="code" href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">presentationTimestamp</a>;  </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">   53</a></span>&#160;        uint32_t <a class="code" href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">decodingTimestamp</a>;      </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">   54</a></span>&#160;        SegmentType <a class="code" href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">segmentType</a>;         </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">   55</a></span>&#160;        uint16_t <a class="code" href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">segmentSize</a>;            </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classPgs_1_1Segment.html#ad6d4eb7c7a8e7a31fe203d236992d482">   56</a></span>&#160;        std::shared_ptr&lt;SegmentData&gt; <a class="code" href="classPgs_1_1Segment.html#ad6d4eb7c7a8e7a31fe203d236992d482">data</a>;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">static</span> constexpr uint16_t MIN_BYTE_SIZE = 13u;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classPgs_1_1Segment.html">Segment</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        ~<a class="code" href="classPgs_1_1Segment.html">Segment</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">static</span> uint16_t <a class="code" href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">getSegmentSize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classPgs_1_1Segment.html#ad6d4eb7c7a8e7a31fe203d236992d482">data</a>, <span class="keyword">const</span> uint16_t &amp;size) noexcept;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        ~<a class="code" href="classPgs_1_1Segment.html">Segment</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        uint16_t <span class="keyword">import</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *inData, <span class="keyword">const</span> uint32_t &amp;size);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">static</span> uint16_t <a class="code" href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">getSegmentSize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classPgs_1_1Segment.html#aeba4976e540f287cf1428bba8bb35327">data</a>, <span class="keyword">const</span> uint16_t &amp;size) noexcept;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        uint16_t <span class="keyword">import</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *inData, <span class="keyword">const</span> uint32_t &amp;size);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        uint16_t <span class="keyword">import</span>(<span class="keyword">const</span> vector&lt;char&gt; &amp;inData);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// =======</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">// Getters</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// =======</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        uint16_t <span class="keyword">import</span>(<span class="keyword">const</span> std::vector&lt;char&gt; &amp;inData);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// =======</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// Getters</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// =======</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        [[maybe_unused]] [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classPgs_1_1Segment.html#aff9da73a25b8b60d7c2408e0e3685f5d">getMagicNumber</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classPgs_1_1Segment.html#aff9da73a25b8b60d7c2408e0e3685f5d">getMagicNumber</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">const</span> uint32_t &amp;<a class="code" href="classPgs_1_1Segment.html#a4742a256fa63929de240c2de33739c55">getPresentationTimestamp</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">const</span> uint32_t &amp;<a class="code" href="classPgs_1_1Segment.html#a6e9814cdf5c1322190ad0708d7718b63">getDecodingTimestamp</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">const</span> SegmentType &amp;<a class="code" href="classPgs_1_1Segment.html#ad73100bb95436b9bf775d6de483e6f6d">getSegmentType</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">const</span> uint16_t &amp;<a class="code" href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">getSegmentSize</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        shared_ptr&lt;SegmentData&gt; <a class="code" href="classPgs_1_1Segment.html#ac71e2a278fdd359def14817e77a3f8ed">getData</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    };</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        [[nodiscard]] <span class="keyword">const</span> uint32_t &amp;<a class="code" href="classPgs_1_1Segment.html#a4742a256fa63929de240c2de33739c55">getPresentationTimestamp</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        [[nodiscard]] <span class="keyword">const</span> uint32_t &amp;<a class="code" href="classPgs_1_1Segment.html#a6e9814cdf5c1322190ad0708d7718b63">getDecodingTimestamp</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        [[nodiscard]] <span class="keyword">const</span> SegmentType &amp;<a class="code" href="classPgs_1_1Segment.html#ad73100bb95436b9bf775d6de483e6f6d">getSegmentType</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        [[maybe_unused]] [[nodiscard]] <span class="keyword">const</span> uint16_t &amp;<a class="code" href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">getSegmentSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        [[nodiscard]] std::shared_ptr&lt;SegmentData&gt; <a class="code" href="classPgs_1_1Segment.html#ac71e2a278fdd359def14817e77a3f8ed">getData</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    };</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassPgs_1_1Segment_html_a6e9814cdf5c1322190ad0708d7718b63"><div class="ttname"><a href="classPgs_1_1Segment.html#a6e9814cdf5c1322190ad0708d7718b63">Pgs::Segment::getDecodingTimestamp</a></div><div class="ttdeci">const uint32_t &amp; getDecodingTimestamp() const</div><div class="ttdoc">Gets the decodingTimestamp.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:129</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_aff9da73a25b8b60d7c2408e0e3685f5d"><div class="ttname"><a href="classPgs_1_1Segment.html#aff9da73a25b8b60d7c2408e0e3685f5d">Pgs::Segment::getMagicNumber</a></div><div class="ttdeci">const char * getMagicNumber() const</div><div class="ttdoc">Returns the magic number from the Segment.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:119</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a4742a256fa63929de240c2de33739c55"><div class="ttname"><a href="classPgs_1_1Segment.html#a4742a256fa63929de240c2de33739c55">Pgs::Segment::getPresentationTimestamp</a></div><div class="ttdeci">const uint32_t &amp; getPresentationTimestamp() const</div><div class="ttdoc">Gets the presentationTimestamp.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:124</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_ac71e2a278fdd359def14817e77a3f8ed"><div class="ttname"><a href="classPgs_1_1Segment.html#ac71e2a278fdd359def14817e77a3f8ed">Pgs::Segment::getData</a></div><div class="ttdeci">shared_ptr&lt; SegmentData &gt; getData() const</div><div class="ttdoc">Retrieves a shared pointer to the stored SegmentData object.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:144</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a622a8f2ed94cd20668322884df4b96db"><div class="ttname"><a href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">Pgs::Segment::getSegmentSize</a></div><div class="ttdeci">const uint16_t &amp; getSegmentSize() const</div><div class="ttdoc">Gets the segmentSize.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:139</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_ad4a5985eba32c7cb9d764d6dc46a5ae3"><div class="ttname"><a href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">Pgs::Segment::segmentType</a></div><div class="ttdeci">SegmentType segmentType</div><div class="ttdef"><b>Definition:</b> Segment.hpp:64</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_aeba4976e540f287cf1428bba8bb35327"><div class="ttname"><a href="classPgs_1_1Segment.html#aeba4976e540f287cf1428bba8bb35327">Pgs::Segment::data</a></div><div class="ttdeci">shared_ptr&lt; SegmentData &gt; data</div><div class="ttdef"><b>Definition:</b> Segment.hpp:66</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a3024b0eec6c2576ffd4a28f0a18a3285"><div class="ttname"><a href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">Pgs::Segment::decodingTimestamp</a></div><div class="ttdeci">uint32_t decodingTimestamp</div><div class="ttdef"><b>Definition:</b> Segment.hpp:63</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a9048133729ec8b2704c7bc8161979aef"><div class="ttname"><a href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">Pgs::Segment::magicNumber</a></div><div class="ttdeci">char magicNumber[2]</div><div class="ttdef"><b>Definition:</b> Segment.hpp:61</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_ad73100bb95436b9bf775d6de483e6f6d"><div class="ttname"><a href="classPgs_1_1Segment.html#ad73100bb95436b9bf775d6de483e6f6d">Pgs::Segment::getSegmentType</a></div><div class="ttdeci">const SegmentType &amp; getSegmentType() const</div><div class="ttdoc">Gets the segmentType.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:134</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html"><div class="ttname"><a href="classPgs_1_1Segment.html">Pgs::Segment</a></div><div class="ttdoc">Full object definition of a PGS data segment.</div><div class="ttdef"><b>Definition:</b> Segment.hpp:59</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a14ff871741553ce353d4ed5cc4567539"><div class="ttname"><a href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">Pgs::Segment::segmentSize</a></div><div class="ttdeci">uint16_t segmentSize</div><div class="ttdef"><b>Definition:</b> Segment.hpp:65</div></div>
-<div class="ttc" id="aclassPgs_1_1Segment_html_a8ba033317707554dffca9ab4cedcc755"><div class="ttname"><a href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">Pgs::Segment::presentationTimestamp</a></div><div class="ttdeci">uint32_t presentationTimestamp</div><div class="ttdef"><b>Definition:</b> Segment.hpp:62</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a6e9814cdf5c1322190ad0708d7718b63"><div class="ttname"><a href="classPgs_1_1Segment.html#a6e9814cdf5c1322190ad0708d7718b63">Pgs::Segment::getDecodingTimestamp</a></div><div class="ttdeci">const uint32_t &amp; getDecodingTimestamp() const</div><div class="ttdoc">Gets the decodingTimestamp.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:139</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_aff9da73a25b8b60d7c2408e0e3685f5d"><div class="ttname"><a href="classPgs_1_1Segment.html#aff9da73a25b8b60d7c2408e0e3685f5d">Pgs::Segment::getMagicNumber</a></div><div class="ttdeci">const char * getMagicNumber() const</div><div class="ttdoc">Returns the magic number from the Segment.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:129</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a4742a256fa63929de240c2de33739c55"><div class="ttname"><a href="classPgs_1_1Segment.html#a4742a256fa63929de240c2de33739c55">Pgs::Segment::getPresentationTimestamp</a></div><div class="ttdeci">const uint32_t &amp; getPresentationTimestamp() const</div><div class="ttdoc">Gets the presentationTimestamp.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:134</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_ac71e2a278fdd359def14817e77a3f8ed"><div class="ttname"><a href="classPgs_1_1Segment.html#ac71e2a278fdd359def14817e77a3f8ed">Pgs::Segment::getData</a></div><div class="ttdeci">std::shared_ptr&lt; SegmentData &gt; getData() const</div><div class="ttdoc">Retrieves a shared pointer to the stored SegmentData object.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:154</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a622a8f2ed94cd20668322884df4b96db"><div class="ttname"><a href="classPgs_1_1Segment.html#a622a8f2ed94cd20668322884df4b96db">Pgs::Segment::getSegmentSize</a></div><div class="ttdeci">const uint16_t &amp; getSegmentSize() const</div><div class="ttdoc">Gets the segmentSize.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:149</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_ad4a5985eba32c7cb9d764d6dc46a5ae3"><div class="ttname"><a href="classPgs_1_1Segment.html#ad4a5985eba32c7cb9d764d6dc46a5ae3">Pgs::Segment::segmentType</a></div><div class="ttdeci">SegmentType segmentType</div><div class="ttdef"><b>Definition:</b> Segment.hpp:54</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a3024b0eec6c2576ffd4a28f0a18a3285"><div class="ttname"><a href="classPgs_1_1Segment.html#a3024b0eec6c2576ffd4a28f0a18a3285">Pgs::Segment::decodingTimestamp</a></div><div class="ttdeci">uint32_t decodingTimestamp</div><div class="ttdef"><b>Definition:</b> Segment.hpp:53</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a9048133729ec8b2704c7bc8161979aef"><div class="ttname"><a href="classPgs_1_1Segment.html#a9048133729ec8b2704c7bc8161979aef">Pgs::Segment::magicNumber</a></div><div class="ttdeci">char magicNumber[2]</div><div class="ttdef"><b>Definition:</b> Segment.hpp:51</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_ad73100bb95436b9bf775d6de483e6f6d"><div class="ttname"><a href="classPgs_1_1Segment.html#ad73100bb95436b9bf775d6de483e6f6d">Pgs::Segment::getSegmentType</a></div><div class="ttdeci">const SegmentType &amp; getSegmentType() const</div><div class="ttdoc">Gets the segmentType.</div><div class="ttdef"><b>Definition:</b> Segment.cpp:144</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html"><div class="ttname"><a href="classPgs_1_1Segment.html">Pgs::Segment</a></div><div class="ttdoc">Full object definition of a PGS data segment.</div><div class="ttdef"><b>Definition:</b> Segment.hpp:49</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_ad6d4eb7c7a8e7a31fe203d236992d482"><div class="ttname"><a href="classPgs_1_1Segment.html#ad6d4eb7c7a8e7a31fe203d236992d482">Pgs::Segment::data</a></div><div class="ttdeci">std::shared_ptr&lt; SegmentData &gt; data</div><div class="ttdef"><b>Definition:</b> Segment.hpp:56</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a14ff871741553ce353d4ed5cc4567539"><div class="ttname"><a href="classPgs_1_1Segment.html#a14ff871741553ce353d4ed5cc4567539">Pgs::Segment::segmentSize</a></div><div class="ttdeci">uint16_t segmentSize</div><div class="ttdef"><b>Definition:</b> Segment.hpp:55</div></div>
+<div class="ttc" id="aclassPgs_1_1Segment_html_a8ba033317707554dffca9ab4cedcc755"><div class="ttname"><a href="classPgs_1_1Segment.html#a8ba033317707554dffca9ab4cedcc755">Pgs::Segment::presentationTimestamp</a></div><div class="ttdeci">uint32_t presentationTimestamp</div><div class="ttdef"><b>Definition:</b> Segment.hpp:52</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
