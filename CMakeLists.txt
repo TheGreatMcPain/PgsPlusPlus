@@ -25,11 +25,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_PROJECT_DESCRIPTION "A C++ library for reading Presentation Graphics Stream (PGS) subtitle data.")
 
 # Basic CPack setup
-set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}.${CMAKE_PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
 set(CPACK_PACKAGE_VENDOR "Brenden Davidson")
 set(CPACK_PACKAGE_HOMEPAGE_URL "https://github.com/iAmSomeone2/PgsPlusPlus")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_COMPONENTS_GROUPING ONE_PER_GROUP)
 
 # RPM specific settings
@@ -40,7 +40,7 @@ set(CPACK_RPM_PACKAGE_SUMMARY ${CMAKE_PROJECT_DESCRIPTION})
 set(CPACK_RPM_PACKAGE_LICENSE "LGPLv2.1")
 set(CPACK_RPM_PACKAGE_VENDOR ${CPACK_PACKAGE_VENDOR})
 set(CPACK_RPM_PACKAGE_URL ${CPACK_PACKAGE_HOMEPAGE_URL})
-set(CPACK_RPM_CHANGELOG_FILE "${CMAKE_SOURCE_DIR}/CHANGELOG.md")
+set(CPACK_RPM_CHANGELOG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/CHANGELOG.md")
 
 # CPack RPM grouping settings
 set(CPACK_RPM_MAIN_COMPONENT "BASE")
@@ -55,11 +55,26 @@ set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
 
 # Extra language level requirements are determined using 'target_compile_features'
 
+# Set up parent project detection
+set(HAS_PARENT False)
+if(NOT ${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
+    set(HAS_PARENT True)
+endif()
+
 option(BUILD_SHARED_LIBS "Build pgs++ as a shared library instead of static." ON)
 option(EXPORT_HEADERS "Header files will be installed in addition to the library." ON)
 option(BUILD_TESTING "Build package tests" OFF)
 
-include(GNUInstallDirs)
+# Set options in the event Pgs++ is a subproject
+if(${HAS_PARENT})
+    set(BUILD_SHARED_LIBS off)
+    set(EXPORT_HEADERS off)
+    set(BUILD_TESTING off)
+endif()
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
+    include(GNUInstallDirs)
+endif()
 
 add_subdirectory(src)
 include_directories(src)
