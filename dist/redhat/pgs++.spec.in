@@ -55,6 +55,9 @@ Development files for Pgs++
 "%{_libdir}/cmake/pgs++/*.cmake"
 
 %changelog
+* Sat Dec 12 2020 Brenden Davidson <davidson.brenden15@gmail.com>
+- Added updated CMake export configuration.
+
 * Wed Dec 02 2020 Brenden Davidson <davidson.brenden15@gmail.com>
 - Packaged first full v1.0.0 release.
 

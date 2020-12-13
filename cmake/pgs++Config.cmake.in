@@ -1,0 +1,5 @@
+# Pgs++ CMake config file
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/pgs++Targets.cmake")
+check_required_components(pgs++)

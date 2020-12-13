@@ -17,7 +17,7 @@
 #  USA
 
 cmake_minimum_required(VERSION 3.15)
-project(pgs++ LANGUAGES CXX VERSION 1.0.0)
+project(pgs++ LANGUAGES CXX VERSION 1.0.1)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -92,21 +92,22 @@ install(FILES "./LICENSE" DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT core)
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++ConfigVersion.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/cmake/pgs++ConfigVersion.cmake"
         COMPATIBILITY SameMinorVersion
 )
 
 export(EXPORT pgs++Targets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++Targets.cmake"
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/pgs++Targets.cmake"
         NAMESPACE pgs++::
         )
 
-configure_file(cmake/pgs++Config.cmake
-        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++Config.cmake"
-        COPYONLY
+set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/pgs++)
+
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/pgs++Config.cmake.in
+        "${CMAKE_CURRENT_BINARY_DIR}/cmake/pgs++Config.cmake"
+        INSTALL_DESTINATION ${ConfigPackageLocation}
         )
 
-set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/pgs++)
 install(EXPORT pgs++Targets
         FILE
         pgs++Targets.cmake
@@ -118,10 +119,9 @@ install(EXPORT pgs++Targets
         cmake_config
         )
 
-install(
-        FILES
-        cmake/pgs++Config.cmake
-        "${CMAKE_CURRENT_BINARY_DIR}/pgs++/pgs++ConfigVersion.cmake"
+install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/cmake/pgs++Config.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/cmake/pgs++ConfigVersion.cmake"
         DESTINATION
         ${ConfigPackageLocation}
         COMPONENT
