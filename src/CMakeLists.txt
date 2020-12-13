@@ -36,7 +36,8 @@ set_property(TARGET pgs++ PROPERTY INTERFACE_pgs++_MAJOR_VERSION ${PROJECT_VERSI
 set_property(TARGET pgs++ APPEND PROPERTY COMPATIBLE_INTERFACE_STRING pgs++_MAJOR_VERSION)
 
 target_include_directories(pgs++ INTERFACE
-        "$<INSTALL_INTERFACE:$<$<INSTALL_PREFIX>/include>>"
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+        "$<INSTALL_INTERFACE:include/pgs++>"
         )
 
 target_compile_features(pgs++ PUBLIC
@@ -51,7 +52,8 @@ target_compile_features(pgs++ PUBLIC
 
 install(TARGETS pgs++ EXPORT pgs++Targets
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT core
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT core)
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT core
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++)
 
 install(FILES ${PGS++_HEADERS}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pgs++ COMPONENT headers)

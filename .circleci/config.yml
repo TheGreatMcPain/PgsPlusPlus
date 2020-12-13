@@ -100,12 +100,12 @@ jobs:
           command: |
             chmod +x dist/redhat/pack_for_rpm.sh
             dist/redhat/pack_for_rpm.sh
-            mv v1.0.0.tar.gz /home/circleci/rpmbuild/SOURCES/
+            mv v1.0.1.tar.gz /home/circleci/rpmbuild/SOURCES/
 
       - save_cache:
           key: tarball-{{ .Branch }}-{{ .Revision }}
           paths:
-            - "/home/circleci/rpmbuild/SOURCES/v1.0.0.tar.gz"
+            - "/home/circleci/rpmbuild/SOURCES/v1.0.1.tar.gz"
 
       - run:
           name: 'Move SPEC file to rpmbuild dirs'
