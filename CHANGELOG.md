@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Fixed issue where CMake config was broken and could not be used to import Pgs++ from other projects.
+### Fixed
+
+- Issue where CMake config was broken and could not be used to import Pgs++ from other projects.
 
 ## [v1.0.0] - 2020-12-02
 
@@ -20,5 +22,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added build instructions to README.
 
-[Unreleased]: https://github.com/iAmSomeone2/PgsPlusPlus
+[Unreleased]: https://github.com/iAmSomeone2/PgsPlusPlus/compare/v1.0.0...v1.0
 [v1.0.0]: https://github.com/iAmSomeone2/PgsPlusPlus/releases/tag/v1.0.0
