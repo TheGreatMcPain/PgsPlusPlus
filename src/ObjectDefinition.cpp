@@ -48,12 +48,12 @@ ObjectDefinition::ObjectDefinition()
 
 uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
 {
-    if(!data)
+    if (!data)
     {
         throw ImportException("ObjectDefinition: no data provided to import.");
     }
 
-    if(size < ObjectDefinition::MIN_BYTE_SIZE)
+    if (size < ObjectDefinition::MIN_BYTE_SIZE)
     {
         throw ImportException("ObjectDefinition: Insufficient data provided to import.");
     }
@@ -78,7 +78,7 @@ uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
 
     const uint16_t remainingSize = size - readPos;
     this->objectData.resize(remainingSize);
-    for(uint16_t i = 0u; i < remainingSize; ++i)
+    for (uint16_t i = 0u; i < remainingSize; ++i)
     {
         this->objectData[i] = byteData[readPos];
         ++readPos;
@@ -91,7 +91,7 @@ uint16_t ObjectDefinition::import(const char *data, const uint16_t &size)
 // Getters
 // =======
 
-const uint16_t & ObjectDefinition::getId() const noexcept
+const uint16_t &ObjectDefinition::getId() const noexcept
 {
     return this->id;
 }
@@ -215,4 +215,74 @@ vector<uint8_t> ObjectDefinition::decodeLine(const uint32_t &startPos, const uin
     }
 
     return line;
+}
+
+vector<uint8_t> ObjectDefinition::encodeObjectData(vector<vector<uint8_t>> pixels)
+{
+    vector<uint8_t> encodedData;
+
+    for (uint16_t i = 0; i < pixels.size(); ++i)
+    {
+        this->encodeLine(&encodedData, pixels[i]);
+    }
+
+    return encodedData;
+}
+
+void ObjectDefinition::encodeLine(vector<uint8_t> *dest, vector<uint8_t> line)
+{
+    uint32_t linePos = 0u;
+    uint16_t pixCount;
+    uint8_t buff;
+
+    while (linePos < line.size())
+    {
+        pixCount = 0;
+        buff = line[linePos];
+
+        while (buff == line[linePos])
+        {
+            ++linePos;
+            ++pixCount;
+        }
+
+        if (buff == 0u)
+        {
+            dest->push_back(0u);
+
+            if ((pixCount & 0b00111111u) == 0)
+            {
+                dest->push_back(pixCount);
+            }
+            else
+            {
+                dest->push_back(pixCount >> 8 | 0b01000000u);
+                dest->push_back(pixCount & 0b11111111u);
+            }
+        }
+        else
+        {
+            if (pixCount < 3)
+            {
+                dest->push_back(buff);
+            }
+            else
+            {
+                dest->push_back(0u);
+                if ((pixCount & 0b00111111u) == 0)
+                {
+                    dest->push_back(pixCount | 0b10000000u);
+                    dest->push_back(buff);
+                }
+                else
+                {
+                    dest->push_back(pixCount >> 8 | 0b11000000);
+                    dest->push_back(pixCount & 0b11111111u);
+                    dest->push_back(buff);
+                }
+            }
+        }
+    }
+    dest->push_back(0u);
+    dest->push_back(0u);
 }

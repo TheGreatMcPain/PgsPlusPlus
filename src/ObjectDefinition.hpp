@@ -72,6 +72,13 @@ namespace Pgs
          * \return decompressed line
          */
         [[nodiscard]] std::vector<uint8_t> decodeLine(const uint32_t &startPos, const uint32_t &endPos) const;
+
+        /**
+         * \brief Encode an individual line
+         * \param dest destination were to write the encoded line.
+         * \param line the 'line' to be encoded
+         */
+        void encodeLine(std::vector<uint8_t> *dest, std::vector<uint8_t> line);
     public:
         static constexpr uint16_t MIN_BYTE_SIZE = 11u;
 
@@ -139,5 +146,12 @@ namespace Pgs
          * \return decompressed image data
          */
         [[maybe_unused]] [[nodiscard]] std::vector<std::vector<uint8_t>> getDecodedObjectData() const noexcept;
+
+        /**
+         * \brief take in a decoded image and encoded with RLE compression.
+         * \param pixels a 2D array of pixel colors that represents an image.
+         * \return RLE compressed data.
+         */
+        [[maybe_unused]] [[nodiscard]] std::vector<uint8_t> encodeObjectData(std::vector<std::vector<uint8_t>> pixels);
     };
 }
