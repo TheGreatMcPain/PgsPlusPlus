@@ -21,6 +21,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <cstdint>
 
 namespace Pgs
 {
