@@ -290,6 +290,33 @@ TEST_F(SubtitleTest, exportSubtitleImagesFull)
     }
 }
 
+TEST_F(SubtitleTest, ObjectDataEncoder)
+{
+    const auto data = std::unique_ptr<char>(new char[this->fullFileSize]);
+    this->fullSUPStream.readsome(data.get(), this->fullFileSize);
+
+    vector<shared_ptr<Pgs::Subtitle>> subtitles;
+    ASSERT_NO_THROW(subtitles = Pgs::Subtitle::createAll(data.get(), this->fullFileSize));
+
+    for (uint32_t i = 0; i < subtitles.size(); ++i)
+    {
+        for (uint32_t d = 0; d < subtitles[i]->getNumObjectDefinitions(); ++d)
+        {
+            vector<uint8_t> origData = subtitles[i]->getOds(d)->getEncodedObjectData();
+            vector<vector<uint8_t>> decodedData = subtitles[i]->getOds(d)->getDecodedObjectData();
+
+            vector<uint8_t> encodedData = subtitles[i]->getOds(d)->encodeObjectData(decodedData);
+
+            ASSERT_EQ(origData.size(), encodedData.size()) << "Size of re-encoded data is not equal to original encoded data";
+
+            for (uint32_t x = 0; x < origData.size(); ++x)
+            {
+                EXPECT_EQ(origData[x], encodedData[x]) << "Data between original and re-encoded differs";
+            }
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
